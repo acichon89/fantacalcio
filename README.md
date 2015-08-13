@@ -30,6 +30,7 @@
 
 <ul>Extras:
 <li> Spring Social </li>
+<li> Spring Integration </li>
 </ul>
 
 <ul>Testing:
