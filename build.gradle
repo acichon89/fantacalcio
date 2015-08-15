@@ -1,32 +1,124 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-
-version = '1.0'
-
-
-repositories {
-    mavenCentral()
-}
-
-configurations {
-    provided
-}
-
-dependencies {
-    provided "org.projectlombok:lombok:1.12.6"
-}
-
-sourceSets {
-    main {
-        compileClasspath = compileClasspath + configurations.provided
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
     }
-    test {
-        compileClasspath = compileClasspath + configurations.provided
+    dependencies {
+        classpath "org.sonarqube.gradle:gradle-sonarqube-plugin:1.0"
     }
 }
 
-eclipse {
-  classpath {
-    plusConfigurations += [ configurations.provided ]
-  }
+apply plugin: "org.sonarqube"
+
+subprojects {
+	// PLUGINS:
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'jacoco'
+	/// DESCRIPTIONS:
+	version = '1.0'
+	description = 'FantaCalcio main module'
+	sourceCompatibility = 1.5
+	
+	// REPOSITORIES:
+	repositories {
+	    mavenCentral()
+	}
+	// CONFIGURATIONS:
+	configurations {
+	    provided
+	}
+	/// SOURCE SETS:
+	sourceSets {
+	    main {
+	        compileClasspath = compileClasspath + configurations.provided
+	    }
+	    test {
+	        compileClasspath = compileClasspath + configurations.provided
+	    }
+	    integrationTest {
+	    	compileClasspath = compileClasspath + configurations.provided
+	        java {
+	            compileClasspath += main.output + test.output
+	            runtimeClasspath += main.output + test.output
+	            srcDir file('src/integration-test/java')
+	        }
+	        resources.srcDir file('src/integration-test/resources')
+	    }
+	}
+	/// DEPENDENCIES:
+	dependencies {
+		//compile:
+		compile 'org.springframework:spring-context:4.1.7.RELEASE'
+	    compile 'org.springframework:spring-core:4.1.7.RELEASE'
+	    compile 'net.sf.dozer:dozer:5.5.1'
+		//provided:
+	    provided "org.projectlombok:lombok:1.12.6"
+	    //test:
+	    testCompile 'junit:junit:4.12'
+	    testCompile 'org.mockito:mockito-all:1.10.19'
+	    //integration test:
+	    integrationTestCompile 'org.springframework:spring-test:4.1.7.RELEASE'
+	    //configuration:
+		integrationTestCompile sourceSets.main.output		
+		integrationTestCompile sourceSets.test.output 
+		integrationTestCompile configurations.testCompile
+		integrationTestRuntime configurations.testRuntime	
+	}
+	/// TASKS :
+	task integrationTest(type: Test) {
+	    testClassesDir = sourceSets.integrationTest.output.classesDir
+	    classpath = sourceSets.integrationTest.runtimeClasspath
+	    outputs.upToDateWhen { false }
+	    reports.junitXml.destination = file("$buildDir/integration-test-results/")
+		reports.html.destination = file("$buildDir/reports/integration-tests/")
+	}
+	
+	jacocoTestReport(){
+		group = "Reporting"
+		description = "Generate Jacoco coverage reports after running tests."
+	}
+	
+	task jacocoIntegrationTestReport(type:JacocoReport){
+		group = "Reporting"
+	      description = "Generate Jacoco coverage reports after running integration tests."
+	
+	      executionData = fileTree(dir: 'build/jacoco', include: 'integrationTest.exec')
+	
+	      reports {
+	             xml{
+	                 enabled false
+	             }
+	             csv.enabled false
+	             html{
+	                 enabled true
+	                 //Following value is a folder
+	                 destination "${buildDir}/reports/jacoco/integration-test/html"
+	             }
+	      }
+	
+	
+	      sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+	      classDirectories = files(sourceSets.main.output.classesDir)
+	}
+	
+	check.dependsOn integrationTest
+	integrationTest.dependsOn test
+	
+	/// IDE :
+	eclipse {
+	  classpath {
+	    plusConfigurations += [ configurations.provided ]
+	    plusConfigurations += [ configurations.integrationTestCompile]
+	  }
+	}
+}
+	
+sonarqube {
+    properties {
+        property "sonar.projectName", "FantaCalcio"
+        property "sonar.projectKey", "com.javangarda:fantacalcio"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
+      	property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
+    }
 }
