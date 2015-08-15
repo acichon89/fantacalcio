@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.0'
+
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+}
+
+dependencies {
+    provided "org.projectlombok:lombok:1.12.6"
+}
+
+sourceSets {
+    main {
+        compileClasspath = compileClasspath + configurations.provided
+    }
+    test {
+        compileClasspath = compileClasspath + configurations.provided
+    }
+}
+
+eclipse {
+  classpath {
+    plusConfigurations += [ configurations.provided ]
+  }
+}
