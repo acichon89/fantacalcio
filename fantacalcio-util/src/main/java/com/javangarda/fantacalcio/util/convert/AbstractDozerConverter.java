@@ -23,14 +23,14 @@ public abstract class AbstractDozerConverter<S, D> implements Converter<S, D> {
 
 	protected abstract List<String> getMappingFiles() ;
 
+	@Override
 	public D convertTo(S s) {
-		D d = mapper.map(s, destinationClass);
-		return d;
+		return mapper.map(s, destinationClass);
 	}
 
+	@Override
 	public S convertFrom(D d) {
-		S s = mapper.map(d, sourceClass);
-		return s;
+		return mapper.map(d, sourceClass);
 	}
 
 }

@@ -17,7 +17,7 @@ subprojects {
 	/// DESCRIPTIONS:
 	version = '1.0'
 	description = 'FantaCalcio main module'
-	sourceCompatibility = 1.5
+	sourceCompatibility = 1.7
 	
 	// REPOSITORIES:
 	repositories {

@@ -23,10 +23,17 @@ public class AbstractDozerConverterTest {
 	private AbstractDozerConverter<Donkey, DonkeyDto> converter = new DonkeyConverter();
 	
 	@Test
-	public void test() {
+	public void convertToTest() {
 		Donkey donkey = new Donkey();
 		converter.convertTo(donkey);
 		Mockito.verify(mapper, Mockito.times(1)).map(donkey, DonkeyDto.class);
+	}
+	
+	@Test
+	public void convertFromTest() {
+		DonkeyDto donkeyDto = new DonkeyDto();
+		converter.convertFrom(donkeyDto);
+		Mockito.verify(mapper, Mockito.times(1)).map(donkeyDto, Donkey.class);
 	}
 
 }

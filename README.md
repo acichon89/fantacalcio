@@ -3,7 +3,6 @@
 
 
 <ul>Overall goals: 
-<li>Java 8</li>
 <li>Domain-Driven Design</li>
 <li>Command and Query Responsibility Segregation </li>
 <li>Gradle used as build tool</li>
@@ -21,6 +20,7 @@
 <li> Spring with JavaConfig </li>
 <li> Dozer </li>
 <li> Spring ACL </li>
+<li> Cache abstraction </li>
 </ul>
 
 <ul>GUI:
