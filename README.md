@@ -1,6 +1,8 @@
-# fantacalcio
+# fantacalcio 
 <b>Java project for fantasy soccer game.</b>
-
+<br/>
+<img src="https://api.travis-ci.org/acichon89/fantacalcio.svg?branch=master" />
+<br/>
 
 <ul>Overall goals: 
 <li>Domain-Driven Design</li>
