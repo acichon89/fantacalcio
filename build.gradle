@@ -51,6 +51,7 @@ subprojects {
 		compile 'org.springframework:spring-context:4.1.7.RELEASE'
 	    compile 'org.springframework:spring-core:4.1.7.RELEASE'
 	    compile 'net.sf.dozer:dozer:5.5.1'
+	    compile 'joda-time:joda-time:2.8.2'
 		//provided:
 	    provided "org.projectlombok:lombok:1.12.6"
 	    //test:
