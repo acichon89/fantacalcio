@@ -4,10 +4,10 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.springframework.stereotype.Component;
 
-import com.javangarda.fantacalcio.util.time.DateAndTimeResolver;
+import com.javangarda.fantacalcio.util.time.TimeResolver;
 
 @Component
-public class JodaDateAndTimeResolver implements DateAndTimeResolver {
+public class TimeResolverImpl implements TimeResolver {
 
 	@Override
 	public DateTime getCurrentDateTime() {

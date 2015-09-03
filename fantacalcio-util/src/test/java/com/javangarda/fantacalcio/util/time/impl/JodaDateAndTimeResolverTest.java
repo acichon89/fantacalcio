@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class JodaDateAndTimeResolverTest {
 
-	private JodaDateAndTimeResolver resolver = new JodaDateAndTimeResolver();
+	private TimeResolverImpl resolver = new TimeResolverImpl();
 	
 	@Before
 	public void init() {
@@ -20,7 +20,7 @@ public class JodaDateAndTimeResolverTest {
 	
 	@Test
 	public void test() {
-		resolver = new JodaDateAndTimeResolver();
+		resolver = new TimeResolverImpl();
 		DateTime currentTime = resolver.getCurrentDateTime();
 		Assert.assertEquals(2015, currentTime.year().get());
 		Assert.assertEquals(9, currentTime.monthOfYear().get());

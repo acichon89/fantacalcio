@@ -1,0 +1,76 @@
+package com.javangarda.fantacalcio.util.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Version;
+
+import lombok.Getter;
+
+import org.joda.time.DateTime;
+
+@MappedSuperclass
+public abstract class DefaultEntity<T> implements Identifable<T> {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Getter
+	private T id;
+
+	@Version
+	private Long version;
+
+	@Column(name = "created_datetime")
+	@Getter
+	private DateTime createdDateTime;
+
+	@Column(name = "updated_datetime")
+	@Getter
+	private DateTime updatedDateTime;
+
+	@PrePersist
+	public void setCreatedDateTime(DateTime createdDateTime) {
+		this.createdDateTime = createdDateTime;
+	}
+
+	@PreUpdate
+	public void setUpdatedDateTime(DateTime updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (this.getId() != null ? this.getId().hashCode() : 0);
+
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object)
+			return true;
+		if (object == null)
+			return false;
+		if (getClass() != object.getClass())
+			return false;
+
+		DefaultEntity other = (DefaultEntity) object;
+		if (this.getId() != other.getId()
+				&& (this.getId() == null || !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getName() + " [ID=" + id + "]";
+	}
+
+}
