@@ -1,5 +1,1 @@
 language: java
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash) \
- -t 6c2156dd-c093-4906-9061-f38522e64fb5
