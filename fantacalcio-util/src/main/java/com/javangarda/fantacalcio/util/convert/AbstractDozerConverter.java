@@ -21,7 +21,7 @@ public abstract class AbstractDozerConverter<S, D> implements Converter<S, D> {
 		return new DozerBeanMapper(getMappingFiles());
 	}
 
-	protected abstract List<String> getMappingFiles() ;
+	protected abstract List<String> getMappingFiles() ;	//TODO default implementation return Collections.EMPTY_LIST
 
 	@Override
 	public D convertTo(S s) {
