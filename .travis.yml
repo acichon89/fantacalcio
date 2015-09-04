@@ -1,17 +1,1 @@
 language: java
-
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "I+/T1x8C8sXyXa2t7kXnOfEAneMe05lAValsIGFe3weIO/UDyz95+1OK0mi/8yPDNshTJOwAFRD0o14cGMdiLgk1PenrC0UHUxuG5uEDaZuwM7Km6hbhksuxI45KOzRHUN7k9H9KngooF9XQ18kCglV+EIPRtuG2mfyL/I6WhZ7d62ZsL/Qt7GMCga2i61Rt7pyAeF9fq82bUgezqHxYI0GaqA8FXcH5ohufamHDiuRes3Qd5MTjulF5AntT1Ab+YhaweVZR8DMFaXUZiXyMFKrKodmfqjOjSK1WHRwU9uyKWoDcYg603adgtPKVHOup2fS+aX3/STzAuNy1+Eak5RWa4uUdzI1ahIxLIA7VuQgvDndByQW/5ChtvuoTk/Xwsn0IpQNQLTWUrs4eD2IHJrEIToC8XQjAEiSep+8le8V5OS1PuCV2iKQoIx5RJjB/3aCdlglTf9XrC5bxoNBepZhl6XODdUSbHp7hNkHKs6HTzwzcXHc1mDHHpZ4Vf2eDmnxpATyi87FVCoP21vLfCs9ZO63OPPZ9zmDRftuLSkyjIHzz4TGH6jZs6ZoorFWpS0xPxOE43aKzMy+CvnMxpzVWKLGAjMeTVf1ehNxQyDBUI6vBD3sav8JI6XhE3J+8qdVoz/6Tk4zfDngzRa36lQcNVjL84DQpJHxoFZaDLQI="
-
-addons:
-  coverity_scan:
-    project:
-      name: "acichon89/fantacalcio"
-      description: "FantaCalcio project"
-    notification_email: acichon89@gmail.com
-    build_command_prepend: "gradle clean"
-    build_command:   "gradle Build jacocoTestReport jacocoIntegrationTestReport"
-    branch_pattern: master
