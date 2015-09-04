@@ -13,5 +13,5 @@ addons:
       description: "FantaCalcio project"
     notification_email: acichon89@gmail.com
     build_command_prepend: "gradle clean"
-    build_command:   "gradleBuild jacocoTestReport jacocoIntegrationTestReport"
+    build_command:   "gradle Build jacocoTestReport jacocoIntegrationTestReport"
     branch_pattern: master
