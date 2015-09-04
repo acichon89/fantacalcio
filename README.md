@@ -3,7 +3,7 @@
 <br/>
 <a target="_blank" href="https://travis-ci.org/acichon89/fantacalcio"><img src="https://api.travis-ci.org/acichon89/fantacalcio.svg?branch=master" />
 <br/></a>
-<a href="https://scan.coverity.com/projects/acichon89-fantacalcio">
+<a target="_blank" href="https://scan.coverity.com/projects/acichon89-fantacalcio">
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/6260/badge.svg"/>
 </a>
