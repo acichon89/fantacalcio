@@ -14,7 +14,7 @@ subprojects {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'jacoco'
-        aply plugin: 'com.github.kt3k.coveralls'	
+        apply plugin: 'com.github.kt3k.coveralls'	
         /// DESCRIPTIONS:
 	version = '1.0'
 	description = 'FantaCalcio main module'
