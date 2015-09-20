@@ -14,7 +14,8 @@ subprojects {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'jacoco'
-	/// DESCRIPTIONS:
+        aply plugin: 'com.github.kt3k.coveralls'	
+        /// DESCRIPTIONS:
 	version = '1.0'
 	description = 'FantaCalcio main module'
 	sourceCompatibility = 1.7
@@ -51,8 +52,8 @@ subprojects {
 		compile 'org.springframework:spring-context:4.1.7.RELEASE'
 	    compile 'org.springframework:spring-core:4.1.7.RELEASE'
 	    compile 'org.springframework.data:spring-data-jpa:1.8.2.RELEASE'
-	    
-	    compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
+	    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'	  
+            compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
 	    
 	    compile 'net.sf.dozer:dozer:5.5.1'
 	    compile 'joda-time:joda-time:2.8.2'
@@ -84,7 +85,11 @@ subprojects {
 	jacocoTestReport(){
 		group = "Reporting"
 		description = "Generate Jacoco coverage reports after running tests."
-	}
+                reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+        }
+        }
 	
 	task jacocoIntegrationTestReport(type:JacocoReport){
 		group = "Reporting"
