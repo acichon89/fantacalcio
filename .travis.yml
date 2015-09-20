@@ -4,4 +4,4 @@ jdk:
 - oraclejdk7
 
 after_success:
-- gradle jacocoTestReport jacocoIntegrationTestReport
+- gradle jacocoTestReport coveralls
