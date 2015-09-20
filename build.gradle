@@ -45,7 +45,7 @@ subprojects {
 	        resources.srcDir file('src/integration-test/resources')
 	    }
 	}
-	/// DEPENDENCIES:
+	// DEPENDENCIES:
 	dependencies {
 		//compile:
 		compile 'org.springframework:spring-context:4.1.7.RELEASE'
