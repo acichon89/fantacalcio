@@ -10,12 +10,12 @@ import com.javangarda.fantacalcio.util.strings.RegularPluralNounResolver;
 public class EntityTableNameResolver {
 	
 
-	public static String toTableName(String entityName){
+	public String toTableName(String entityName){
 		String formattedName = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, entityName);
 		return createChainOfResolvers().resolve(formattedName);
 	}
 	
-	private static AbstractPluralNounResolver createChainOfResolvers() {
+	private AbstractPluralNounResolver createChainOfResolvers() {
 		AbstractPluralNounResolver regularResolver = new RegularPluralNounResolver();
 		AbstractPluralNounResolver esPluralNounResolver = new EsPluralNounResolver();
 		AbstractPluralNounResolver iesPluralNounResolver = new IesPluralNounResolver();

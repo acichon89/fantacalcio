@@ -8,16 +8,19 @@ public class EntityTableNameResolverTest {
 
 	@Test
 	public void testToTableName() {
-		assertEquals("users", EntityTableNameResolver.toTableName("User"));
-		assertEquals("animals", EntityTableNameResolver.toTableName("Animal"));
-		assertEquals("classes", EntityTableNameResolver.toTableName("Class"));
-		assertEquals("order_parts", EntityTableNameResolver.toTableName("OrderPart"));
-		assertEquals("camel_case_classes", EntityTableNameResolver.toTableName("CamelCaseClass"));
-		assertEquals("suffixes", EntityTableNameResolver.toTableName("Suffix"));
-		assertEquals("pennies", EntityTableNameResolver.toTableName("Penny"));
-		assertEquals("beauty_daisies", EntityTableNameResolver.toTableName("BeautyDaisy"));
-		assertEquals("high_elves", EntityTableNameResolver.toTableName("HighElf"));
-		assertEquals("young_and_from_big_town_people", EntityTableNameResolver.toTableName("YoungAndFromBigTownPerson"));
+		EntityTableNameResolver entityTableNameResolver = new EntityTableNameResolver();
+		
+		assertEquals("users", entityTableNameResolver.toTableName("User"));
+		assertEquals("animals", entityTableNameResolver.toTableName("Animal"));
+		assertEquals("classes", entityTableNameResolver.toTableName("Class"));
+		assertEquals("order_parts", entityTableNameResolver.toTableName("OrderPart"));
+		assertEquals("camel_case_classes", entityTableNameResolver.toTableName("CamelCaseClass"));
+		assertEquals("suffixes", entityTableNameResolver.toTableName("Suffix"));
+		assertEquals("pennies", entityTableNameResolver.toTableName("Penny"));
+		assertEquals("power_people", entityTableNameResolver.toTableName("PowerPerson"));
+		assertEquals("beauty_daisies", entityTableNameResolver.toTableName("BeautyDaisy"));
+		assertEquals("high_elves", entityTableNameResolver.toTableName("HighElf"));
+		assertEquals("young_and_from_big_town_people", entityTableNameResolver.toTableName("YoungAndFromBigTownPerson"));
 	}
 
 }

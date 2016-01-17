@@ -1,9 +1,9 @@
-package com.javangarda.fantacalcio.util.convert;
+package commotest;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class User{
+public class TestUser {
 	@Getter @Setter
 	private Long id;
 	@Getter @Setter

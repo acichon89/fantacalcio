@@ -52,8 +52,10 @@ subprojects {
 		//compile:
 		compile 'org.springframework:spring-context:4.1.7.RELEASE'
 	    compile 'org.springframework:spring-core:4.1.7.RELEASE'
+	    compile 'com.zaxxer:HikariCP:2.4.3'	
+	    compile 'com.h2database:h2:1.4.190'
 	    compile 'org.springframework.data:spring-data-jpa:1.8.2.RELEASE'	  
-            compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
+        compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
 	    
 	    compile 'net.sf.dozer:dozer:5.5.1'
 	    compile 'joda-time:joda-time:2.8.2'
@@ -63,13 +65,13 @@ subprojects {
 		//provided:
 	    provided "org.projectlombok:lombok:1.12.6"
 	    //test:
-	    testCompile 'junit:junit:4.12'
+	    testCompile 'junit:junit:4.12'	
 	    testCompile 'org.mockito:mockito-all:1.10.19'
 	    //integration test:
 	    integrationTestCompile 'org.springframework:spring-test:4.1.7.RELEASE'
 	    //configuration:
 		integrationTestCompile sourceSets.main.output		
-		integrationTestCompile sourceSets.test.output 
+		//integrationTestCompile sourceSets.test.output 
 		integrationTestCompile configurations.testCompile
 		integrationTestRuntime configurations.testRuntime	
 	}
