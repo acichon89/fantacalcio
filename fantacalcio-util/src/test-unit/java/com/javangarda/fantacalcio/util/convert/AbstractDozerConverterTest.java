@@ -27,6 +27,7 @@ public class AbstractDozerConverterTest {
 		Donkey donkey = new Donkey();
 		converter.convertTo(donkey);
 		Mockito.verify(mapper, Mockito.times(1)).map(donkey, DonkeyDto.class);
+		Mockito.verify(mapper, Mockito.never()).map(donkey, Donkey.class);
 	}
 	
 	@Test
@@ -34,6 +35,7 @@ public class AbstractDozerConverterTest {
 		DonkeyDto donkeyDto = new DonkeyDto();
 		converter.convertFrom(donkeyDto);
 		Mockito.verify(mapper, Mockito.times(1)).map(donkeyDto, Donkey.class);
+		Mockito.verify(mapper, Mockito.never()).map(donkeyDto, DonkeyDto.class);
 	}
 
 }
