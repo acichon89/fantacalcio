@@ -11,6 +11,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import org.joda.time.DateTime;
 
@@ -19,10 +20,11 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Getter
+	@Getter @Setter
 	private T id;
 
 	@Version
+	@Getter @Setter
 	private Long version;
 
 	@Column(name = "created_datetime")
