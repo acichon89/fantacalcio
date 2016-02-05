@@ -27,22 +27,22 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 	@Getter @Setter
 	private Long version;
 
-	@Column(name = "created_datetime")
+	@Column
 	@Getter
 	private DateTime createdDateTime;
 
-	@Column(name = "updated_datetime")
+	@Column
 	@Getter
 	private DateTime updatedDateTime;
 
 	@PrePersist
-	public void setCreatedDateTime(DateTime createdDateTime) {
-		this.createdDateTime = createdDateTime;
+	public void prePersist() {
+		this.createdDateTime = DateTime.now();
 	}
 
 	@PreUpdate
-	public void setUpdatedDateTime(DateTime updatedDateTime) {
-		this.updatedDateTime = updatedDateTime;
+	public void preUpdate() {
+		this.updatedDateTime = DateTime.now();
 	}
 
 	@Override
