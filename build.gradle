@@ -84,6 +84,7 @@ subprojects {
 	}
 	/// TASKS :
 	task integrationTest(type: Test) {
+		systemProperties['spring.profiles.active'] = 'localdev-test' 
 	    testClassesDir = sourceSets.integrationTest.output.classesDir
 	    classpath = sourceSets.integrationTest.runtimeClasspath
 	    outputs.upToDateWhen { false }
@@ -94,10 +95,10 @@ subprojects {
 	jacocoTestReport(){
 		group = "Reporting"
 		description = "Generate Jacoco coverage reports after running tests."
-                reports {
-        xml.enabled = true // coveralls plugin depends on xml format report
-        html.enabled = true
-        }
+            reports {
+		        xml.enabled = true // coveralls plugin depends on xml format report
+		        html.enabled = true
+	        }
         }
 	
 	task jacocoIntegrationTestReport(type:JacocoReport){
