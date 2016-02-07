@@ -1,5 +1,7 @@
 language: java
 
+script: gradle build -Dspring.profiles.active=lolcadev-deploy
+
 jdk:
 - oraclejdk8
 

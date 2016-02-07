@@ -60,8 +60,7 @@ subprojects {
 	    compile 'com.h2database:h2:1.4.190'
 	    compile 'org.springframework.data:spring-data-jpa:1.8.2.RELEASE'	  
         compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
-        compile 'mysql:mysql-connector-java:5.1.38'
-	    
+        compile 'mysql:mysql-connector-java:5.1.38'	    
 	    compile 'net.sf.dozer:dozer:5.5.1'
 	    compile 'joda-time:joda-time:2.8.2'
 	    compile 'com.google.guava:guava:18.0'
@@ -74,6 +73,9 @@ subprojects {
 	    testCompile 'org.mockito:mockito-all:1.10.19'
 	    //integration test:
 	    integrationTestCompile 'org.springframework:spring-test:4.1.7.RELEASE'
+	    integrationTestCompile 'org.flywaydb:flyway-core:3.2.1'
+	    integrationTestCompile 'com.h2database:h2:1.4.191'
+	    
 	    //configuration:
 		integrationTestCompile sourceSets.main.output		
 		//integrationTestCompile sourceSets.test.output 
