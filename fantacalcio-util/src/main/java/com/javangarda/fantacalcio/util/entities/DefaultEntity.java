@@ -1,25 +1,23 @@
 package com.javangarda.fantacalcio.util.entities;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
+import org.joda.time.DateTime;
+
 import lombok.Getter;
 import lombok.Setter;
-
-import org.joda.time.DateTime;
 
 @MappedSuperclass
 public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	@Getter @Setter
 	private T id;
 

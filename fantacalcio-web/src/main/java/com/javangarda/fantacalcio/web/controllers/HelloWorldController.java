@@ -8,15 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javangarda.fantacalcio.gamerules.port.adapter.repositories.SimpleGameRuleRepository;
 
+import lombok.Getter;
+
 @Controller
 public class HelloWorldController {
 
 	@Autowired
+	@Getter
 	private SimpleGameRuleRepository repo;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String hello(Model model){
-		model.addAttribute("repoName", repo.getClass().getName());
+		model.addAttribute("repoName", getRepo().getClass().getName());
 		return "home";
 	}
 }

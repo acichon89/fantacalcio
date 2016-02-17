@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -23,12 +25,21 @@ import com.javangarda.fantacalcio.util.contexts.RootContext;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"com.javangarda.fantacalcio.gamerules.port.adapter.repositories"})
 public class PersistenceContext {
+	
+	@Bean
+	public JpaVendorAdapter jpaVendorAdapter() {
+	    HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+	    hibernateJpaVendorAdapter.setShowSql(true);
+	    hibernateJpaVendorAdapter.setGenerateDdl(true); //Auto creating scheme when true
+	    hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);//Database type
+	    return hibernateJpaVendorAdapter;
+	}
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         entityManagerFactoryBean.setPackagesToScan("com.javangarda.fantacalcio.gamerules.domain.model");
         
         Properties jpaProperties = new Properties();
