@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Hello, Gradle ! <br/>
+	<div id="test">Hello, Gradle !</div> <br/>
 	Hello, ${repoName} !
 </body>
 </html>

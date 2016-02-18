@@ -26,6 +26,38 @@ dependencies {
 	}
 }
 
+ext {
+    tomcatStopPort = 8081
+    tomcatStopKey = 'stopKey'
+}
+
+
+task integrationTomcatRun(type: com.bmuschko.gradle.tomcat.tasks.TomcatRun) {
+    stopPort = tomcatStopPort
+    stopKey = tomcatStopKey
+    daemon = true
+}
+
+task integrationTomcatStop(type: com.bmuschko.gradle.tomcat.tasks.TomcatStop) {
+    stopPort = tomcatStopPort
+    stopKey = tomcatStopKey
+}
+
+task acceptanceTest(type: Test) {
+	systemProperty "spring.profiles.active", System.getProperty("spring.profiles.active")
+	dependsOn integrationTomcatRun
+    finalizedBy integrationTomcatStop
+	testClassesDir = sourceSets.acceptanceTest.output.classesDir
+	classpath = sourceSets.acceptanceTest.runtimeClasspath
+	outputs.upToDateWhen { false }
+	reports.junitXml.destination = file("$buildDir/acceptance-test-results/")
+	reports.html.destination = file("$buildDir/reports/acceptance-tests/")
+}
+
+	check.dependsOn acceptanceTest
+	acceptanceTest.dependsOn integrationTest
+	integrationTest.dependsOn test
+
 tomcat {
     httpPort = 8080
     httpsPort = 8091

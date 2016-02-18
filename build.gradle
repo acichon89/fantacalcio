@@ -50,6 +50,13 @@ subprojects {
 	        }
 	        resources.srcDir file('src/test-integration/resources')
 	    }
+	    acceptanceTest {
+	    	java {
+	    		srcDir file('src/test-acceptance/java');
+	    	}
+	    	resources.srcDir file('src/test-acceptance/resources')
+	        compileClasspath = compileClasspath + configurations.provided
+	    }
 	}
 	// DEPENDENCIES:
 	dependencies {
@@ -79,11 +86,22 @@ subprojects {
 	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-spring-test:3.2.1.1'
 	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-spring4-test:3.2.1.1'
 	    integrationTestCompile 'com.h2database:h2:1.4.191'
+	    //acceptance test:
+	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-java:2.52.0'
+	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-api:2.52.0'
+	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-support:2.52.0'
+	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0'
+	    
+	    
 	    
 	    //configuration:
 		integrationTestCompile sourceSets.main.output		
 		integrationTestCompile configurations.testCompile
 		integrationTestRuntime configurations.testRuntime	
+		
+		acceptanceTestCompile sourceSets.main.output		
+		acceptanceTestCompile configurations.testCompile
+		acceptanceTestCompile configurations.testRuntime
 	}
 	/// TASKS :
 	task integrationTest(type: Test) {
@@ -95,7 +113,6 @@ subprojects {
 		reports.html.destination = file("$buildDir/reports/integration-tests/")
 	}
 	
-	
 	jacocoTestReport(){
 		group = "Reporting"
 		description = "Generate Jacoco coverage reports after running tests."
@@ -106,7 +123,7 @@ subprojects {
         }
 	
 	task jacocoIntegrationTestReport(type:JacocoReport){
-		group = "Reporting"
+		  group = "Reporting"
 	      description = "Generate Jacoco coverage reports after running integration tests."
 	
 	      executionData = fileTree(dir: 'build/jacoco', include: 'integrationTest.exec')
@@ -136,6 +153,7 @@ subprojects {
 	  classpath {
 	    plusConfigurations += [ configurations.provided ]
 	    plusConfigurations += [ configurations.integrationTestCompile]
+	    plusConfigurations += [ configurations.acceptanceTestCompile]
 	  }
 	}
 }
