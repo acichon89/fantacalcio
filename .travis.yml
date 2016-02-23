@@ -1,6 +1,6 @@
 language: java
 
-script: gradle build -Dspring.profiles.active=localdev-test 
+script: gradle build -Dspring.profiles.active=localdev-test,selenium-driver-firefox 
 
 jdk:
 - oraclejdk8
