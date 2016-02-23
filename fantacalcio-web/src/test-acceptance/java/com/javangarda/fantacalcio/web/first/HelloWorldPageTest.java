@@ -1,35 +1,30 @@
 package com.javangarda.fantacalcio.web.first;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
+import com.javangarda.fantacalcio.web.contexts.SeleniumContext;
+import com.javangarda.fantacalcio.web.contexts.SeleniumTestExecutionListener;
 import com.javangarda.fantacalcio.web.pages.HelloWorldPage;
+import com.javangarda.fantacalcio.web.pages.Site;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes={SeleniumContext.class})
+@TestExecutionListeners({SeleniumTestExecutionListener.class, DependencyInjectionTestExecutionListener.class})
 public class HelloWorldPageTest {
 
-	private WebDriver webDriver;
-	
-	@Before
-	public void setUp(){
-		this.webDriver = new FirefoxDriver();
-		this.webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-	}
-	
-	@After
-	public void finish() {
-		this.webDriver.close();
-	}
+	@Autowired
+	private Site site;
 	
 	@Test
 	public void shouldShowSomethingTest(){
-		this.webDriver.get("http://localhost:8080/fantacalcio/");
-		HelloWorldPage page = new HelloWorldPage(webDriver);
+		HelloWorldPage page = site.openHelloWorldPage();
 		Assert.assertTrue(page.helloSpanContains("Hello, Gradle !"));
 	}
 }

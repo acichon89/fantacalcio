@@ -18,6 +18,12 @@ dependencies {
 	compile 'org.springframework:spring-webmvc:4.1.7.RELEASE'
 	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 	
+    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-java:2.52.0'
+    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-api:2.52.0'
+    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-support:2.52.0'
+    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0'
+    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-ie-driver:2.52.0'
+	
 	dependencies {
 	    def tomcatVersion = '7.0.59'
 	    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
@@ -63,18 +69,4 @@ tomcat {
     httpsPort = 8091
     enableSSL = true
     contextPath = 'fantacalcio'
-
-    users {
-        user {
-            username = 'user1'
-            password = '123456'
-            roles = ['developers', 'admin']
-        }
-
-        user {
-            username = 'user2'
-            password = 'abcdef'
-            roles = ['manager']
-        }
-    }
 }

@@ -19,7 +19,7 @@ subprojects {
         /// DESCRIPTIONS:
 	version = '1.0'
 	description = 'FantaCalcio main module'
-	sourceCompatibility = 1.7
+	sourceCompatibility = 1.8
 	
 	// REPOSITORIES:
 	repositories {
@@ -86,13 +86,6 @@ subprojects {
 	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-spring-test:3.2.1.1'
 	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-spring4-test:3.2.1.1'
 	    integrationTestCompile 'com.h2database:h2:1.4.191'
-	    //acceptance test:
-	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-java:2.52.0'
-	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-api:2.52.0'
-	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-support:2.52.0'
-	    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0'
-	    
-	    
 	    
 	    //configuration:
 		integrationTestCompile sourceSets.main.output		
@@ -102,6 +95,9 @@ subprojects {
 		acceptanceTestCompile sourceSets.main.output		
 		acceptanceTestCompile configurations.testCompile
 		acceptanceTestCompile configurations.testRuntime
+		acceptanceTestCompile configurations.integrationTestCompile
+		acceptanceTestCompile configurations.integrationTestRuntime
+		
 	}
 	/// TASKS :
 	task integrationTest(type: Test) {
