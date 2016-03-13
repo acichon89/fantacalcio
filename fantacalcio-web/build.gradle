@@ -13,25 +13,38 @@ description = 'Main user interface - web application'
 apply plugin: 'war'
 apply plugin: 'com.bmuschko.tomcat'
 
+sourceSets {
+	acceptanceTest {
+    	java {
+    		srcDir file('src/test-acceptance/java');
+    	}
+    	resources.srcDir file('src/test-acceptance/resources')
+        compileClasspath = compileClasspath + configurations.provided
+    }
+}
+
 dependencies {
 	compile project (':fantacalcio-gamerules')
 	compile 'org.springframework:spring-webmvc:4.1.7.RELEASE'
 	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 	
-    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-java:2.52.0'
-    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-api:2.52.0'
-    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-server:2.52.0'
-    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-support:2.52.0'
-    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0'
-    acceptanceTestCompile 'org.seleniumhq.selenium:selenium-ie-driver:2.52.0'
-    
+	def tomcatVersion = '7.0.59'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+	       "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+	       "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+	       
+	acceptanceTestCompile sourceSets.main.output		
+	acceptanceTestCompile configurations.testCompile
+	acceptanceTestCompile configurations.testRuntime
+	acceptanceTestCompile configurations.integrationTestCompile
+	acceptanceTestCompile configurations.integrationTestRuntime
 	
-	dependencies {
-	    def tomcatVersion = '7.0.59'
-	    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-	           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-	           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
-	}
+	acceptanceTestCompile 	'org.seleniumhq.selenium:selenium-java:2.52.0',
+    'org.seleniumhq.selenium:selenium-api:2.52.0',
+    'org.seleniumhq.selenium:selenium-server:2.52.0',
+    'org.seleniumhq.selenium:selenium-support:2.52.0',
+    'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0',
+    'org.seleniumhq.selenium:selenium-ie-driver:2.52.0'   
 }
 
 ext {
@@ -61,6 +74,36 @@ task acceptanceTest(type: Test) {
 	reports.junitXml.destination = file("$buildDir/acceptance-test-results/")
 	reports.html.destination = file("$buildDir/reports/acceptance-tests/")
 }
+
+task jacocoAcceptanceTestReport(type:JacocoReport){
+	  group = "Reporting"
+      description = "Generate Jacoco coverage reports after running acceptance tests."
+
+      executionData = fileTree(dir: 'build/jacoco', include: 'acceptanceTest.exec')
+
+      reports {
+             xml{
+                 enabled false
+             }
+             csv.enabled false
+             html{
+                 enabled true
+                 //Following value is a folder
+                 destination "${buildDir}/reports/jacoco/acceptance-test/html"
+             }
+      }
+
+
+      sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+      classDirectories = files(sourceSets.main.output.classesDir)
+}
+
+/// IDE :
+	eclipse {
+	  classpath {
+	    plusConfigurations += [ configurations.acceptanceTestCompile]
+	  }
+	}
 
 	check.dependsOn acceptanceTest
 	acceptanceTest.dependsOn integrationTest

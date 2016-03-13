@@ -50,13 +50,6 @@ subprojects {
 	        }
 	        resources.srcDir file('src/test-integration/resources')
 	    }
-	    acceptanceTest {
-	    	java {
-	    		srcDir file('src/test-acceptance/java');
-	    	}
-	    	resources.srcDir file('src/test-acceptance/resources')
-	        compileClasspath = compileClasspath + configurations.provided
-	    }
 	}
 	// DEPENDENCIES:
 	dependencies {
@@ -91,12 +84,6 @@ subprojects {
 		integrationTestCompile sourceSets.main.output		
 		integrationTestCompile configurations.testCompile
 		integrationTestRuntime configurations.testRuntime	
-		
-		acceptanceTestCompile sourceSets.main.output		
-		acceptanceTestCompile configurations.testCompile
-		acceptanceTestCompile configurations.testRuntime
-		acceptanceTestCompile configurations.integrationTestCompile
-		acceptanceTestCompile configurations.integrationTestRuntime
 		
 	}
 	/// TASKS :
@@ -149,7 +136,6 @@ subprojects {
 	  classpath {
 	    plusConfigurations += [ configurations.provided ]
 	    plusConfigurations += [ configurations.integrationTestCompile]
-	    plusConfigurations += [ configurations.acceptanceTestCompile]
 	  }
 	}
 }
