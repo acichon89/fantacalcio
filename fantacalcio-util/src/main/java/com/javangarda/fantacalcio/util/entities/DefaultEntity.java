@@ -19,7 +19,7 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
 	@GeneratedValue
-	@Getter
+	@Getter @Setter
 	private T id;
 
 	@Version
@@ -50,7 +50,6 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 	public int hashCode() {
 		int hash = 0;
 		hash += (this.getId() != null ? this.getId().hashCode() : 0);
-
 		return hash;
 	}
 
