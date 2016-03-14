@@ -8,6 +8,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import lombok.Getter;
@@ -18,7 +19,7 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
 	@GeneratedValue
-	@Getter @Setter
+	@Getter
 	private T id;
 
 	@Version
@@ -27,10 +28,12 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Column
 	@Getter
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime createdDateTime;
 
 	@Column
 	@Getter
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime updatedDateTime;
 
 	@PrePersist

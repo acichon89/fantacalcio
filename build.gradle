@@ -65,7 +65,7 @@ subprojects {
 	    compile 'net.sf.dozer:dozer:5.5.1'
 	    compile 'joda-time:joda-time:2.8.2'
 	    compile 'com.google.guava:guava:18.0'
-	    
+	    compile 'org.jadira.usertype:usertype.core:3.1.0.GA'
 	    
 		//provided:
 	    provided "org.projectlombok:lombok:1.12.6"
