@@ -1,11 +1,5 @@
 package com.javangarda.fantacalcio.util.convert;
 
-import java.util.Collections;
-import java.util.List;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,10 +54,4 @@ class UserUserDtoConverter extends AbstractDozerConverter<TestUser, TestUserDto>
 	public UserUserDtoConverter() {
 		super(TestUser.class, TestUserDto.class);
 	}
-
-	@Override
-	protected List<String> getMappingFiles() {
-		return Collections.EMPTY_LIST;
-	}
-
 }

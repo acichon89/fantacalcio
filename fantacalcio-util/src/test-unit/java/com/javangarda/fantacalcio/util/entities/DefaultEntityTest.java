@@ -20,6 +20,20 @@ public class DefaultEntityTest {
 		helloThisIsDoge.setId(1l);
 		Assert.assertTrue(doge.equals(helloThisIsDoge));
 	}
+	
+	@Test
+	public void mergeTest() {
+		Donkey donkey = new Donkey();
+		donkey.setId(123l);
+		donkey.setVersion(2l);
+		
+		Donkey other = new Donkey();
+		other.setVersion(5l);
+		
+		donkey.merge(other);
+		Assert.assertNull(donkey.getId());
+		Assert.assertEquals(Long.valueOf(5l), donkey.getVersion());
+	}
 
 }
 class Donkey extends DefaultEntity<Long> {

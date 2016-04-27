@@ -1,5 +1,6 @@
 package com.javangarda.fantacalcio.util.convert;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -21,7 +22,9 @@ public abstract class AbstractDozerConverter<S, D> implements Converter<S, D> {
 		return new DozerBeanMapper(getMappingFiles());
 	}
 
-	protected abstract List<String> getMappingFiles() ;	//TODO default implementation return Collections.EMPTY_LIST
+	protected List<String> getMappingFiles() {
+		return Collections.EMPTY_LIST;
+	}
 
 	@Override
 	public D convertTo(S s) {

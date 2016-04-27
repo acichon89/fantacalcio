@@ -9,7 +9,8 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.javangarda.fantacalcio.gamerules.domain.application.PersistenceContext;
+import com.javangarda.fantacalcio.football.application.FootballContext;
+import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
 import com.javangarda.fantacalcio.web.contexts.WebApplicationContext;
 
 public class FantaCalcioApplicationInitializer implements WebApplicationInitializer{
@@ -17,7 +18,7 @@ public class FantaCalcioApplicationInitializer implements WebApplicationInitiali
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
-		appContext.register(PersistenceContext.class);
+		appContext.register(FootballContext.class, RootApplicationProfilesContext.class);
 		
 	    servletContext.addListener(new ContextLoaderListener(appContext));
 	    

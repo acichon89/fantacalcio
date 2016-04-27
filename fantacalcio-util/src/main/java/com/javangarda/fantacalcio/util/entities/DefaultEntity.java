@@ -1,7 +1,5 @@
 package com.javangarda.fantacalcio.util.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
@@ -10,6 +8,7 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
+import org.springframework.beans.BeanUtils;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +17,6 @@ import lombok.Setter;
 public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
-	@GeneratedValue
 	@Getter @Setter
 	private T id;
 
@@ -26,12 +24,10 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 	@Getter @Setter
 	private Long version;
 
-	@Column
 	@Getter
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime createdDateTime;
 
-	@Column
 	@Getter
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime updatedDateTime;
@@ -45,7 +41,11 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 	public void preUpdate() {
 		this.updatedDateTime = DateTime.now();
 	}
-
+	
+	public void merge(DefaultEntity<T> other) {
+		BeanUtils.copyProperties(other, this);
+	}
+	
 	@Override
 	public int hashCode() {
 		int hash = 0;
@@ -62,7 +62,7 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 		if (getClass() != object.getClass())
 			return false;
 
-		DefaultEntity other = (DefaultEntity) object;
+		DefaultEntity<?> other = (DefaultEntity<?>) object;
 		if (this.getId() != other.getId()
 				&& (this.getId() == null || !this.id.equals(other.id))) {
 			return false;

@@ -8,13 +8,11 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
 
 	@Override
 	public void beforeTestMethod(TestContext testContext) throws Exception {
-		System.out.println("RESET !!!");
 		testContext.getApplicationContext().getBean(SeleniumDriverScope.class).resetDriversInCache();
 	}
 
 	@Override
 	public void afterTestMethod(TestContext testContext) throws Exception {
-		System.out.println("CLOSSSE !!");
 		testContext.getApplicationContext().getBean(WebDriver.class).close();
 	}
 	
