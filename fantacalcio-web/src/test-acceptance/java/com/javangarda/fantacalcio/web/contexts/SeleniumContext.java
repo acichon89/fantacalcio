@@ -1,8 +1,10 @@
 package com.javangarda.fantacalcio.web.contexts;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -40,6 +42,15 @@ public class SeleniumContext {
 		FirefoxDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		return driver;
+	}
+	
+	@Bean
+	@Profile("selenium-driver-firefox-remote")
+	public FirefoxDriver firefoxDriverRemote(){
+		FirefoxBinary binary = new FirefoxBinary(new File("/usr/local/bin/firefox"));
+	    binary.setEnvironmentProperty("DISPLAY",System.getProperty("lmportal.xvfb.id",":99"));
+	    FirefoxDriver driver = new FirefoxDriver(binary,null);
+	    return driver;
 	}
 	
 	@Bean
