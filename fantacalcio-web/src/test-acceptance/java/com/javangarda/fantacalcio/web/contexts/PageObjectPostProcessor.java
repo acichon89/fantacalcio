@@ -16,7 +16,6 @@ public class PageObjectPostProcessor implements BeanPostProcessor{
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		if(bean.getClass().isAnnotationPresent(PageObject.class)) {
-			System.out.println("TO DZIAŁA !!!!! "+bean.getClass());
 			PageFactory.initElements(webDriver, bean);
 		}
 		return bean;

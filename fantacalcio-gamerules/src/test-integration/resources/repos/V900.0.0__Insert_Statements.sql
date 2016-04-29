@@ -1,1 +1,0 @@
-INSERT INTO simple_game_rules (id, version, rule_name) values (2, 1, 'dummy2');

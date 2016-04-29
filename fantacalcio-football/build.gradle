@@ -1,0 +1,5 @@
+description = 'Domain of realistic football teams and their players and leages'
+
+dependencies {
+	compile project (':fantacalcio-util')
+}

@@ -21,3 +21,6 @@ bin
 .project
 .classpath
 .settings
+
+#gatling files
+results

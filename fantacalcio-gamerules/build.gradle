@@ -1,5 +1,0 @@
-description = 'Contains info and scoring rules of fantasy game'
-
-dependencies {
-	compile project (':fantacalcio-util')
-}
