@@ -28,7 +28,7 @@ import com.javangarda.fantacalcio.football.domain.services.ClubService;
 import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=TestConfig.class, initializers={DisableAutowireRequireInitializer.class})
+@ContextConfiguration(classes=EventDrivenFootballGatewayIntegrationTestContext.class, initializers={DisableAutowireRequireInitializer.class})
 public class EventDrivenFootballGatewayIntegrationTest {
 	
 	@Autowired
@@ -56,9 +56,9 @@ public class EventDrivenFootballGatewayIntegrationTest {
 	}
 }
 
-@Configuration()
+@Configuration
 @Import(value={FootballDomainContext.class,FootballIntegrationContext.class, RootApplicationProfilesContext.class})
-class TestConfig {
+class EventDrivenFootballGatewayIntegrationTestContext {
 	
 	@Bean
 	public ClubService clubService() throws DuplicateClubNameException{

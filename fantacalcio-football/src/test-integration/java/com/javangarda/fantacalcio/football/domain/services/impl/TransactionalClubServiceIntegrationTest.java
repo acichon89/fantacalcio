@@ -14,6 +14,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import com.javangarda.fantacalcio.football.application.FootballContext;
 import com.javangarda.fantacalcio.football.contexts.FlywayIntegrationTestContext;
 import com.javangarda.fantacalcio.football.contexts.SchemaVersionCleanTestExecutionListener;
+import com.javangarda.fantacalcio.football.domain.data.ClubDTO;
 import com.javangarda.fantacalcio.football.domain.events.DuplicateClubNameException;
 import com.javangarda.fantacalcio.football.domain.model.Club;
 import com.javangarda.fantacalcio.football.domain.repositories.ClubRepository;
@@ -23,8 +24,8 @@ import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={RootApplicationProfilesContext.class, FootballContext.class, FlywayIntegrationTestContext.class})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, SchemaVersionCleanTestExecutionListener.class })
-@FlywayTest(invokeCleanDB=false, invokeBaselineDB=true, overrideLocations=true, locationsForMigrate="/TransactionalFootballServiceIT")
-public class TransactionalFootballServiceIntegrationTest {
+@FlywayTest(invokeCleanDB=false, invokeBaselineDB=true, overrideLocations=true, locationsForMigrate="/TransactionalClubServiceIT")
+public class TransactionalClubServiceIntegrationTest {
 
 	@Autowired
 	private ClubService clubService;
@@ -33,11 +34,12 @@ public class TransactionalFootballServiceIntegrationTest {
 	
 	@Test
 	public void shouldStoreInRepoWhileCreatingClub() throws DuplicateClubNameException {
-		Club juve = clubRepository.findOne("aaa-bbb");
-		Assert.assertEquals("Juventus", juve.getName());
+		String id = clubService.createClub("Udinese");
+		Club persistedClub = clubRepository.findOne(id);
+		Assert.assertEquals("Udinese", persistedClub.getName());
 	}
 	
-	/*@Test(expected=DuplicateClubNameException.class)
+	@Test(expected=DuplicateClubNameException.class)
 	public void shouldThrowExceptionWhileStoringClubWithTheSameName() throws DuplicateClubNameException {
 		clubService.createClub("Inter");
 	}
@@ -54,7 +56,7 @@ public class TransactionalFootballServiceIntegrationTest {
 	public void shouldThrowErrorWhileFindAnotherClubWithSpecifiedName() throws DuplicateClubNameException {
 		ClubDTO dto = ClubDTO.builder().active(true).name("Inter").id("waka-waka").build();
 		clubService.updateClub(dto);
-	}*/
+	}
 }
 
 
