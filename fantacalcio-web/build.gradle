@@ -145,8 +145,8 @@ task jacocoAcceptanceTestReport(type:JacocoReport){
 	integrationTest.dependsOn test
 
 tomcat {
-    httpPort = 8080
-    httpsPort = 8091
+    httpPort = 8070
+    httpsPort = 8071
     enableSSL = true
     contextPath = 'fantacalcio'
 }

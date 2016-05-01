@@ -9,8 +9,12 @@ import org.springframework.beans.factory.config.Scope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
+import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
 
 @Configuration
+@Import(value={RootApplicationProfilesContext.class})
 @ComponentScan(basePackages="com.javangarda.fantacalcio.web.pages")
 public class SeleniumContext {
 
