@@ -6,7 +6,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import com.javangarda.fantacalcio.football.domain.values.PlayerPosition;
@@ -27,6 +26,5 @@ public class Player extends DefaultEntity<String>{
 	@Getter @Setter
 	private PlayerPosition position;
 	@Getter @Setter
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime dateOfBirth;
 }

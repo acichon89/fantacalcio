@@ -6,7 +6,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.jadira.usertype.dateandtime.joda.PersistentDateTime;
 import org.joda.time.DateTime;
 import org.springframework.beans.BeanUtils;
 
@@ -14,6 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @MappedSuperclass
+@TypeDef(defaultForType=DateTime.class, typeClass=PersistentDateTime.class)
 public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
@@ -25,11 +27,9 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 	private Long version;
 
 	@Getter
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime createdDateTime;
 
 	@Getter
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime updatedDateTime;
 
 	@PrePersist
