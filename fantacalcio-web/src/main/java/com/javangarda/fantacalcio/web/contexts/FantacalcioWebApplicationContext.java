@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages={"com.javangarda.fantacalcio.web.controllers"})
-public class WebApplicationContext extends WebMvcConfigurerAdapter {
+public class FantacalcioWebApplicationContext extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

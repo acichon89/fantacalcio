@@ -13,7 +13,7 @@ apply plugin: "org.sonarqube"
 subprojects {
 	// PLUGINS:
 	apply plugin: 'java'
-	apply plugin: 'eclipse'
+	apply plugin: 'eclipse-wtp'
 	apply plugin: 'jacoco'
         apply plugin: 'com.github.kt3k.coveralls'	
         /// DESCRIPTIONS:
@@ -152,5 +152,6 @@ sonarqube {
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
       	property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
+      	property "sonar.coverage.exclusions", "**Context.java"
     }
 }

@@ -11,9 +11,9 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 import com.javangarda.fantacalcio.football.application.FootballContext;
 import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
-import com.javangarda.fantacalcio.web.contexts.WebApplicationContext;
+import com.javangarda.fantacalcio.web.contexts.FantacalcioWebApplicationContext;
 
-public class FantaCalcioApplicationInitializer implements WebApplicationInitializer{
+public class FantaCalcioApplicationInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
@@ -23,12 +23,12 @@ public class FantaCalcioApplicationInitializer implements WebApplicationInitiali
 	    servletContext.addListener(new ContextLoaderListener(appContext));
 	    
 	    AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();
-	    dispatcherServlet.register(WebApplicationContext.class);
+	    dispatcherServlet.register(FantacalcioWebApplicationContext.class);
 	    
 	    ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
-         
+        
 	}
 
 }
