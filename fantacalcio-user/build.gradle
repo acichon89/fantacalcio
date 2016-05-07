@@ -1,0 +1,7 @@
+description = 'Domain of users who want to play in the contest'
+
+dependencies {
+	compile project (':fantacalcio-util')
+	compile 'org.springframework.social:spring-social:1.1.4.RELEASE'
+	compile 'org.springframework.social:spring-social-facebook:2.0.3.RELEASE'
+}
