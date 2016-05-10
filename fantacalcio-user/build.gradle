@@ -1,3 +1,8 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
 description = 'Domain of users who want to play in the contest'
 
 dependencies {
