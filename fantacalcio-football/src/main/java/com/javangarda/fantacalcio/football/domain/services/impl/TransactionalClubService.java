@@ -50,7 +50,7 @@ public class TransactionalClubService implements ClubService {
 		//business logic:
 		Club club = clubRepository.findOne(dto.getId());
 		Club newestClubChanges = clubConverter.convertTo(dto);
-		club.merge(newestClubChanges);
+		club.merge(newestClubChanges, false);
 	}
 
 }

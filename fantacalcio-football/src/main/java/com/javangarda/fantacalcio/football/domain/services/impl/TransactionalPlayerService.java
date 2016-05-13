@@ -30,26 +30,27 @@ public class TransactionalPlayerService implements PlayerService {
 	private PlayerRepository playerRepository;
 	
 	@Override
-	public void createPlayer(CreatingPlayerDTO playerDTO) {
+	public String createPlayer(CreatingPlayerDTO playerDTO) {
 		Player newPlayer = playerFactory.create();
 		Player convertedPlayer = creatingConverter.convertTo(playerDTO);
-		newPlayer.merge(convertedPlayer);
-		Club club = clubRepository.findOne(playerDTO.getClubId());
+		newPlayer.merge(convertedPlayer, true);
+		Club club = clubRepository.getOne(playerDTO.getClubId());
 		newPlayer.setClub(club);
 		playerRepository.save(newPlayer);
+		return newPlayer.getId();
 	}
 
 	@Override
 	public void updatePlayer(UpdatingPlayerDTO playerDTO) {
 		Player player = playerRepository.findOne(playerDTO.getPlayerId());
 		Player convertedPlayer = updateingConverter.convertTo(playerDTO);
-		player.merge(convertedPlayer);
+		player.merge(convertedPlayer, false);
 	}
 
 	@Override
 	public void transferPlayer(PlayerTransferDTO playerTransferDTO) {
 		Player player = playerRepository.findOne(playerTransferDTO.getPlayerId());
-		Club newClub = StringUtils.isBlank(playerTransferDTO.getClubId()) ? null : clubRepository.findOne(playerTransferDTO.getClubId());
+		Club newClub = StringUtils.isBlank(playerTransferDTO.getClubId()) ? null : clubRepository.getOne(playerTransferDTO.getClubId());
 		player.setClub(newClub);
 	}
 

@@ -10,7 +10,7 @@ public interface FootballGateway {
 
 	String createClub(String name) throws DuplicateClubNameException;
 	void updateClub(ClubDTO dto) throws DuplicateClubNameException;
-	void createPlayer(CreatingPlayerDTO playerDTO);
+	String createPlayer(CreatingPlayerDTO playerDTO);
 	void updatePlayer(UpdatingPlayerDTO playerDTO);
 	void transferPlayer(PlayerTransferDTO playerTransferDTO);
 }

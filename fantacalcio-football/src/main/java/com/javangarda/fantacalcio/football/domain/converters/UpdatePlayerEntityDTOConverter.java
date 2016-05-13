@@ -12,5 +12,4 @@ public class UpdatePlayerEntityDTOConverter extends AbstractDozerConverter<Updat
 	public UpdatePlayerEntityDTOConverter() {
 		super(UpdatingPlayerDTO.class, Player.class);
 	}
-
 }

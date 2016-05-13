@@ -41,8 +41,8 @@ public class EventDrivenFootballGateway implements FootballGateway {
 	}
 
 	@Override
-	public void createPlayer(CreatingPlayerDTO playerDTO) {
-		playerService.createPlayer(playerDTO);
+	public String createPlayer(CreatingPlayerDTO playerDTO) {
+		return playerService.createPlayer(playerDTO);
 	}
 
 	@Override

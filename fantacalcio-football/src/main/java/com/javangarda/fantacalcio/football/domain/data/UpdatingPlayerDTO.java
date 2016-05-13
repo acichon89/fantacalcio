@@ -12,9 +12,7 @@ import lombok.experimental.Builder;
 public class UpdatingPlayerDTO {
 
 	private String playerId;
-	private String name;
-	private String surname;
-	private boolean active;
+	private String fullName;
 	private PlayerPosition position;
 	private DateTime dateOfBirth;
 }
