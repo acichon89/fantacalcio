@@ -7,7 +7,9 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
@@ -18,15 +20,31 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 public class RootPersistenceContext {
+	
+	@Configuration
+	@Profile(AppProfile.LOCALDEV_TEST)
+	public static class LocaldevTestDataSourceConfig {
+		@Bean(destroyMethod="close")
+		public DataSource dataSource(Environment env) {
+			HikariConfig dataSourceConfig = new HikariConfig();
+	        dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
+	        dataSourceConfig.setJdbcUrl(env.getRequiredProperty("db.url"));
+	        dataSourceConfig.setUsername(env.getRequiredProperty("db.username"));
+	        dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
+			return new HikariDataSource(dataSourceConfig);
+		}
+	}
 
-	@Bean(destroyMethod="close")
-	public DataSource dataSource(Environment env) {
-		HikariConfig dataSourceConfig = new HikariConfig();
-        dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
-        dataSourceConfig.setJdbcUrl(env.getRequiredProperty("db.url"));
-        dataSourceConfig.setUsername(env.getRequiredProperty("db.username"));
-        dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
-		return new HikariDataSource(dataSourceConfig);
+	@Configuration
+	@Profile(AppProfile.LOCALDEV_DEPLOY)
+	public static class LocaldevDeployDataSourceConfig {
+		@Bean(destroyMethod="close")
+	    public DataSource dataSource() {
+	        final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
+	        dsLookup.setResourceRef(true);
+	        DataSource dataSource = dsLookup.getDataSource("jndi/jdbc/fantacalcio_db");
+	        return dataSource;
+	    } 
 	}
 	
 	@Bean(name="dataSourceProperties")
