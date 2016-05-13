@@ -22,7 +22,7 @@ public class DefaultEntityTest {
 	}
 	
 	@Test
-	public void mergeTest() {
+	public void shouldSkipNullsWhileMerging() {
 		Donkey donkey = new Donkey();
 		donkey.setId(123l);
 		donkey.setVersion(2l);
@@ -30,7 +30,21 @@ public class DefaultEntityTest {
 		Donkey other = new Donkey();
 		other.setVersion(5l);
 		
-		donkey.merge(other);
+		donkey.merge(other, true);
+		Assert.assertNotNull(donkey.getId());
+		Assert.assertEquals(Long.valueOf(5l), donkey.getVersion());
+	}
+	
+	@Test
+	public void shouldMergeNullsWhileMerging() {
+		Donkey donkey = new Donkey();
+		donkey.setId(123l);
+		donkey.setVersion(2l);
+		
+		Donkey other = new Donkey();
+		other.setVersion(5l);
+		
+		donkey.merge(other, false);
 		Assert.assertNull(donkey.getId());
 		Assert.assertEquals(Long.valueOf(5l), donkey.getVersion());
 	}

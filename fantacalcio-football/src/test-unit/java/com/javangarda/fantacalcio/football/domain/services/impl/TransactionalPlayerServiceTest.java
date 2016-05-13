@@ -39,10 +39,10 @@ public class TransactionalPlayerServiceTest {
 	@Test
 	public void shouldStoreCreatedPlayer() {
 		//given:
-		CreatingPlayerDTO creatingPlayerDTO = CreatingPlayerDTO.builder().active(true).name("Claudio Marchisio")
+		CreatingPlayerDTO creatingPlayerDTO = CreatingPlayerDTO.builder().active(true).fullName("Claudio Marchisio")
 				.position(PlayerPosition.MIDFIELDER).clubId("abc-xyz").build();
 		Club juventus = Mockito.mock(Club.class);
-		Mockito.when(clubRepository.findOne("abc-xyz")).thenReturn(juventus);
+		Mockito.when(clubRepository.getOne("abc-xyz")).thenReturn(juventus);
 		Player convertedPlayer = new Player();
 		convertedPlayer.setFullName("Claudio Marchisio");
 		convertedPlayer.setPosition(PlayerPosition.MIDFIELDER);
@@ -53,7 +53,7 @@ public class TransactionalPlayerServiceTest {
 		service.createPlayer(creatingPlayerDTO);
 		//then:
 		Mockito.verify(playerFactory).create();
-		Mockito.verify(clubRepository).findOne("abc-xyz");
+		Mockito.verify(clubRepository).getOne("abc-xyz");
 		Assert.assertEquals(juventus, createdPlayer.getClub());
 		Assert.assertEquals("Claudio Marchisio", createdPlayer.getFullName());
 	}
@@ -61,7 +61,7 @@ public class TransactionalPlayerServiceTest {
 	@Test
 	public void shouldUpdatePlayerWithGivenData() {
 		//given:
-		UpdatingPlayerDTO updatingPlayerDTO = UpdatingPlayerDTO.builder().active(false).name("Stephen El Shaarawy")
+		UpdatingPlayerDTO updatingPlayerDTO = UpdatingPlayerDTO.builder().fullName("Stephen El Shaarawy")
 				.position(PlayerPosition.FORWARD).playerId("bbb-ttt").build();
 		Player persistedPlayer = new Player();
 		persistedPlayer.setPosition(PlayerPosition.MIDFIELDER);
@@ -87,7 +87,7 @@ public class TransactionalPlayerServiceTest {
 		marekHamsik.setClub(napoli);
 		Club juventus = new Club();
 		Mockito.when(playerRepository.findOne("mm-hh")).thenReturn(marekHamsik);
-		Mockito.when(clubRepository.findOne("jjj-vvv")).thenReturn(juventus);
+		Mockito.when(clubRepository.getOne("jjj-vvv")).thenReturn(juventus);
 		//when:
 		service.transferPlayer(playerTransferDTO);
 		//then:

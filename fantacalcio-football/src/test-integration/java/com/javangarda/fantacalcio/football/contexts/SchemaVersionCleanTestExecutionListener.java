@@ -16,7 +16,7 @@ public class SchemaVersionCleanTestExecutionListener extends AbstractTestExecuti
 		DataSource dataSource = testContext.getApplicationContext().getBean(DataSource.class);
 		Connection connection = dataSource.getConnection();
 		Statement stmt = connection.createStatement();
-        String query = "Delete from schema_version";
+        String query = "Delete from schema_version; Delete from players; Delete from clubs;";
         stmt.executeUpdate(query);
 	}
 

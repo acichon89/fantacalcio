@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.joda.time.DateTime;
@@ -20,6 +21,7 @@ public class Player extends DefaultEntity<String>{
 	@Getter @Setter
 	private String fullName;
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="club_id")
 	@Getter @Setter
 	private Club club;
 	@Enumerated(EnumType.STRING)

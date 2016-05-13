@@ -1,1 +1,1 @@
-include 'fantacalcio-util', 'fantacalcio-football', 'fantacalcio-web'
+include 'fantacalcio-util', 'fantacalcio-football', 'fantacalcio-user', 'fantacalcio-web'

@@ -6,7 +6,7 @@ import com.javangarda.fantacalcio.football.domain.data.UpdatingPlayerDTO;
 
 public interface PlayerService {
 
-	void createPlayer(CreatingPlayerDTO playerDTO);
+	String createPlayer(CreatingPlayerDTO playerDTO);
 	void updatePlayer(UpdatingPlayerDTO playerDTO);
 	void transferPlayer(PlayerTransferDTO playerTransferDTO);
 }

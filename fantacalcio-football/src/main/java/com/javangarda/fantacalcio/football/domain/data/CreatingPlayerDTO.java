@@ -11,8 +11,7 @@ import lombok.experimental.Builder;
 @Builder
 public class CreatingPlayerDTO {
 
-	private String name;
-	private String surname;
+	private String fullName;
 	private boolean active;
 	private PlayerPosition position;
 	private DateTime dateOfBirth;
