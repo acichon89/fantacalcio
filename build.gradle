@@ -58,8 +58,8 @@ subprojects {
 	    compile 'org.springframework:spring-core:4.2.2.RELEASE'
 	    compile 'org.springframework.integration:spring-integration-core:4.2.5.RELEASE'
 	    compile 'org.springframework.integration:spring-integration-flow:1.0.0.RELEASE'
-	    compile 'org.springframework.security:spring-security-core:4.0.4.RELEASE'
-	    compile 'org.springframework.security:spring-security-config:4.0.4.RELEASE'
+	    compile 'org.springframework.security:spring-security-core:3.2.0.RELEASE'
+	    compile 'org.springframework.security:spring-security-config:3.2.0.RELEASE'
 	    compile 'com.zaxxer:HikariCP:2.4.3'	
 	    compile 'com.h2database:h2:1.4.190'
 	    compile 'org.springframework.data:spring-data-jpa:1.8.2.RELEASE'	  
@@ -141,6 +141,10 @@ subprojects {
 	    plusConfigurations += [ configurations.provided ]
 	    plusConfigurations += [ configurations.integrationTestCompile]
 	  }
+	}
+	
+	configurations {
+	    all*.exclude group: 'javassist', module: 'javassist' // get rid of hibernate-incompatible javassist
 	}
 }
 	
