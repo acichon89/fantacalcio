@@ -2,6 +2,7 @@ package com.javangarda.fantacalcio.football.application;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.javangarda.fantacalcio.util.contexts.RootPersistenceContext;
@@ -39,9 +41,11 @@ public class FootballPersistenceContext {
 	}
 	
 	@Bean
-    public JpaTransactionManager userTransactionManager(DataSource dataSource, Environment env, JpaVendorAdapter jpaVendorAdapter) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(footballEntityManagerFactory(dataSource, env, jpaVendorAdapter).getNativeEntityManagerFactory());
+    public PlatformTransactionManager transactionManager(final EntityManagerFactory emf, DataSource dataSource) {
+        final JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(emf);
+        transactionManager.setDataSource(dataSource);
         return transactionManager;
     }
+	
 }
