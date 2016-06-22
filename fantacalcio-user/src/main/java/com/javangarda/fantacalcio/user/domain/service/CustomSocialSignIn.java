@@ -1,5 +1,7 @@
 package com.javangarda.fantacalcio.user.domain.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
@@ -11,15 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.javangarda.fantacalcio.user.domain.model.User;
 import com.javangarda.fantacalcio.user.domain.repository.UserRepository;
 import com.javangarda.fantacalcio.user.domain.value.ReturnedCOnnectionUserDTO;
+import com.javangarda.fantacalcio.user.domain.value.Role;
 import com.javangarda.fantacalcio.user.domain.value.SocialMediaType;
 
 @Component
+@Transactional
 public class CustomSocialSignIn implements ConnectionSignUp {
 
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Transactional(transactionManager="userTransactionManager")
 	@Override
 	public String execute(Connection<?> connection) {
 		ReturnedCOnnectionUserDTO userDTO = createDTO(connection);
@@ -29,9 +32,11 @@ public class CustomSocialSignIn implements ConnectionSignUp {
 			return foundUser.getEmail();
 		}
 		User newUser = new User();
+		newUser.setId(UUID.randomUUID().toString());
 		newUser.setEmail(userDTO.getEmail());
 		newUser.getSocialMediaTypes().add(userDTO.getSocialMediaType());
 		newUser.setFullName(userDTO.getFullName());
+		newUser.getRoles().add(Role.ROLE_USER);
 		userRepository.save(newUser);
 		return newUser.getEmail();
 	}

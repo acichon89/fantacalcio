@@ -17,7 +17,7 @@ public class Site {
 	private HelloWorldPage helloWorldPage;
 	
 	public HelloWorldPage openHelloWorldPage(){
-		this.webDriver.get(url);
+		this.webDriver.get(url+"login");
 		return helloWorldPage;
 	}
 }

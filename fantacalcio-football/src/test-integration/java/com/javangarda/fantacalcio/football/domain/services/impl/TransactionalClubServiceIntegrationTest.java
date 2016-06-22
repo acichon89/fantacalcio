@@ -31,6 +31,7 @@ public class TransactionalClubServiceIntegrationTest {
 	private ClubService clubService;
 	@Autowired
 	private ClubRepository clubRepository;
+
 	
 	@Test
 	public void shouldStoreInRepoWhileCreatingClub() throws DuplicateClubNameException {

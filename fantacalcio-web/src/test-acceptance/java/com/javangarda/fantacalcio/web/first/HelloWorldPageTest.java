@@ -25,6 +25,6 @@ public class HelloWorldPageTest {
 	@Test
 	public void shouldShowSomethingTest(){
 		HelloWorldPage page = site.openHelloWorldPage();
-		Assert.assertTrue(page.helloSpanContains("Hello, Gradle !"));
+		Assert.assertTrue(page.helloSpanContains("Hello"));
 	}
 }

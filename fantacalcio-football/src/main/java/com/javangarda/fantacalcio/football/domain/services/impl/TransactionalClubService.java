@@ -1,9 +1,8 @@
 package com.javangarda.fantacalcio.football.domain.services.impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.javangarda.fantacalcio.football.domain.data.ClubDTO;
 import com.javangarda.fantacalcio.football.domain.events.DuplicateClubNameException;
@@ -14,6 +13,7 @@ import com.javangarda.fantacalcio.football.domain.services.ClubService;
 import com.javangarda.fantacalcio.util.convert.Converter;
 
 @Service
+@Transactional
 public class TransactionalClubService implements ClubService {
 
 	@Autowired
@@ -24,7 +24,6 @@ public class TransactionalClubService implements ClubService {
 	private Converter<ClubDTO, Club> clubConverter;
 	
 	@Override
-	@Transactional
 	public String createClub(String name) throws DuplicateClubNameException {
 		//asserts:
 		int clubsWithTheSameName = clubRepository.countByName(name);
@@ -40,7 +39,6 @@ public class TransactionalClubService implements ClubService {
 	}
 
 	@Override
-	@Transactional
 	public void updateClub(ClubDTO dto) throws DuplicateClubNameException {
 		//asserts:
 		int clubsWithTheSameName = clubRepository.countByNameAndNotId(dto.getName(), dto.getId());

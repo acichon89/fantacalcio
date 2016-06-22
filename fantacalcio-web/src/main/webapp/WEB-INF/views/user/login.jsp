@@ -9,6 +9,7 @@
 <div class="page-header">
     <h1>Login</h1>
 </div>
+	<span id="test">Hello</span>
     <!-- Login form -->
     <div class="panel panel-default">
         <div class="panel-body">

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
@@ -80,6 +81,18 @@ public class RootPersistenceContext {
 	    return hibernateJpaVendorAdapter;
 	}
 	
+
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env, JpaVendorAdapter jpaVendorAdapter) {
+		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(dataSource);
+        entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter);
+        entityManagerFactoryBean.setPackagesToScan("com.javangarda.fantacalcio");
+        entityManagerFactoryBean.setJpaProperties(dataSourceProperties(env));
+        return entityManagerFactoryBean;
+	}
+
+	
 	/*
 	 * Map hibernate dialect to vendor database type
 	 */
@@ -94,4 +107,5 @@ public class RootPersistenceContext {
 			throw new IllegalStateException("Cannot resolve database to resolve jpaVendorAdapter: Uknown hibernate dialect!");
 		}
 	}
+	
 }

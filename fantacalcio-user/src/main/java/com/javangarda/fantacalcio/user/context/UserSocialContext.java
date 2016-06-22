@@ -18,6 +18,8 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 
+import com.javangarda.fantacalcio.user.domain.repository.UserRepository;
+
 
 @Configuration
 @EnableSocial
@@ -27,6 +29,8 @@ public class UserSocialContext implements SocialConfigurer {
 	private DataSource dataSource;
     @Autowired
     private ConnectionSignUp connectionSignUp;
+    @Autowired
+    private UserRepository userRepository;
 
 	@Override
 	public void addConnectionFactories(ConnectionFactoryConfigurer connectionFactoryConfigurer, Environment env) {
@@ -58,6 +62,4 @@ public class UserSocialContext implements SocialConfigurer {
         repo.setConnectionSignUp(connectionSignUp);
         return repo;
     }
-
-	
 }

@@ -3,6 +3,7 @@ package com.javangarda.fantacalcio.football.domain.services.impl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.javangarda.fantacalcio.football.domain.data.CreatingPlayerDTO;
 import com.javangarda.fantacalcio.football.domain.data.PlayerTransferDTO;
@@ -16,6 +17,7 @@ import com.javangarda.fantacalcio.football.domain.services.PlayerService;
 import com.javangarda.fantacalcio.util.convert.Converter;
 
 @Service
+@Transactional
 public class TransactionalPlayerService implements PlayerService {
 
 	@Autowired
