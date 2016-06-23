@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,7 +37,8 @@ public class QueryDrivenUserDetailsService implements UserDetailsService {
 	}
 	
 	private UserDetails convert(User user) {
-		FantaCalcioUser fcuDTO = new FantaCalcioUser(user.getEmail(), user.getPassword(), getAuthorities(user));
+		String password = StringUtils.isNotBlank(user.getPassword()) ? user.getPassword() : "";
+		FantaCalcioUser fcuDTO = new FantaCalcioUser(user.getEmail(), password, getAuthorities(user));
 		fcuDTO.setSocialMediaTypes(user.getSocialMediaTypes());
 		return fcuDTO;
 	}

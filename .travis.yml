@@ -11,6 +11,6 @@ jdk:
 - oraclejdk8
 
 after_success:
-- gradle jacocoTestReport jacocoIntegrationTestReport
+- gradle jacocoTestReport jacocoIntegrationTestReport sonarqube
 - python <(curl -s https://raw.githubusercontent.com/TouK/sputnik-ci/master/sputnik-ci.py)
 - bash <(curl -s https://codecov.io/bash)
