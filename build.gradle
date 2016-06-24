@@ -152,7 +152,6 @@ subprojects {
 sonarqube {
     properties {
         property "sonar.projectName", "FantaCalcio"
-        property "sonar.projectKey", "com.javangarda:fantacalcio"
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
       	property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
