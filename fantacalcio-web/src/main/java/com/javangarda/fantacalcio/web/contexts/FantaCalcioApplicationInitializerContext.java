@@ -15,7 +15,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class FantaCalcioApplicationInitializer implements WebApplicationInitializer {
+public class FantaCalcioApplicationInitializerContext implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {

@@ -61,7 +61,7 @@
             <div class="row social-button-row">
                 <div class="col-lg-4">
                     <!-- Add Twitter sign in Button -->
-                    <a href="${pageContext.request.contextPath}/auth/twitter"><button class="btn btn-twitter"><i class="icon-twitter"></i> | <spring:message code="label.twitter.sign.in.button"/></button></a>
+                    <a href="${pageContext.request.contextPath}/auth/google"><button class="btn btn-twitter"><i class="icon-twitter"></i> | <spring:message code="label.twitter.sign.in.button"/></button></a>
                 </div>
             </div>
         </div>

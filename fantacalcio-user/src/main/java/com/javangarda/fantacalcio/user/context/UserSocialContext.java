@@ -15,8 +15,8 @@ import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
-import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 
 import com.javangarda.fantacalcio.user.domain.repository.UserRepository;
 
@@ -38,8 +38,9 @@ public class UserSocialContext implements SocialConfigurer {
 		fcf.setScope("email, public_profile");
 		connectionFactoryConfigurer.addConnectionFactory(fcf);
 		
-		TwitterConnectionFactory tcf = new TwitterConnectionFactory(env.getProperty("twitter.appKey"), env.getProperty("twitter.appSecret"));
-		connectionFactoryConfigurer.addConnectionFactory(tcf);
+		GoogleConnectionFactory gcf = new GoogleConnectionFactory(env.getProperty("googleplus.appKey"), env.getProperty("googleplus.appSecret"));
+		gcf.setScope("email profile");
+		connectionFactoryConfigurer.addConnectionFactory(gcf);
 	}
 
 	@Override

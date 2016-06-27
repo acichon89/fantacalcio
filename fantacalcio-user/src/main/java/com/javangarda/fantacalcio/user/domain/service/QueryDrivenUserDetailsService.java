@@ -1,15 +1,8 @@
 package com.javangarda.fantacalcio.user.domain.service;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,8 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.javangarda.fantacalcio.user.domain.model.User;
 import com.javangarda.fantacalcio.user.domain.repository.UserRepository;
-import com.javangarda.fantacalcio.user.domain.value.FantaCalcioUser;
-import com.javangarda.fantacalcio.user.domain.value.Role;
+import com.javangarda.fantacalcio.util.convert.Converter;
 
 @Component
 @Transactional
@@ -26,6 +18,8 @@ public class QueryDrivenUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private Converter<User, UserDetails> userDetailsConverter;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,22 +27,8 @@ public class QueryDrivenUserDetailsService implements UserDetailsService {
 		if(foundInRepoUser==null) {
 			throw new UsernameNotFoundException("No user found with username: " + username);
 		}
-		return convert(foundInRepoUser);
+		return userDetailsConverter.convertTo(foundInRepoUser);
 	}
 	
-	private UserDetails convert(User user) {
-		String password = StringUtils.isNotBlank(user.getPassword()) ? user.getPassword() : "";
-		FantaCalcioUser fcuDTO = new FantaCalcioUser(user.getEmail(), password, getAuthorities(user));
-		fcuDTO.setSocialMediaTypes(user.getSocialMediaTypes());
-		return fcuDTO;
-	}
-	
-	private Collection<? extends GrantedAuthority> getAuthorities(User user) {
-		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>(); //TODO JAVA8 
-		for (Role role : user.getRoles()) {
-			authorities.add(new SimpleGrantedAuthority(role.name()));
-		}
-		return authorities;
-	}
 
 }

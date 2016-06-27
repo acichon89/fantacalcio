@@ -3,7 +3,7 @@ package com.javangarda.fantacalcio.user.domain.value;
 import lombok.Data;
 
 @Data
-public class ReturnedCOnnectionUserDTO {
+public class EstablishedUserSocialConnection {
 
 	private SocialMediaType socialMediaType;
 	private String email;
