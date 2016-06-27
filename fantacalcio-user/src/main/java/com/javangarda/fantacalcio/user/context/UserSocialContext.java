@@ -3,6 +3,7 @@ package com.javangarda.fantacalcio.user.context;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.encrypt.Encryptors;
@@ -19,6 +20,8 @@ import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 
 import com.javangarda.fantacalcio.user.domain.repository.UserRepository;
+import com.javangarda.fantacalcio.user.domain.service.SocialConnectionResolver;
+import com.javangarda.fantacalcio.user.port.adapter.socialapi.OauthApiSocialConnectionResolver;
 
 
 @Configuration
@@ -63,4 +66,9 @@ public class UserSocialContext implements SocialConfigurer {
         repo.setConnectionSignUp(connectionSignUp);
         return repo;
     }
+	
+	@Bean
+	public SocialConnectionResolver socialConnectionResolver(){
+		return new OauthApiSocialConnectionResolver();
+	}
 }
