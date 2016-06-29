@@ -61,16 +61,11 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Override
 	public boolean equals(Object object) {
-		if (this == object)
-			return true;
-		if (object == null)
+		if (object == null || !(object instanceof DefaultEntity<?>) || getClass() != object.getClass()){
 			return false;
-		if (getClass() != object.getClass())
-			return false;
-
+		}
 		DefaultEntity<?> other = (DefaultEntity<?>) object;
-		if (this.getId() != other.getId()
-				&& (this.getId() == null || !this.id.equals(other.id))) {
+		if (this.getId() == null || !this.id.equals(other.id)) {
 			return false;
 		}
 		return true;
@@ -88,7 +83,9 @@ public abstract class DefaultEntity<T> implements Identifable<T> {
 	    Set<String> emptyNames = new HashSet<String>();
 	    for(java.beans.PropertyDescriptor pd : pds) {
 	        Object srcValue = src.getPropertyValue(pd.getName());
-	        if (srcValue == null) emptyNames.add(pd.getName());
+	        if (srcValue == null) {
+	        	emptyNames.add(pd.getName());
+	        }
 	    }
 	    String[] result = new String[emptyNames.size()];
 	    return emptyNames.toArray(result);

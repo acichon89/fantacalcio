@@ -19,6 +19,12 @@ public class DefaultEntityTest {
 		
 		helloThisIsDoge.setId(1l);
 		Assert.assertTrue(doge.equals(helloThisIsDoge));
+		
+		Pluto pluto = new Pluto();
+		pluto.setId(1l);
+		Assert.assertFalse(pluto.equals(helloThisIsDoge));
+		
+		Assert.assertFalse(pluto.equals(new Integer(4)));
 	}
 	
 	@Test
@@ -55,5 +61,9 @@ class Donkey extends DefaultEntity<Long> {
 }
 
 class Doge extends DefaultEntity<Long> {
+	
+}
+
+class Pluto extends Doge {
 	
 }
