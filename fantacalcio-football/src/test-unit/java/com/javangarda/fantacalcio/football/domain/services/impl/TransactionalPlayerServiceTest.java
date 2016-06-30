@@ -86,6 +86,7 @@ public class TransactionalPlayerServiceTest {
 		Club napoli = new Club();
 		marekHamsik.setClub(napoli);
 		Club juventus = new Club();
+		juventus.setId("iii-888-000");
 		Mockito.when(playerRepository.findOne("mm-hh")).thenReturn(marekHamsik);
 		Mockito.when(clubRepository.getOne("jjj-vvv")).thenReturn(juventus);
 		//when:
@@ -105,6 +106,6 @@ public class TransactionalPlayerServiceTest {
 		//when:
 		service.transferPlayer(playerTransferDTO);
 		//then:
-		Assert.assertEquals(null, marekHamsik.getClub());
+		Assert.assertNull(marekHamsik.getClub());
 	}
 }
