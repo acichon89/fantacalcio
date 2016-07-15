@@ -4,7 +4,7 @@ import com.javangarda.fantacalcio.util.i18n.MessageLocalizable;
 
 import lombok.Getter;
 
-public class DuplicateClubNameException extends Exception implements MessageLocalizable{
+public class DuplicateClubNameException extends Exception implements MessageLocalizable {
 
 	private static final long serialVersionUID = -6431169360535911751L;
 	
