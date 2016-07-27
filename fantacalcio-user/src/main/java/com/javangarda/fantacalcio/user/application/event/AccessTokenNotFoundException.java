@@ -12,4 +12,9 @@ public class AccessTokenNotFoundException extends Exception implements MessageLo
 	public String getMessageKey() {
 		return "user.exception.DuplicateEmailException.messageKey";
 	}
+
+	@Override
+	public Object[] getArgs() {
+		return null;
+	}
 }

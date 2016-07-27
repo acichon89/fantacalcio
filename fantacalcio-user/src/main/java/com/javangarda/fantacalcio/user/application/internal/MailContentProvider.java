@@ -1,10 +1,10 @@
 package com.javangarda.fantacalcio.user.application.internal;
 
-import java.util.Map;
+import java.util.Locale;
 
 public interface MailContentProvider {
 	
 	enum MailContentType {PLAIN, HTML};
 
-	String activationMailContentPlain(MailContentType contentType, Map<String, String> arguments);
+	String activationMailContentPlain(MailContentType contentType, Locale locale, Object... arguments);
 }

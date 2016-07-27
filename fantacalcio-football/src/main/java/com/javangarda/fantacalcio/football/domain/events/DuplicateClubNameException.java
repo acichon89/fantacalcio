@@ -2,13 +2,10 @@ package com.javangarda.fantacalcio.football.domain.events;
 
 import com.javangarda.fantacalcio.util.i18n.MessageLocalizable;
 
-import lombok.Getter;
-
 public class DuplicateClubNameException extends Exception implements MessageLocalizable {
 
 	private static final long serialVersionUID = -6431169360535911751L;
 	
-	@Getter
 	private String duplicatedClubName;
 	
 	public DuplicateClubNameException(String duplicatedName){
@@ -19,6 +16,11 @@ public class DuplicateClubNameException extends Exception implements MessageLoca
 	@Override
 	public String getMessageKey() {
 		return "football.exception.DuplicateClubNameException.messageKey";
+	}
+
+	@Override
+	public Object[] getArgs() {
+		return new Object[] {duplicatedClubName};
 	}
 	
 }

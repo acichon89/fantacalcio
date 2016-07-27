@@ -1,15 +1,15 @@
-package com.javangarda.fantacalcio.web.validators;
+package com.javangarda.fantacalcio.util.validate;
 
 import com.javangarda.fantacalcio.util.messages.ValidationMessages;
 
 import lombok.Getter;
 
-public class GuiDtoNotValidException extends Exception {
+public class DataNotValidException extends Exception {
 
 	@Getter
 	private ValidationMessages validationMessages;
 	
-	public GuiDtoNotValidException(ValidationMessages validationMessages){
+	public DataNotValidException(ValidationMessages validationMessages){
 		this.validationMessages = validationMessages;
 	}
 }
