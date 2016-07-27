@@ -13,5 +13,5 @@ public enum SupportedLanguages {
 	}
 	
 	@Getter
-	public Locale locale;
+	private Locale locale;
 }

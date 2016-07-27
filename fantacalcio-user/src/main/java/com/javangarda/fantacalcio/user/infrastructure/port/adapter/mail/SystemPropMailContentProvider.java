@@ -50,13 +50,8 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 	}
 	
 	private String provideMailContentHtml(Object[] arguments, Locale locale) {
-		try {
-			String html = getHtmlTemplate("mails/mail_template.html", locale);
-			return translateHtmlContent(html, arguments, locale);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		String html = getHtmlTemplate("mails/mail_template.html", locale);
+		return translateHtmlContent(html, arguments, locale);
 	}
 	
 	private String translateHtmlContent(String htmlContent, Object[] args, Locale locale) {

@@ -6,7 +6,7 @@ public class DuplicateClubNameException extends Exception implements MessageLoca
 
 	private static final long serialVersionUID = -6431169360535911751L;
 	
-	private String duplicatedClubName;
+	private final String duplicatedClubName;
 	
 	public DuplicateClubNameException(String duplicatedName){
 		super("Trying to save club with non-unique name.");

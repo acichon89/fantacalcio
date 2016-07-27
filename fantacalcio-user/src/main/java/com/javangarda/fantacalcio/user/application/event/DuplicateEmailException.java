@@ -4,7 +4,7 @@ import com.javangarda.fantacalcio.util.i18n.MessageLocalizable;
 
 public class DuplicateEmailException extends Exception implements MessageLocalizable {
 
-	private String duplicatedEmail;
+	private final String duplicatedEmail;
 	
 	public DuplicateEmailException(String duplicatedEmail){
 		super("Trying to register user with existing email");

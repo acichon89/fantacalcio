@@ -4,7 +4,7 @@ import com.javangarda.fantacalcio.util.i18n.MessageLocalizable;
 
 public class EmailNotFoundException extends Exception implements MessageLocalizable {
 
-	private String email;
+	private final String email;
 	
 	public EmailNotFoundException(String email){
 		super("Email '"+email+"' not found in the system");
