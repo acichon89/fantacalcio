@@ -6,5 +6,5 @@ public interface MailContentProvider {
 	
 	enum MailContentType {PLAIN, HTML};
 
-	String activationMailContentPlain(MailContentType contentType, Locale locale, Object... arguments);
+	String provideActivationMailContent(MailContentType contentType, Locale locale, Object... arguments);
 }

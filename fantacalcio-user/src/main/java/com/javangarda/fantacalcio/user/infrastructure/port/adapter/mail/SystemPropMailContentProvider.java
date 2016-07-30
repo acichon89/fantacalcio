@@ -1,13 +1,10 @@
 package com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.lang.text.StrSubstitutor;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -21,20 +18,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SystemPropMailContentProvider implements MailContentProvider{
 
-	@Value("${mailTemplate.activationMail.plain}")
-	private String activationMailContentPlainPattern;
 	@Autowired
 	private MessageSource messageSource;
+	@Autowired
+	private MailTemplateProvider mailTemplateProvider;
 	@Value("${webapp.mainurl}")
 	private String applicationUrl;
 	private static final String ACTIVATION_URL = "/activate?token=";
 	
 	@Override
-	public String activationMailContentPlain(MailContentType contentType, Locale locale, Object... arguments) {
+	public String provideActivationMailContent(MailContentType contentType, Locale locale, Object... arguments) {
 		Object[] finalArgs = createFinalArguments(arguments);
 		switch (contentType) {
 		case PLAIN:
-			return messageSource.getMessage(activationMailContentPlainPattern, finalArgs, locale);
+			return provideMailContentPlain(finalArgs, locale);
 		case HTML:
 			return provideMailContentHtml(finalArgs, locale);
 		default:
@@ -49,25 +46,20 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 		return finalArgs;
 	}
 	
-	private String provideMailContentHtml(Object[] arguments, Locale locale) {
-		String html = getHtmlTemplate("mails/mail_template.html", locale);
-		return translateHtmlContent(html, arguments, locale);
+	private String provideMailContentPlain(Object[] arguments, Locale locale) {
+		String txtPlain = mailTemplateProvider.provideTextPlainTemplate("mails/mail_template.txt");
+		return translateContent(txtPlain, arguments, locale);
 	}
 	
-	private String translateHtmlContent(String htmlContent, Object[] args, Locale locale) {
+	private String provideMailContentHtml(Object[] arguments, Locale locale) {
+		String html = mailTemplateProvider.provideHtmlTemplate("mails/mail_template.html");
+		return translateContent(html, arguments, locale);
+	}
+	
+	private String translateContent(String htmlContent, Object[] args, Locale locale) {
 		Map<String, String> translatedReplacementFragments = createTranslatedReplacementFragments(args, locale);
 		StrSubstitutor substritutor = new StrSubstitutor(translatedReplacementFragments);
 		return substritutor.replace(htmlContent);
-	}
-	
-	private String getHtmlTemplate(String path, Locale locale) {
-		try {
-			Document doc = Jsoup.parse(ClassLoader.getSystemClassLoader().getResourceAsStream(path), "UTF-8", "http://example.com/");
-			return doc.html();
-		} catch (IOException e) {
-			log.error("Error while retrieving template '"+path+"'", e);
-			return "";
-		}
 	}
 	
 	private Map<String, String> createTranslatedReplacementFragments(Object[] args, Locale locale){
