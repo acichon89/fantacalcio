@@ -7,7 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.javangarda.fantacalcio.user.application.internal.MailContentProvider;
 import com.javangarda.fantacalcio.user.application.internal.MailSender;
+import com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail.LocalResourceMailTemplateProvider;
 import com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail.LoggerFakeMailSender;
+import com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail.MailTemplateProvider;
 import com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail.SystemPropMailContentProvider;
 import com.javangarda.fantacalcio.util.profile.AppProfile;
 
@@ -24,5 +26,10 @@ public class UserMailContext {
 	@Bean
 	public MailContentProvider mailContentProvider() {
 		return new SystemPropMailContentProvider();
+	}
+	
+	@Bean
+	public MailTemplateProvider mailTemplateProvider() {
+		return new LocalResourceMailTemplateProvider();
 	}
 }
