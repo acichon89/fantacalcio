@@ -9,7 +9,7 @@ import com.javangarda.fantacalcio.user.application.internal.MailContentProvider;
 import com.javangarda.fantacalcio.user.application.internal.MailSender;
 import com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail.LoggerFakeMailSender;
 import com.javangarda.fantacalcio.user.infrastructure.port.adapter.mail.SystemPropMailContentProvider;
-import com.javangarda.fantacalcio.util.contexts.AppProfile;
+import com.javangarda.fantacalcio.util.profile.AppProfile;
 
 @Configuration
 @PropertySource(value="classpath:mails/mailTemplates.properties")

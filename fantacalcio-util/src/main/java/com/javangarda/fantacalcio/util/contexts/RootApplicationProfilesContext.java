@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+import com.javangarda.fantacalcio.util.profile.AppProfile;
+
 @Configuration
 public class RootApplicationProfilesContext {
 

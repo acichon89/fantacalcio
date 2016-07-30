@@ -1,4 +1,4 @@
-package com.javangarda.fantacalcio.util.contexts;
+package com.javangarda.fantacalcio.util.profile;
 
 public interface AppProfile {
 

@@ -57,6 +57,7 @@ subprojects {
 		//compile:
 		compile 'org.springframework:spring-context:4.2.2.RELEASE'
 	    compile 'org.springframework:spring-core:4.2.2.RELEASE'
+	    compile 'org.springframework:spring-aspects:4.2.2.RELEASE'
 	    compile 'org.springframework.integration:spring-integration-core:4.2.5.RELEASE'
 	    compile 'org.springframework.integration:spring-integration-flow:1.0.0.RELEASE'
 	    compile 'org.springframework.security:spring-security-core:3.2.0.RELEASE'
