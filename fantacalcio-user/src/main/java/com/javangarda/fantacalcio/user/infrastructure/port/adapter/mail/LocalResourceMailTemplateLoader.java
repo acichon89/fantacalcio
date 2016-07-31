@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class LocalResourceMailTemplateProvider implements MailTemplateProvider {
+public class LocalResourceMailTemplateLoader implements MailTemplateLoader {
 
 	@Value("${webapp.mainurl}")
 	private String applicationUrl;
@@ -22,7 +22,7 @@ public class LocalResourceMailTemplateProvider implements MailTemplateProvider {
 	private static final String ENCODING_TYPE = "UTF-8";
 	
 	@Override
-	public String provideHtmlTemplate(String fileName) {
+	public String loadHtml(String fileName) {
 		try {
 			Document doc = Jsoup.parse(loadResource(fileName), ENCODING_TYPE, applicationUrl);
 			return doc.html();
@@ -33,7 +33,7 @@ public class LocalResourceMailTemplateProvider implements MailTemplateProvider {
 	}
 
 	@Override
-	public String provideTextPlainTemplate(String fileName) {
+	public String loadPlain(String fileName) {
 		try {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(loadResource(fileName), writer, ENCODING_TYPE);

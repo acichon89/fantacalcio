@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
+import com.javangarda.fantacalcio.user.application.data.MailContent;
 import com.javangarda.fantacalcio.user.application.internal.MailContentProvider;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,22 +22,17 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 	@Autowired
 	private MessageSource messageSource;
 	@Autowired
-	private MailTemplateProvider mailTemplateProvider;
+	private MailTemplateLoader mailTemplateProvider;
 	@Value("${webapp.mainurl}")
 	private String applicationUrl;
 	private static final String ACTIVATION_URL = "/activate?token=";
 	
 	@Override
-	public String provideActivationMailContent(MailContentType contentType, Locale locale, Object... arguments) {
+	public MailContent provideActivationMailContent(Locale locale, Object... arguments) {
 		Object[] finalArgs = createFinalArguments(arguments);
-		switch (contentType) {
-		case PLAIN:
-			return provideMailContentPlain(finalArgs, locale);
-		case HTML:
-			return provideMailContentHtml(finalArgs, locale);
-		default:
-			return null;
-		}
+		String plain = provideMailContentPlain(finalArgs, locale);
+		String html = provideMailContentHtml(finalArgs, locale);
+		return new MailContent(html, plain);
 	}
 	
 	private Object[] createFinalArguments(Object[] args){
@@ -47,12 +43,12 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 	}
 	
 	private String provideMailContentPlain(Object[] arguments, Locale locale) {
-		String txtPlain = mailTemplateProvider.provideTextPlainTemplate("mails/mail_template.txt");
+		String txtPlain = mailTemplateProvider.loadPlain("mails/mail_template.txt");
 		return translateContent(txtPlain, arguments, locale);
 	}
 	
 	private String provideMailContentHtml(Object[] arguments, Locale locale) {
-		String html = mailTemplateProvider.provideHtmlTemplate("mails/mail_template.html");
+		String html = mailTemplateProvider.loadHtml("mails/mail_template.html");
 		return translateContent(html, arguments, locale);
 	}
 	

@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.javangarda.fantacalcio.user.application.data.EmailMessageDTO;
+import com.javangarda.fantacalcio.user.application.data.MailContent;
 import com.javangarda.fantacalcio.user.application.gateway.EmailGateway;
 import com.javangarda.fantacalcio.user.application.internal.MailContentProvider;
-import com.javangarda.fantacalcio.user.application.internal.MailContentProvider.MailContentType;
 import com.javangarda.fantacalcio.user.application.internal.MailSender;
 import com.javangarda.fantacalcio.util.i18n.SupportedLanguages;
 
@@ -28,10 +28,9 @@ public class EmailGatewayImpl implements EmailGateway {
 	public void sendActivationEmail(String email, String activationHash) {
 		Map<String, String> args = buildArgumentsMap(email, activationHash);
 		Locale locale = SupportedLanguages.ENGLISH.getLocale();
-		String contentPlain = mailContentProvider.provideActivationMailContent(MailContentType.PLAIN, locale, args);
-		String contentHtml = mailContentProvider.provideActivationMailContent(MailContentType.HTML, locale, args);
+		MailContent mailContent = mailContentProvider.provideActivationMailContent( locale, args);
 		EmailMessageDTO messageDTO = EmailMessageDTO.create(mailTitle, email)
-				.contentPlain(contentPlain).contentHtml(contentHtml).build();
+				.contentPlain(mailContent.getContentPlain()).contentHtml(mailContent.getContentHtml()).build();
 		mailSender.sendEmail(messageDTO);
 				
 	}

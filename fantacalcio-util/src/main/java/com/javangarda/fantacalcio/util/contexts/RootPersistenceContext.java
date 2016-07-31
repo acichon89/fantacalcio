@@ -25,25 +25,31 @@ import com.zaxxer.hikari.HikariDataSource;
 @ComponentScan(basePackages="com.javangarda.fantacalcio.util.time")
 public class RootPersistenceContext {
 	
-	@Bean(destroyMethod="close")
+	@Configuration
 	@Profile(AppProfile.LOCALDEV_TEST)
-	public DataSource dataSource(Environment env) {
-		HikariConfig dataSourceConfig = new HikariConfig();
-        dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
-        dataSourceConfig.setJdbcUrl(env.getRequiredProperty("db.url"));
-        dataSourceConfig.setUsername(env.getRequiredProperty("db.username"));
-        dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
-		return new HikariDataSource(dataSourceConfig);
+	public static class LocaldevTestDataSourceConfig {
+		@Bean(destroyMethod="close")
+		public DataSource dataSource(Environment env) {
+			HikariConfig dataSourceConfig = new HikariConfig();
+	        dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
+	        dataSourceConfig.setJdbcUrl(env.getRequiredProperty("db.url"));
+	        dataSourceConfig.setUsername(env.getRequiredProperty("db.username"));
+	        dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
+			return new HikariDataSource(dataSourceConfig);
+		}
 	}
 
-	@Bean(destroyMethod="close")
+	@Configuration
 	@Profile(AppProfile.LOCALDEV_DEPLOY)
-    public DataSource dataSource() {
-        final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
-        dsLookup.setResourceRef(true);
-        DataSource dataSource = dsLookup.getDataSource("jndi/jdbc/fantacalcio_db");
-        return dataSource;
-    } 
+	public static class LocaldevDeployDataSourceConfig {
+		@Bean(destroyMethod="close")
+	    public DataSource dataSource() {
+	        final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
+	        dsLookup.setResourceRef(true);
+	        DataSource dataSource = dsLookup.getDataSource("jndi/jdbc/fantacalcio_db");
+	        return dataSource;
+	    } 
+	}
 	
 	@Bean(name="dataSourceProperties")
 	public Properties dataSourceProperties(Environment env) {
