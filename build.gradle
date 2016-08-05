@@ -156,7 +156,7 @@ sonarqube {
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
       	property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
-      	property "sonar.coverage.exclusions", "**Context.java"
-      	property "sonar.exclusions", "**Context.java"
+      	property "sonar.coverage.exclusions", "**Context.java, **Configurer.java"
+      	property "sonar.exclusions", "**Context.java, **Configurer.java"
     }
 }

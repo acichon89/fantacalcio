@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.javangarda.fantacalcio.user.application.internal.impl.CustomSocialAuthenticationProvider;
+import com.javangarda.fantacalcio.web.contexts.social.CustomSpringSocialConfigurer;
 
 
 @Configuration
