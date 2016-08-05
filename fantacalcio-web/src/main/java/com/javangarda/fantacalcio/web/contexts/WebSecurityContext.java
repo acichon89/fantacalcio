@@ -14,7 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.social.security.SpringSocialConfigurer;
+
+import com.javangarda.fantacalcio.user.application.internal.impl.CustomSocialAuthenticationProvider;
 
 
 @Configuration
@@ -27,6 +28,13 @@ public class WebSecurityContext extends WebSecurityConfigurerAdapter {
 	    private PasswordEncoder passwordEncoder;
 	    @Autowired
 	    private UserDetailsService userDetailsService;
+	    @Autowired
+	    private CustomSocialAuthenticationProvider customSocialAuthenticationProvider;
+	    
+	    @Autowired
+	    public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+	        auth.authenticationProvider(customSocialAuthenticationProvider);
+	    }
 
 	    @Override
 	    public void configure(WebSecurity web) throws Exception {
@@ -58,13 +66,14 @@ public class WebSecurityContext extends WebSecurityConfigurerAdapter {
 	                                "/auth/**",
 	                                "/login",
 	                                "/signup/**",
-	                                "/user/register/**"
+	                                "/register/**",
+	                                "/user/**"
 	                        ).permitAll()
 	                        //The rest of the our application is protected.
 	                        .antMatchers("/**").hasRole("USER")
 	                //Adds the SocialAuthenticationFilter to Spring Security's filter chain.
 	                .and()
-	                    .apply(new SpringSocialConfigurer())
+	                    .apply(new CustomSpringSocialConfigurer())
 	                .and()
 	                	.rememberMe().tokenRepository(persistentTokenRepository()).tokenValiditySeconds(1209600);
 	    }

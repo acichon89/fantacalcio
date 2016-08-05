@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import com.javangarda.fantacalcio.user.application.data.MailContent;
 import com.javangarda.fantacalcio.user.application.internal.MailContentProvider;
+import com.javangarda.fantacalcio.user.application.model.value.MailContent;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +22,7 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 	@Autowired
 	private MessageSource messageSource;
 	@Autowired
-	private MailTemplateLoader mailTemplateProvider;
+	private MailTemplateLoader mailTemplateLoader;
 	@Value("${webapp.mainurl}")
 	private String applicationUrl;
 	private static final String ACTIVATION_URL = "/activate?token=";
@@ -43,12 +43,12 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 	}
 	
 	private String provideMailContentPlain(Object[] arguments, Locale locale) {
-		String txtPlain = mailTemplateProvider.loadPlain("mails/mail_template.txt");
+		String txtPlain = mailTemplateLoader.load("mails/mail_template.txt");
 		return translateContent(txtPlain, arguments, locale);
 	}
 	
 	private String provideMailContentHtml(Object[] arguments, Locale locale) {
-		String html = mailTemplateProvider.loadHtml("mails/mail_template.html");
+		String html = mailTemplateLoader.load("mails/mail_template.html");
 		return translateContent(html, arguments, locale);
 	}
 	
@@ -60,9 +60,9 @@ public class SystemPropMailContentProvider implements MailContentProvider{
 	
 	private Map<String, String> createTranslatedReplacementFragments(Object[] args, Locale locale){
 		Map<String, String> map = new HashMap<>();
-		map.put("welcomeText", messageSource.getMessage("mailTemplate.activationMail.html.welcomeText", new Object[]{args[0]}, locale));
-		map.put("contentWithLink", messageSource.getMessage("mailTemplate.activationMail.html.contentWithLink", new Object[] {args[1]}, locale));
-		map.put("ignoreMessageInfo", messageSource.getMessage("mailTemplate.activationMail.html.ignoreMessageInfo", null, locale));
+		map.put("welcomeText", messageSource.getMessage("mailTemplate.activationMail.content.welcomeText", new Object[]{args[0]}, locale));
+		map.put("contentWithLink", messageSource.getMessage("mailTemplate.activationMail.content.contentWithLink", new Object[] {args[1]}, locale));
+		map.put("ignoreMessageInfo", messageSource.getMessage("mailTemplate.activationMail.content.ignoreMessageInfo", null, locale));
 		return map;
 	}
 

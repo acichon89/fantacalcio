@@ -38,6 +38,7 @@
                         <!-- Add submit button -->
                         <button type="submit" class="btn btn-default"><spring:message code="label.user.login.submit.button"/></button>
                     </div>
+                    <input type="checkbox" name=remember-me" value="Remember me!" />
                 </div>
             </form>
             <div class="row">
@@ -61,7 +62,7 @@
             <div class="row social-button-row">
                 <div class="col-lg-4">
                     <!-- Add Twitter sign in Button -->
-                    <a href="${pageContext.request.contextPath}/auth/google"><button class="btn btn-twitter"><i class="icon-twitter"></i> | <spring:message code="label.twitter.sign.in.button"/></button></a>
+                    <a href="${pageContext.request.contextPath}/auth/twitter"><button class="btn btn-twitter"><i class="icon-twitter"></i> | <spring:message code="label.twitter.sign.in.button"/></button></a>
                 </div>
             </div>
         </div>

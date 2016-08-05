@@ -3,7 +3,6 @@ package com.javangarda.fantacalcio.user.context.infrastructure;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.encrypt.Encryptors;
@@ -16,12 +15,8 @@ import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
-
-import com.javangarda.fantacalcio.user.application.internal.SocialConnectionResolver;
-import com.javangarda.fantacalcio.user.application.internal.UserRepository;
-import com.javangarda.fantacalcio.user.application.internal.impl.OauthApiSocialConnectionResolver;
+import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 
 
 @Configuration
@@ -32,8 +27,6 @@ public class UserSocialContext implements SocialConfigurer {
 	private DataSource dataSource;
     @Autowired
     private ConnectionSignUp connectionSignUp;
-    @Autowired
-    private UserRepository userRepository;
 
 	@Override
 	public void addConnectionFactories(ConnectionFactoryConfigurer connectionFactoryConfigurer, Environment env) {
@@ -41,9 +34,12 @@ public class UserSocialContext implements SocialConfigurer {
 		fcf.setScope("email, public_profile");
 		connectionFactoryConfigurer.addConnectionFactory(fcf);
 		
-		GoogleConnectionFactory gcf = new GoogleConnectionFactory(env.getProperty("googleplus.appKey"), env.getProperty("googleplus.appSecret"));
+		TwitterConnectionFactory tcf = new TwitterConnectionFactory(env.getProperty("twitter.appKey"), env.getProperty("twitter.appSecret"));
+		connectionFactoryConfigurer.addConnectionFactory(tcf);
+		
+		/*GoogleConnectionFactory gcf = new GoogleConnectionFactory(env.getProperty("googleplus.appKey"), env.getProperty("googleplus.appSecret"));
 		gcf.setScope("email profile");
-		connectionFactoryConfigurer.addConnectionFactory(gcf);
+		connectionFactoryConfigurer.addConnectionFactory(gcf);*/
 	}
 
 	@Override
@@ -67,8 +63,4 @@ public class UserSocialContext implements SocialConfigurer {
         return repo;
     }
 	
-	@Bean
-	public SocialConnectionResolver socialConnectionResolver(){
-		return new OauthApiSocialConnectionResolver();
-	}
 }

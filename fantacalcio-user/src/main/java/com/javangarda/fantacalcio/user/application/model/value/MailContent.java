@@ -1,4 +1,4 @@
-package com.javangarda.fantacalcio.user.application.data;
+package com.javangarda.fantacalcio.user.application.model.value;
 
 import lombok.Getter;
 

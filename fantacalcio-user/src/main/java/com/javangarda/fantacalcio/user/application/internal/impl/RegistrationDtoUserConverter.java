@@ -4,21 +4,12 @@ import org.springframework.stereotype.Component;
 
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDto;
 import com.javangarda.fantacalcio.user.application.model.entity.User;
-import com.javangarda.fantacalcio.util.convert.Converter;
+import com.javangarda.fantacalcio.util.convert.AbstractDozerConverter;
 
 @Component
-public class RegistrationDtoUserConverter implements Converter<RegistrationUserDto, User>{
+public class RegistrationDtoUserConverter extends AbstractDozerConverter<RegistrationUserDto, User>{
 
-	@Override
-	public User convertTo(RegistrationUserDto s) {
-		// TODO Auto-generated method stub
-		return null;
+	public RegistrationDtoUserConverter() {
+		super(RegistrationUserDto.class, User.class);
 	}
-
-	@Override
-	public RegistrationUserDto convertFrom(User d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

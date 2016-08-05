@@ -26,7 +26,6 @@ public class UniqueAccessTokenGenerator implements AccessTokenGenerator {
 
 	@Override
 	public String createResetPasswordToken() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

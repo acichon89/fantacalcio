@@ -4,13 +4,13 @@ import com.javangarda.fantacalcio.util.i18n.MessageLocalizable;
 
 public class AccessTokenNotFoundException extends Exception implements MessageLocalizable {
 
-	public AccessTokenNotFoundException(){
-		super();
+	public AccessTokenNotFoundException(String token){
+		super("Access token '"+token+"' not found");
 	}
 
 	@Override
 	public String getMessageKey() {
-		return "user.exception.DuplicateEmailException.messageKey";
+		return "user.exception.AccessTokenNotFoundException.messageKey";
 	}
 
 	@Override

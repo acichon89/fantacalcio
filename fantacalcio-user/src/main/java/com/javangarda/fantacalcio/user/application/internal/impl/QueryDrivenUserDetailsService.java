@@ -8,18 +8,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import com.javangarda.fantacalcio.user.application.data.FantaCalcioUser;
 import com.javangarda.fantacalcio.user.application.internal.UserRepository;
 import com.javangarda.fantacalcio.user.application.model.entity.User;
-import com.javangarda.fantacalcio.util.convert.Converter;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Transactional
+@Slf4j
 public class QueryDrivenUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private Converter<User, UserDetails> userDetailsConverter;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -27,8 +28,6 @@ public class QueryDrivenUserDetailsService implements UserDetailsService {
 		if(foundInRepoUser==null) {
 			throw new UsernameNotFoundException("No user found with username: " + username);
 		}
-		return userDetailsConverter.convertTo(foundInRepoUser);
+		return new FantaCalcioUser(foundInRepoUser, null);
 	}
-	
-
 }

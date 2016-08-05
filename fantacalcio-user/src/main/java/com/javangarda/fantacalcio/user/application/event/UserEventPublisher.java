@@ -1,13 +1,12 @@
 package com.javangarda.fantacalcio.user.application.event;
 
 import org.springframework.integration.annotation.MessagingGateway;
-import org.springframework.messaging.handler.annotation.Header;
-import org.springframework.messaging.handler.annotation.Payload;
+
+import com.javangarda.fantacalcio.user.application.data.RegistrationUserDto;
 
 @MessagingGateway
 public interface UserEventPublisher {
 
-	void publishUserCreated(String email);
+	void publishUserCreated(RegistrationUserDto registerDto);
 	
-	void publishEmailTokenCreated(@Payload("email") String email, @Header("activationToken") String activationToken);
 }

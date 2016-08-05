@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.javangarda.fantacalcio.user.application.model.value.MailContent;
+
 import lombok.Getter;
 
 public class EmailMessageDTO {
@@ -17,17 +19,14 @@ public class EmailMessageDTO {
 	@Getter
 	private String title;
 	@Getter
-	private String contentPlain;
-	@Getter
-	private String contentHtml;
+	private MailContent mailContent;
 	
 	private EmailMessageDTO(EmailMessageDTOBuilder builder){
 		this.recipientEmails = builder.recipients;
 		this.title = builder.title;
 		this.ccRecipientEmails = builder.ccRecipients;
 		this.bccRecipientEmails = builder.bccRecipients;
-		this.contentPlain = builder.contentPlain;
-		this.contentHtml = builder.contentHtml;
+		this.mailContent = builder.mailContent;
 	}
 	
 	public static EmailMessageDTOBuilder create(String title, String... recipients){
@@ -40,8 +39,7 @@ public class EmailMessageDTO {
 		private Set<String> recipients;
 		private Set<String> ccRecipients;
 		private Set<String> bccRecipients;
-		private String contentPlain;
-		private String contentHtml;
+		private MailContent mailContent;
 		
 		private EmailMessageDTOBuilder(String title, String[] recipients) {
 			this.title = title;
@@ -70,13 +68,8 @@ public class EmailMessageDTO {
 			return this;
 		}
 		
-		public EmailMessageDTOBuilder contentPlain(String content) {
-			this.contentPlain=content;
-			return this;
-		}
-		
-		public EmailMessageDTOBuilder contentHtml(String content) {
-			this.contentHtml=content;
+		public EmailMessageDTOBuilder content(MailContent mailContent) {
+			this.mailContent=mailContent;
 			return this;
 		}
 		

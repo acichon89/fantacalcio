@@ -6,7 +6,7 @@ import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.javangarda.fantacalcio.user.application.data.EstablishedUserSocialConnection;
+import com.javangarda.fantacalcio.user.application.data.SignUpSocialConnection;
 import com.javangarda.fantacalcio.user.application.internal.SocialConnectionResolver;
 import com.javangarda.fantacalcio.user.application.internal.UserFactory;
 import com.javangarda.fantacalcio.user.application.internal.UserRepository;
@@ -25,10 +25,13 @@ public class CustomSocialSignIn implements ConnectionSignUp {
 	
 	@Override
 	public String execute(Connection<?> connection) {
-		EstablishedUserSocialConnection establishedSocialConnection = socialConnectionResolver.create(connection);
+		SignUpSocialConnection establishedSocialConnection = socialConnectionResolver.create(connection);
+		if(establishedSocialConnection==null){
+			return null;
+		}
 		User foundUser = userRepository.findByEmail(establishedSocialConnection.getEmail());
 		if(foundUser!=null){
-			foundUser.getSocialMediaTypes().add(establishedSocialConnection.getSocialMediaType());
+			foundUser.setFullName(establishedSocialConnection.getFullName());
 			return foundUser.getEmail();
 		}
 		User newUser = userFactory.create(establishedSocialConnection);

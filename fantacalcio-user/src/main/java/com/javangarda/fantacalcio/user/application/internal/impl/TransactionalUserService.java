@@ -17,8 +17,11 @@ import com.javangarda.fantacalcio.user.application.model.entity.User;
 import com.javangarda.fantacalcio.user.application.model.value.Role;
 import com.javangarda.fantacalcio.util.convert.Converter;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
 @Transactional
+@Slf4j
 public class TransactionalUserService implements UserService {
 
 	@Autowired

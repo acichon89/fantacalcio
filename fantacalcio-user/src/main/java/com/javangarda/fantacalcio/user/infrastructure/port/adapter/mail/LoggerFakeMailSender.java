@@ -14,7 +14,7 @@ public class LoggerFakeMailSender implements MailSender {
 	@Override	
 	public void sendEmail(EmailMessageDTO dto) {
 		log.debug("@@@ | MAIL SENDER | @@@@ to :"+dto.getRecipientEmails()+" | cc: "+dto.getCcRecipientEmails() +
-				" | title: "+dto.getTitle()+" | contentPlain: "+dto.getContentPlain()+" | contentHtml: "+dto.getContentHtml());
+				" | title: "+dto.getTitle()+" | contentPlain: "+dto.getMailContent().getContentPlain()+" | contentHtml: "+dto.getMailContent().getContentHtml());
 	}
 
 }
