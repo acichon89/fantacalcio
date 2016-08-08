@@ -12,5 +12,5 @@ public interface UserGateway {
 	
 	void startConfirmationEmailProcedure(String mail) throws EmailNotFoundException;
 	
-	void persistConnection(String email, Connection connection);
+	void saveConnection(String email, Connection connection);
 }

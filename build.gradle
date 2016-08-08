@@ -109,6 +109,12 @@ subprojects {
 		        xml.enabled = true // coveralls plugin depends on xml format report
 		        html.enabled = true
 	        }
+	        
+	        afterEvaluate {
+		        classDirectories = files(classDirectories.files.collect {
+		            fileTree(dir: it, exclude: ['**Context.java', '**Configurer.java'])
+		        })
+		    }
         }
 	
 	task jacocoIntegrationTestReport(type:JacocoReport){
@@ -128,6 +134,12 @@ subprojects {
 	                 destination "${buildDir}/reports/jacoco/integration-test/html"
 	             }
 	      }
+	      
+	      afterEvaluate {
+		        classDirectories = files(classDirectories.files.collect {
+		            fileTree(dir: it, exclude: ['**Context.java', '**Configurer.java'])
+		        })
+		    }
 	
 	
 	      sourceDirectories = files(sourceSets.main.allSource.srcDirs)

@@ -38,7 +38,7 @@ public class EventDrivenUserGateway implements UserGateway {
 	}
 
 	@Override
-	public void persistConnection(String email, Connection connection) {
+	public void saveConnection(String email, Connection connection) {
 		userConnectionService.saveUserConnection(email, connection);
 	}
 

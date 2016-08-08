@@ -1,6 +1,5 @@
 package com.javangarda.fantacalcio.user.application.internal.impl;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +8,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.social.ServiceProvider;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.security.SocialAuthenticationToken;
@@ -43,7 +40,6 @@ public class CustomSocialAuthenticationProvider implements AuthenticationProvide
 		Assert.isInstanceOf(SocialAuthenticationToken.class, authentication, "unsupported authentication type");
 		Assert.isTrue(!authentication.isAuthenticated(), "already authenticated");
 		SocialAuthenticationToken authToken = (SocialAuthenticationToken) authentication;
-		String providerId = authToken.getProviderId();
 		Connection<?> connection = authToken.getConnection();
 
 		String userId = toUserId(connection);
@@ -58,7 +54,7 @@ public class CustomSocialAuthenticationProvider implements AuthenticationProvide
 		if(!userDetails.isEnabled()){
 			throw new DisabledException("User '"+userDetails.getUsername()+"' is disabled!");
 		}
-		return new SocialAuthenticationToken(connection, userDetails, authToken.getProviderAccountData(), getAuthorities(providerId, userDetails));
+		return new SocialAuthenticationToken(connection, userDetails, authToken.getProviderAccountData(), userDetails.getAuthorities());
 	}
 
 	protected String toUserId(Connection<?> connection) {
@@ -67,13 +63,5 @@ public class CustomSocialAuthenticationProvider implements AuthenticationProvide
 		return (userIds.size() == 1) ? userIds.iterator().next() : null;
 	}
 
-	/**
-	 * Override to grant authorities based on {@link ServiceProvider} id and/or a user's account id
-	 * @param providerId {@link ServiceProvider} id
-	 * @param userDetails {@link UserDetails} as returned by {@link SocialUserDetailsService}
-	 * @return extra authorities of this user not already returned by {@link UserDetails#getAuthorities()}
-	 */
-	protected Collection<? extends GrantedAuthority> getAuthorities(String providerId, UserDetails userDetails) {
-		return userDetails.getAuthorities();
-	}
+	
 }
