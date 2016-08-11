@@ -61,7 +61,7 @@ public class EventDrivenUserGatewayTest {
 		Connection connection = Mockito.mock(Connection.class);
 		String email = "abc@abc.pl";
 		//when:
-		eventDrivenUserGateway.saveConnection(email, connection);
+		eventDrivenUserGateway.saveConnection(connection, email);
 		//then:
 		Mockito.verify(userConnectionService).saveUserConnection(email, connection);
 	}

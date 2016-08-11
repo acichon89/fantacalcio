@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.javangarda.fantacalcio.football.application.FootballDomainContext;
 import com.javangarda.fantacalcio.football.application.FootballIntegrationContext;
-import com.javangarda.fantacalcio.football.contexts.DisableAutowireRequireInitializer;
 import com.javangarda.fantacalcio.football.domain.data.ClubDTO;
 import com.javangarda.fantacalcio.football.domain.data.CreatingPlayerDTO;
 import com.javangarda.fantacalcio.football.domain.data.PlayerTransferDTO;
@@ -27,6 +26,7 @@ import com.javangarda.fantacalcio.football.domain.services.ClubService;
 import com.javangarda.fantacalcio.football.domain.services.PlayerService;
 import com.javangarda.fantacalcio.football.domain.values.PlayerPosition;
 import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
+import com.javangarda.fantacalcio.util.testsupport.DisableAutowireRequireInitializer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=EventDrivenFootballGatewayIntegrationTestContext.class, initializers={DisableAutowireRequireInitializer.class})

@@ -34,6 +34,7 @@ sourceSets {
 dependencies {
 	compile project (':fantacalcio-football')
 	compile project (':fantacalcio-user')
+	compile project (':fantacalcio-mail')
 	compile 'org.springframework:spring-webmvc:4.1.7.RELEASE'
 	compile 'org.springframework.social:spring-social-core:1.1.0.RELEASE'
 	compile 'org.springframework.social:spring-social-config:1.1.0.RELEASE'

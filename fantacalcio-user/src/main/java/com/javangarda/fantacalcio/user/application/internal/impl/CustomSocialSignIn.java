@@ -11,6 +11,7 @@ import com.javangarda.fantacalcio.user.application.internal.SocialConnectionReso
 import com.javangarda.fantacalcio.user.application.internal.UserFactory;
 import com.javangarda.fantacalcio.user.application.internal.UserRepository;
 import com.javangarda.fantacalcio.user.application.model.entity.User;
+import com.javangarda.fantacalcio.user.application.model.value.UserStatus;
 
 @Component
 @Transactional
@@ -32,6 +33,7 @@ public class CustomSocialSignIn implements ConnectionSignUp {
 		User foundUser = userRepository.findByEmail(establishedSocialConnection.getEmail());
 		if(foundUser!=null){
 			foundUser.setFullName(establishedSocialConnection.getFullName());
+			foundUser.setStatus(UserStatus.CONFIRMED);
 			return foundUser.getEmail();
 		}
 		User newUser = userFactory.create(establishedSocialConnection);

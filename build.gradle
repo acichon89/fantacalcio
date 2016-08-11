@@ -71,6 +71,8 @@ subprojects {
 	    compile 'joda-time:joda-time:2.8.2'
 	    compile 'com.google.guava:guava:18.0'
 	    compile 'org.jadira.usertype:usertype.core:3.1.0.GA'
+	    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+	    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
 	    
 		//provided:
 	    provided "org.projectlombok:lombok:1.12.6"
@@ -109,12 +111,6 @@ subprojects {
 		        xml.enabled = true // coveralls plugin depends on xml format report
 		        html.enabled = true
 	        }
-	        
-	        afterEvaluate {
-		        classDirectories = files(classDirectories.files.collect {
-		            fileTree(dir: it, exclude: ['**Context.java', '**Configurer.java'])
-		        })
-		    }
         }
 	
 	task jacocoIntegrationTestReport(type:JacocoReport){
@@ -134,13 +130,8 @@ subprojects {
 	                 destination "${buildDir}/reports/jacoco/integration-test/html"
 	             }
 	      }
-	      
-	      afterEvaluate {
-		        classDirectories = files(classDirectories.files.collect {
-		            fileTree(dir: it, exclude: ['**Context.java', '**Configurer.java'])
-		        })
-		    }
-
+	
+	
 	      sourceDirectories = files(sourceSets.main.allSource.srcDirs)
 	      classDirectories = files(sourceSets.main.output.classesDir)
 	}
