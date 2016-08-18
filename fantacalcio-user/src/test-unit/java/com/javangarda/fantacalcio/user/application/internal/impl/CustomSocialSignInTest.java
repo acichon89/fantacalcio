@@ -46,7 +46,7 @@ public class CustomSocialSignInTest {
 		String email = "john.doe@gmail.com";
 		User user = Mockito.mock(User.class);
 		Mockito.when(user.getEmail()).thenReturn(email);
-		Mockito.when(userRepository.findByEmail(email)).thenReturn(user);
+		Mockito.when(userRepository.findByEmail(Mockito.eq(email))).thenReturn(user);
 		Connection connection = Mockito.mock(Connection.class);
 		Mockito.when(socialConnectionResolver.create(connection)).thenReturn(create(email));
 		//when:
@@ -78,6 +78,6 @@ public class CustomSocialSignInTest {
 	}
 
 	private SignUpSocialConnection create(String email){
-		return new SignUpSocialConnection("John Doe", email);
+		return new SignUpSocialConnection(email,"John Doe");
 	}
 }
