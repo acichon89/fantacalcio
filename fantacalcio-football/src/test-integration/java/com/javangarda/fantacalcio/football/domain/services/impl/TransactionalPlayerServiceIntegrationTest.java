@@ -16,8 +16,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javangarda.fantacalcio.football.application.FootballContext;
-import com.javangarda.fantacalcio.football.contexts.FlywayIntegrationTestContext;
-import com.javangarda.fantacalcio.football.contexts.SchemaVersionCleanTestExecutionListener;
+import com.javangarda.fantacalcio.football.domain.FootballSchemaVersionCleanTestExecutionListener;
 import com.javangarda.fantacalcio.football.domain.data.CreatingPlayerDTO;
 import com.javangarda.fantacalcio.football.domain.data.PlayerTransferDTO;
 import com.javangarda.fantacalcio.football.domain.data.UpdatingPlayerDTO;
@@ -26,10 +25,11 @@ import com.javangarda.fantacalcio.football.domain.repositories.PlayerRepository;
 import com.javangarda.fantacalcio.football.domain.services.PlayerService;
 import com.javangarda.fantacalcio.football.domain.values.PlayerPosition;
 import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
+import com.javangarda.fantacalcio.util.testsupport.FlywayIntegrationTestContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={RootApplicationProfilesContext.class, FootballContext.class, FlywayIntegrationTestContext.class})
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, SchemaVersionCleanTestExecutionListener.class, TransactionalTestExecutionListener.class})
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, FootballSchemaVersionCleanTestExecutionListener.class, TransactionalTestExecutionListener.class})
 @FlywayTest(invokeCleanDB=false, invokeBaselineDB=true, overrideLocations=true, locationsForMigrate="/TransactionalPlayerServiceIT")
 @Transactional
 public class TransactionalPlayerServiceIntegrationTest {
@@ -79,5 +79,3 @@ public class TransactionalPlayerServiceIntegrationTest {
 		Assert.assertEquals("AC Milan", gigi.getClub().getName());
 	}
 }
-
-

@@ -11,4 +11,6 @@ dependencies {
 	compile 'javax.mail:mail:1.4.7'
 	compile group: 'org.jsoup', name: 'jsoup', version: '1.9.2'
 	compile group: 'commons-validator', name: 'commons-validator', version: '1.5.1'
+	
+	integrationTestCompile project(':fantacalcio-util').sourceSets.integrationTest.output
 }

@@ -12,7 +12,6 @@ description = 'Main user interface - web application'
 
 apply plugin: 'war'
 apply plugin: 'com.bmuschko.tomcat'
-apply plugin: 'scala'
 
 sourceSets {
 	acceptanceTest {
@@ -20,13 +19,6 @@ sourceSets {
     		srcDir file('src/test-acceptance/java');
     	}
     	resources.srcDir file('src/test-acceptance/resources')
-        compileClasspath = compileClasspath + configurations.provided
-    }
-    loadTest {
-    	scala {
-    		srcDir file('src/test-load/scala');
-    	}
-    	resources.srcDir file('src/test-load/resources')
         compileClasspath = compileClasspath + configurations.provided
     }
 }
@@ -53,25 +45,11 @@ dependencies {
 	acceptanceTestCompile configurations.integrationTestCompile
 	acceptanceTestCompile configurations.integrationTestRuntime
 	
-	loadTestCompile sourceSets.main.output		
-	loadTestCompile configurations.testCompile
-	loadTestCompile configurations.testRuntime
-	loadTestCompile configurations.integrationTestCompile
-	loadTestCompile configurations.integrationTestRuntime
-	loadTestCompile configurations.acceptanceTestRuntime
-	
 	acceptanceTestCompile 	'org.seleniumhq.selenium:selenium-java:2.52.0',
     'org.seleniumhq.selenium:selenium-api:2.52.0',
     'org.seleniumhq.selenium:selenium-server:2.52.0',
     'org.seleniumhq.selenium:selenium-support:2.52.0',
-    'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0',
-    'org.seleniumhq.selenium:selenium-ie-driver:2.52.0'   
-    
-    loadTestCompile 'io.gatling.highcharts:gatling-charts-highcharts:2.1.7'
-    loadTestCompile 'io.gatling:gatling-core:2.1.7'
-    loadTestCompile 'io.gatling:gatling-app:2.1.7'
-    compile 'org.scala-lang:scala-compiler:2.11.2' 
-    compile "org.scala-lang:scala-library:2.11.2"
+    'org.seleniumhq.selenium:selenium-firefox-driver:2.52.0'
 }
 
 ext {
@@ -102,17 +80,6 @@ task acceptanceTest(type: Test) {
 	reports.html.destination = file("$buildDir/reports/acceptance-tests/")
 }
 
-task loadTest(type: JavaExec) {
-	systemProperty "spring.profiles.active", System.getProperty("spring.profiles.active")
-	dependsOn integrationTomcatRun
-    finalizedBy integrationTomcatStop
-	 classpath = sourceSets.loadTest.runtimeClasspath
-	 jvmArgs = [ '-Dgatling.core.directory.binaries=./build/classes/loadTest' ]
-    // Gatling application
-    main = "io.gatling.app.Gatling"
-    // Specify the simulation to run
-    args = Eval.me("['-s', 'com.javangarda.fantacalcio.simulations.BasicSimulation']")
-}
 
 task jacocoAcceptanceTestReport(type:JacocoReport){
 	  group = "Reporting"
@@ -141,12 +108,10 @@ task jacocoAcceptanceTestReport(type:JacocoReport){
 	eclipse {
 	  classpath {
 	    plusConfigurations += [ configurations.acceptanceTestCompile]
-	    plusConfigurations += [ configurations.loadTestCompile]
 	  }
 	}
 
-	check.dependsOn loadTest
-	loadTest.dependsOn acceptanceTest
+	check.dependsOn acceptanceTest
 	acceptanceTest.dependsOn integrationTest
 	integrationTest.dependsOn test
 

@@ -19,17 +19,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDto;
 import com.javangarda.fantacalcio.user.application.event.DuplicateEmailException;
 import com.javangarda.fantacalcio.user.application.event.EmailNotFoundException;
-import com.javangarda.fantacalcio.user.application.gateway.UserGateway;
 import com.javangarda.fantacalcio.user.application.gateway.impl.EventDrivenUserGateway;
 import com.javangarda.fantacalcio.user.application.internal.UserConnectionService;
 import com.javangarda.fantacalcio.user.application.internal.UserService;
 import com.javangarda.fantacalcio.user.context.application.UserIntegrationsContext;
 import com.javangarda.fantacalcio.util.testsupport.DisableAutowireRequireInitializer;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=EventDrivenUserGatewayIntegrationTestContext.class, initializers={DisableAutowireRequireInitializer.class})
-public class WorkflowTest {
+public class FootballWorkflowTest {
 
 	@Autowired
 	private EventDrivenUserGateway gateway;
@@ -102,11 +100,6 @@ public class WorkflowTest {
 @Configuration
 @Import(value={UserIntegrationsContext.class} )
 class EventDrivenUserGatewayIntegrationTestContext {
-	
-	@Bean
-	public UserGateway userGateway() {
-		return new EventDrivenUserGateway();
-	}
 	
 	@Bean
 	public UserService userService() {

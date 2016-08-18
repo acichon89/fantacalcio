@@ -12,18 +12,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import com.javangarda.fantacalcio.football.application.FootballContext;
-import com.javangarda.fantacalcio.football.contexts.FlywayIntegrationTestContext;
-import com.javangarda.fantacalcio.football.contexts.SchemaVersionCleanTestExecutionListener;
+import com.javangarda.fantacalcio.football.domain.FootballSchemaVersionCleanTestExecutionListener;
 import com.javangarda.fantacalcio.football.domain.data.ClubDTO;
 import com.javangarda.fantacalcio.football.domain.events.DuplicateClubNameException;
 import com.javangarda.fantacalcio.football.domain.model.Club;
 import com.javangarda.fantacalcio.football.domain.repositories.ClubRepository;
 import com.javangarda.fantacalcio.football.domain.services.ClubService;
 import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
+import com.javangarda.fantacalcio.util.testsupport.FlywayIntegrationTestContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={RootApplicationProfilesContext.class, FootballContext.class, FlywayIntegrationTestContext.class})
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, SchemaVersionCleanTestExecutionListener.class })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, FootballSchemaVersionCleanTestExecutionListener.class })
 @FlywayTest(invokeCleanDB=false, invokeBaselineDB=true, overrideLocations=true, locationsForMigrate="/TransactionalClubServiceIT")
 public class TransactionalClubServiceIntegrationTest {
 
@@ -59,5 +59,3 @@ public class TransactionalClubServiceIntegrationTest {
 		clubService.updateClub(dto);
 	}
 }
-
-

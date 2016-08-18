@@ -8,8 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@ComponentScan(basePackages={"com.javangarda.fantacalcio.user.application.gateway.impl",
-		"com.javangarda.fantacalcio.user.application.internal.impl"}, 
+@ComponentScan(basePackages={"com.javangarda.fantacalcio.user.application.internal.impl"}, 
 	excludeFilters = @ComponentScan.Filter(value = Configuration.class, type=FilterType.ANNOTATION))
 public class UserComponentsContext {
 

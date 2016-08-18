@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Configuration
-@ComponentScan(value = { "com.javangarda.fantacalcio.user.application.saga" })
+@ComponentScan(value = { "com.javangarda.fantacalcio.user.application.saga", "com.javangarda.fantacalcio.user.application.gateway.impl"})
 @EnableIntegration
 @IntegrationComponentScan(value = { "com.javangarda.fantacalcio.user.application.event" })
 @EnableAsync

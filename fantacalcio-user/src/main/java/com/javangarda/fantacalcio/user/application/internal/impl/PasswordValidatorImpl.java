@@ -14,25 +14,30 @@ import com.javangarda.fantacalcio.util.validate.DataNotValidException;
 @Component
 public class PasswordValidatorImpl implements PasswordValidator {
 
-	public static final String PASSWORD_PARAM = "password";
+	private static final String PASS_PARAM = "password";
+	
+	private static final int MIN_LENGTH									= 8;
+	private static final int MIN_DIGITS_COUNT							= 1;
+	private static final boolean MUST_CONTAINS_SPECIAL_CHARACTER		= true;
+	private static final char[] SPECIAL_CHARACTERS 						= {'!', '@', '#', '$', '%', '^', '&', '*', '+', '-'};
+	
 	
 	@Override
 	public void validate(String password) throws DataNotValidException {
 		
 		ValidationMessages messages = ValidationMessages.createEmpty();
 		if(StringUtils.isBlank(password)){
-			messages.add(PASSWORD_PARAM, Message.of(Severity.ERROR, "validator.password.null"));
+			messages.add(PASS_PARAM, Message.of(Severity.ERROR, "validator.password.null"));
+			throw new DataNotValidException(messages);
 		}
-		else {
-			if(password.length()<MIN_LENGTH){
-				messages.add(PASSWORD_PARAM, Message.of(Severity.ERROR, "validator.password.minlength", MIN_LENGTH));
-			}
-			if(MUST_CONTAINS_SPECIAL_CHARACTER && !passwordContainsSpecialCharacter(password)) {
-				messages.add(PASSWORD_PARAM, Message.of(Severity.ERROR, "validator.password.notcontainsspecial", Arrays.toString(SPECIAL_CHARACTERS)));
-			}
-			if(getCountOfDigits(password) < MIN_DIGITS_COUNT) {
-				messages.add(PASSWORD_PARAM, Message.of(Severity.ERROR, "validator.password.notEnoughDigits", MIN_DIGITS_COUNT));
-			}
+		if(password.length()<MIN_LENGTH){
+			messages.add(PASS_PARAM, Message.of(Severity.ERROR, "validator.password.minlength", MIN_LENGTH));
+		}
+		if(MUST_CONTAINS_SPECIAL_CHARACTER && !passwordContainsSpecialCharacter(password)) {
+			messages.add(PASS_PARAM, Message.of(Severity.ERROR, "validator.password.notcontainsspecial", Arrays.toString(SPECIAL_CHARACTERS)));
+		}
+		if(getCountOfDigits(password) < MIN_DIGITS_COUNT) {
+			messages.add(PASS_PARAM, Message.of(Severity.ERROR, "validator.password.notEnoughDigits", MIN_DIGITS_COUNT));
 		}
 		if(!messages.isEmpty()){
 			throw new DataNotValidException(messages);

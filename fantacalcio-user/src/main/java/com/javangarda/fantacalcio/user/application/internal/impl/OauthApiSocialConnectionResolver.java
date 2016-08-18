@@ -14,11 +14,10 @@ public class OauthApiSocialConnectionResolver implements SocialConnectionResolve
 	public SignUpSocialConnection create(Connection<?> connection) {
 		Object api = connection.getApi();
 		if(api instanceof Facebook) {
-			SignUpSocialConnection user = new SignUpSocialConnection();
 			Facebook fapi = (Facebook) api;
-			user.setEmail(fapi.userOperations().getUserProfile().getEmail());
-			user.setFullName(fapi.userOperations().getUserProfile().getFirstName()+" "+fapi.userOperations().getUserProfile().getLastName());
-			return user;
+			String email = fapi.userOperations().getUserProfile().getEmail();
+			String fullName = fapi.userOperations().getUserProfile().getFirstName()+" "+fapi.userOperations().getUserProfile().getLastName();
+			return new SignUpSocialConnection(email, fullName);
 		}
 		return null;
 	}

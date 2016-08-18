@@ -28,7 +28,7 @@ public class RegistrationUserDTOValidator implements AbstractValidator<Registrat
 			validationMessages.merge(e.getValidationMessages());
 		}
 		if(!form.getPassword().equals(form.getConfirmedPassword())){
-			
+			validationMessages.add("password", Message.of(Severity.ERROR, "validator.register.passwordsNotEquals"));
 		}
 		if(StringUtils.isNotEmpty(form.getEmail())){
 			validationMessages.add("email", Message.of(Severity.ERROR, "validator.register.emailempty"));

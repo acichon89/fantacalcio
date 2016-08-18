@@ -13,14 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import com.javangarda.fantacalcio.football.application.FootballPersistenceContext;
-import com.javangarda.fantacalcio.football.contexts.FlywayIntegrationTestContext;
-import com.javangarda.fantacalcio.football.contexts.SchemaVersionCleanTestExecutionListener;
-import com.javangarda.fantacalcio.football.domain.repositories.ClubRepository;
+import com.javangarda.fantacalcio.football.domain.FootballSchemaVersionCleanTestExecutionListener;
 import com.javangarda.fantacalcio.util.contexts.RootApplicationProfilesContext;
+import com.javangarda.fantacalcio.util.testsupport.FlywayIntegrationTestContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={FootballPersistenceContext.class, RootApplicationProfilesContext.class, FlywayIntegrationTestContext.class})
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, SchemaVersionCleanTestExecutionListener.class })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class, FootballSchemaVersionCleanTestExecutionListener.class })
 @FlywayTest(invokeCleanDB=false, invokeBaselineDB=true, overrideLocations=true, locationsForMigrate="/ClubRepositoryIT")
 public class ClubRepositoryIntegrationTest {
 
