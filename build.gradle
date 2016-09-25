@@ -14,10 +14,10 @@ plugins {
 subprojects {
 	// PLUGINS:
 	apply plugin: 'java'
-	apply plugin: 'eclipse-wtp'
+	apply plugin: 'eclipse'
 	apply plugin: 'jacoco'
-        apply plugin: 'com.github.kt3k.coveralls'	
-        /// DESCRIPTIONS:
+    apply plugin: 'com.github.kt3k.coveralls'	
+    // DESCRIPTIONS:
 	version = '1.0'
 	description = 'FantaCalcio main module'
 	sourceCompatibility = 1.8
@@ -36,10 +36,6 @@ subprojects {
 	        compileClasspath = compileClasspath + configurations.provided
 	    }
 	    test {
-	    	java {
-	    		srcDir file('src/test-unit/java');
-	    	}
-	    	resources.srcDir file('src/test-unit/resources')
 	        compileClasspath = compileClasspath + configurations.provided
 	    }
 	    integrationTest {
@@ -55,38 +51,12 @@ subprojects {
 	// DEPENDENCIES:
 	dependencies {
 		//compile:
-		compile 'org.springframework:spring-context:4.2.2.RELEASE'
-	    compile 'org.springframework:spring-core:4.2.2.RELEASE'
-	    compile 'org.springframework:spring-aspects:4.2.2.RELEASE'
-	    compile 'org.springframework.integration:spring-integration-core:4.2.5.RELEASE'
-	    compile 'org.springframework.integration:spring-integration-flow:1.0.0.RELEASE'
-	    compile 'org.springframework.security:spring-security-core:3.2.0.RELEASE'
-	    compile 'org.springframework.security:spring-security-config:3.2.0.RELEASE'
-	    compile 'com.zaxxer:HikariCP:2.4.3'	
-	    compile 'com.h2database:h2:1.4.190'
-	    compile 'org.springframework.data:spring-data-jpa:1.8.2.RELEASE'	  
-        compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
-        //compile 'mysql:mysql-connector-java:5.1.38'	    
-	    compile 'net.sf.dozer:dozer:5.5.1'
-	    compile 'joda-time:joda-time:2.8.2'
-	    compile 'com.google.guava:guava:18.0'
-	    compile 'org.jadira.usertype:usertype.core:3.1.0.GA'
-	    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
-	    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
 	    
 		//provided:
 	    provided "org.projectlombok:lombok:1.12.6"
 	    //test:
-	    testCompile 'junit:junit:4.12'	
-	    testCompile 'org.mockito:mockito-all:1.10.19'
+	    
 	    //integration test:
-	    integrationTestCompile 'org.springframework:spring-test:4.2.2.RELEASE'
-	    integrationTestCompile 'org.flywaydb:flyway-core:3.2.1'
-	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-test-extensions:3.2.1.1'
-	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-spring-test:3.2.1.1'
-	    integrationTestCompile 'org.flywaydb.flyway-test-extensions:flyway-spring4-test:3.2.1.1'
-	    integrationTestCompile 'org.springframework.security:spring-security-test:4.0.4.RELEASE'
-	    integrationTestCompile 'com.h2database:h2:1.4.191'
 	    
 	    //configuration:
 		integrationTestCompile sourceSets.main.output		
@@ -146,10 +116,7 @@ subprojects {
 	    plusConfigurations += [ configurations.integrationTestCompile]
 	  }
 	}
-	
-	configurations {
-	    all*.exclude group: 'javassist', module: 'javassist' // get rid of hibernate-incompatible javassist
-	}
+
 }
 	
 sonarqube {
@@ -158,7 +125,7 @@ sonarqube {
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
       	property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
-      	property "sonar.coverage.exclusions", "**Context.java, **Configurer.java"
-      	property "sonar.exclusions", "**Context.java, **Configurer.java"
+      	property "sonar.coverage.exclusions", "**Context.java, **Configurer.java, **Application.java"
+      	property "sonar.exclusions", "**Context.java, **Configurer.java, **Application.java"
     }
 }

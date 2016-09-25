@@ -1,6 +1,0 @@
-description = 'Domain of realistic football teams and their players and leages'
-
-dependencies {
-	compile project (':fantacalcio-util')
-	integrationTestCompile project(':fantacalcio-util').sourceSets.integrationTest.output
-}

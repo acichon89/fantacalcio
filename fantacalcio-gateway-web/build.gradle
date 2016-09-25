@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'fantacalcio-gateway-web'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-devtools')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'org.webjars.npm:angular2:2.0.0-beta.17'
+	compile 'org.webjars.bower:system.js:0.19.17'
+	compile 'org.webjars:typescript:1.7.5'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
