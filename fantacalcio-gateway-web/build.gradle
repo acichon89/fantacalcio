@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'spring-boot'
 
 jar {
-	baseName = 'fantacalcio-gateway-web'
+	baseName = 'fantacalcio-client-web'
 	version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
