@@ -7,10 +7,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 import com.javangarda.fantacalcio.mail.application.data.EmailMessageDTO;
+import com.javangarda.fantacalcio.mail.application.data.MailContent;
 import com.javangarda.fantacalcio.mail.application.gateway.EmailGateway;
 import com.javangarda.fantacalcio.mail.application.internal.MailContentProvider;
 import com.javangarda.fantacalcio.mail.application.internal.MailSender;
-import com.javangarda.fantacalcio.mail.application.model.value.MailContent;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,10 +29,9 @@ public class EmailGatewayImpl implements EmailGateway {
 	
 	@Override
 	public void sendActivationEmail(String email, String activationToken) {
-		log.debug("Thread = {} @EmailGatewayImpl::sendActivationEmail, email={}, activationToken={}", Thread.currentThread().getName(), email, activationToken);
-		MailContent mailContent = mailContentProvider.provideActivationMailContent(DEFAULT_LOCALE, email, activationToken);
 		String title = messageSource.getMessage("activationMail.title", null, DEFAULT_LOCALE);
-		EmailMessageDTO messageDTO = EmailMessageDTO.create(title, email).content(mailContent).build();
-		mailSender.sendEmail(messageDTO);
+		MailContent mailContent = mailContentProvider.provideActivationMailContent(DEFAULT_LOCALE, email, activationToken);
+		EmailMessageDTO emailDTO = new EmailMessageDTO(title, email, mailContent);
+		mailSender.sendEmail(emailDTO);
 	}
 }

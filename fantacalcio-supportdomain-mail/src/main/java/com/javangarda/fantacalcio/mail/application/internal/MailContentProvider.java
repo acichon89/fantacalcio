@@ -2,7 +2,7 @@ package com.javangarda.fantacalcio.mail.application.internal;
 
 import java.util.Locale;
 
-import com.javangarda.fantacalcio.mail.application.model.value.MailContent;
+import com.javangarda.fantacalcio.mail.application.data.MailContent;
 
 public interface MailContentProvider {
 	

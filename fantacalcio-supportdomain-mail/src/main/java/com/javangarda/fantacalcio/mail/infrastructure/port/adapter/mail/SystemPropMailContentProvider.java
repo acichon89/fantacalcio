@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
+import com.javangarda.fantacalcio.mail.application.data.MailContent;
 import com.javangarda.fantacalcio.mail.application.internal.MailContentProvider;
-import com.javangarda.fantacalcio.mail.application.model.value.MailContent;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class SystemPropMailContentProvider implements MailContentProvider{
+public class SystemPropMailContentProvider implements MailContentProvider {
 
 	@Autowired
 	private MessageSource messageSource;
