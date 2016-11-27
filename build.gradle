@@ -14,7 +14,7 @@ plugins {
 subprojects {
 	// PLUGINS:
 	apply plugin: 'java'
-	apply plugin: 'eclipse'
+	apply plugin: 'idea'
 	apply plugin: 'jacoco'
     apply plugin: 'com.github.kt3k.coveralls'	
     // DESCRIPTIONS:
@@ -109,14 +109,6 @@ subprojects {
 	check.dependsOn integrationTest
 	integrationTest.dependsOn test
 	
-	/// IDE :
-	eclipse {
-	  classpath {
-	    plusConfigurations += [ configurations.provided ]
-	    plusConfigurations += [ configurations.integrationTestCompile]
-	  }
-	}
-
 }
 	
 sonarqube {

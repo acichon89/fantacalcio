@@ -12,9 +12,5 @@ jdk:
 
 after_success:
 - gradle jacocoTestReport jacocoIntegrationTestReport sonarqube --stacktrace
-- python <(curl -s https://raw.githubusercontent.com/TouK/sputnik-ci/master/sputnik-ci.py)
 - bash <(curl -s https://codecov.io/bash)
 - coveralls
-
-notifications:
-  webhooks: https://acichon89-fantacalcio.getbadges.io/api/app/webhook/485782e5-7a9c-4f2a-8465-9b6f642907f7

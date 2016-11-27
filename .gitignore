@@ -53,3 +53,16 @@ jspm_packages
 bin
 build
 .springBeans
+
+#############npm
+env.json
+.idea/
+.vscode
+/node_modules
+/bower_components
+/build
+/report
+/typings
+/src/tmp
+.DS_Store
+/src/assets/styles/*.css

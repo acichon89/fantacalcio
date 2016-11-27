@@ -1,13 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
-import { HeroDetailComponent } from './hero/detail/hero-detail.component';
 
+import { APP_PROVIDERS } from './app.providers';
+import { AppComponent } from './app.component';
+import { appRoutingProviders, routing } from './app.routing';
+import { NavbarModule } from './shared';
+import { HomeModule } from './home/home.module';
+import { TodolistModule } from './todolist/todolist.module';
 
 @NgModule({
-    declarations: [AppComponent, HeroDetailComponent],
-    imports: [BrowserModule, FormsModule],
-    bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        NavbarModule,
+        HomeModule,
+        TodolistModule,
+        routing
+    ],
+    providers: [ APP_PROVIDERS, appRoutingProviders ],
+    bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule {
+}
