@@ -1,32 +1,139 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Angular 2 Starter</title>
+    <title>FantaCalcio</title>
     <base href="/">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- build:css assets/bundle.css -->
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css">
     <!-- app:css -->
-    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link href="/assets/styles/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/assets/styles/animate.css" rel="stylesheet">
+    <link href="/assets/styles/style.css" rel="stylesheet">
     <!-- endinject -->
     <!-- endbuild -->
   </head>
   <body>
-    <as-main-app>
-      <i class="center-fix main-spinner fa fa-spin fa-spinner"></i>
-    </as-main-app>
+    <div id="wrapper">
+      <nav class="navbar-default navbar-static-side" role="navigation">
+          <div class="sidebar-collapse">
+              <ul class="nav metismenu" id="side-menu">
+                  <li class="nav-header">
+                      <div class="logo-element">
+                          IN+
+                      </div>
+                  </li>
+                  <li>
+                      <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="index.html">Dashboard v.1</a></li>
+                          <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                          <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                          <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
+                          <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+
+      <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                </a>
+                                <div>
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+             <as-main-app>
+               <i class="center-fix main-spinner fa fa-spin fa-spinner"></i>
+             </as-main-app>  
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2017
+            </div>
+        </div>
+      </div>
+    </div>
 
     <!-- build:js assets/lib.js -->
 
     <!-- Non-module JS libs -->
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
 
     <!-- Polyfill(s) for older browsers -->
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="/node_modules/core-js/client/shim.min.js"></script>
 
     <!-- Load libraries -->
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
 
     <!-- endbuild -->
 
@@ -35,12 +142,25 @@
     <!-- endbuild -->
 
     <!-- build:remove -->
-    <script src="../node_modules/systemjs/dist/system.js"></script>
+    <script src="/node_modules/systemjs/dist/system.js"></script>
     <script src="systemjs.conf.js"></script>
     <script>
       System.import('app/main.js')
         .catch(function(err) { console.error(err); });
     </script>
     <!-- endbuild -->
+    <!-- Mainly scripts -->
+    <script src="/node_modules/metismenu/dist/metisMenu.js"></script>
+    <script src="/node_modules/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Peity -->
+    <script src="/node_modules/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/scripts/inspinia.js"></script>
+    <script src="/scripts/pace.min.js"></script>
   </body>
 </html>
