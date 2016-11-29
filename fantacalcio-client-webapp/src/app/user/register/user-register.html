@@ -1,0 +1,9 @@
+<h1>It works!</h1>
+
+    <input type="text" [(ngModel)]="userRegistrationDTO.email" placeholder="email" />
+    <input type="text" [(ngModel)]="userRegistrationDTO.fullName" placeholder="full name" />
+    <input type="password" [(ngModel)]="userRegistrationDTO.password" placeholder="password" />
+    <input type="password" [(ngModel)]="userRegistrationDTO.confirmPassword" placeholder="confirm password" />
+
+    <button type="button" class="btn btn-default" (click)="register()">New Hero</button>
+
