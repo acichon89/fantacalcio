@@ -35,12 +35,12 @@
     <!-- endbuild -->
 
     <!-- build:js assets/app.js -->
-    <script src="tmp/app/bundle.js"></script>
+    <script src="/tmp/app/bundle.js"></script>
     <!-- endbuild -->
 
     <!-- build:remove -->
     <script src="../node_modules/systemjs/dist/system.js"></script>
-    <script src="systemjs.conf.js"></script>
+    <script src="/systemjs.conf.js"></script>
     <script>
       System.import('app/main.js')
         .catch(function(err) { console.error(err); });
