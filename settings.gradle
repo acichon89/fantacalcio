@@ -1,1 +1,1 @@
-include 'fantacalcio-util', 'fantacalcio-mail', 'fantacalcio-football', 'fantacalcio-user', 'fantacalcio-web'
+include 'fantacalcio-config-server', 'fantacalcio-supportdomain-mail', 'fantacalcio-coredomain-user', 'fantacalcio-client-webapp'
