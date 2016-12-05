@@ -19,7 +19,7 @@ public class UserEventHandler {
 	
 	@ServiceActivator(inputChannel="userRegisteredChannel")
 	public void handleUserRegisterEvent(@Payload RegistrationUserDTO registrationUserDto) {
-		log.trace("Thread = {} @UserEventHandler::handleUserRegisterEvent, registrationUserDto={}", Thread.currentThread().getName(), registrationUserDto);
+		log.debug("Thread = {} @UserEventHandler::handleUserRegisterEvent, registrationUserDto={}", Thread.currentThread().getName(), registrationUserDto);
 		userCommandSender.createActivationEmailToken(registrationUserDto.getEmail());
 	}
 }

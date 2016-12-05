@@ -1,9 +1,12 @@
 package com.javangarda.fantacalcio.user;
 
 import java.util.Arrays;
+import java.util.concurrent.Executor;
 
 import javax.sql.DataSource;
 
+import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +15,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.integration.annotation.IntegrationComponentScan;
+import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.scheduling.annotation.AsyncConfigurer;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,12 +41,46 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import com.javangarda.fantacalcio.user.application.internal.impl.QueryDrivenUserDetailsService;
 
 @SpringBootApplication
-@EnableIntegration
-@IntegrationComponentScan(basePackages={"com.javangarda.fantacalcio.user"})
 public class FantacalcioUserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FantacalcioUserApplication.class, args);
+	}
+	
+	@EnableIntegration
+	@IntegrationComponentScan(basePackages={"com.javangarda.fantacalcio.user"})
+	public static class IntegrationConfig implements AsyncConfigurer {
+
+		@Bean
+		public MessageChannel userRegisteredChannel() {
+			return new PublishSubscribeChannel(getAsyncExecutor());
+		}
+
+		@Bean
+		public MessageChannel createActivationEmailTokenChannel() {
+			return new PublishSubscribeChannel(getAsyncExecutor());
+		}
+
+		@Bean
+		public MessageChannel sendingConfirmationEmailChannel() {
+			return new PublishSubscribeChannel(getAsyncExecutor());
+		}
+		
+		@Override
+		public Executor getAsyncExecutor() {
+			ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+			executor.setCorePoolSize(50);
+			executor.setMaxPoolSize(50);
+			executor.setQueueCapacity(50);
+			executor.initialize();
+			return executor;
+		}
+
+		@Override
+		public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+			return new SimpleAsyncUncaughtExceptionHandler();
+		}
+		
 	}
 	
 	@Configuration
@@ -67,8 +108,9 @@ public class FantacalcioUserApplication {
 	    @Override
 	    protected void configure(final HttpSecurity http) throws Exception {
 	        // @formatter:off
-			http.authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated().and().formLogin()
+			http.authorizeRequests().antMatchers("/login", "/foo", "/user").permitAll().anyRequest().authenticated().and().formLogin()
 					.permitAll();
+			http.csrf().disable();
 			// @formatter:on
 	    }
 

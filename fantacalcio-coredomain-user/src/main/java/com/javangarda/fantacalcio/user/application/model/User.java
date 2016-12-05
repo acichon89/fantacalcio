@@ -21,6 +21,7 @@ import lombok.Setter;
 @Table(name="users")
 public class User extends DefaultEntity<String> {
 
+	@Column(unique=true)
 	@Getter @Setter
 	private String email;
 	@Getter @Setter

@@ -8,7 +8,7 @@ import com.javangarda.fantacalcio.user.application.model.User;
 
 public interface UserRepository extends JpaRepository<User, String>{
 
-	@Query("SELECT u FROM User u JOIN FETCH u.roles WHERE u.email =:email")
+	@Query("SELECT u FROM User u WHERE u.email =:email")
 	User findByEmail(@Param("email") String email);
 	
 	@Query("SELECT u FROM User u WHERE u.confirmEmailToken =:token")
