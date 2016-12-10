@@ -53,7 +53,7 @@ subprojects {
 		//compile:
 	    
 		//provided:
-	    provided "org.projectlombok:lombok:1.12.6"
+	    compile "org.projectlombok:lombok:1.12.6"
 	    //test:
 	    
 	    //integration test:
