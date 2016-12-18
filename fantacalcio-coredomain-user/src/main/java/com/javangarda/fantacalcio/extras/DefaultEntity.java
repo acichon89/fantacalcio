@@ -1,9 +1,6 @@
 package com.javangarda.fantacalcio.extras;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 import org.hibernate.annotations.TypeDef;
 import org.jadira.usertype.dateandtime.joda.PersistentDateTime;
@@ -22,26 +19,29 @@ import lombok.Setter;
 public abstract class DefaultEntity<T> implements Identifable<T> {
 
 	@Id
-	@Getter @Setter
+	@Getter
 	private T id;
 
 	@Version
-	@Getter @Setter
+	@Getter
 	private Long version;
 
 	@CreatedDate
 	@Getter
+	@Column(name = "created_date_time")
 	private DateTime createdDateTime;
 
 	@LastModifiedDate
 	@Getter
+	@Column(name = "updated_date_time")
 	private DateTime updatedDateTime;
 
-	public void merge(DefaultEntity<T> other, boolean ignoreNulls) {
-		String[] nullProperties = ignoreNulls ? ObjectUtils.getNullPropertyNames(other) : null;
-		BeanUtils.copyProperties(other, this, nullProperties);
+	public DefaultEntity() {};
+
+	public DefaultEntity (T id) {
+		this.id=id;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 0;

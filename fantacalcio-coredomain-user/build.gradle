@@ -35,11 +35,14 @@ dependencies {
 	compile group: 'org.jadira.usertype', name: 'usertype.core', version: '5.0.0.GA'
 	compile('org.springframework.boot:spring-boot-starter-integration')
 	compile group: 'joda-time', name: 'joda-time', version: '2.9.5'
-	runtime('mysql:mysql-connector-java')
+	compile('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.11.RELEASE'
 	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.5.RELEASE'
-	compile group: 'net.sf.dozer', name: 'dozer', version: '5.4.0'
+	compile ('net.sf.dozer:dozer:5.4.0') {
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
+	compile "org.flywaydb:flyway-core:4.0.3"
 }
 
 bootRun {

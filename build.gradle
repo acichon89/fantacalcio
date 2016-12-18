@@ -26,20 +26,9 @@ subprojects {
 	repositories {
 	    mavenCentral()
 	}
-	// CONFIGURATIONS:
-	configurations {
-	    provided
-	}
 	/// SOURCE SETS:
 	sourceSets {
-	    main {
-	        compileClasspath = compileClasspath + configurations.provided
-	    }
-	    test {
-	        compileClasspath = compileClasspath + configurations.provided
-	    }
 	    integrationTest {
-	    	compileClasspath = compileClasspath + configurations.provided
 	        java {
 	            compileClasspath += main.output + test.output
 	            runtimeClasspath += main.output + test.output

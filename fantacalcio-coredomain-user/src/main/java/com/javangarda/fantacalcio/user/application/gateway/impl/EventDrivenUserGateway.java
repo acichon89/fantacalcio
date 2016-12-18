@@ -1,5 +1,7 @@
 package com.javangarda.fantacalcio.user.application.gateway.impl;
 
+import com.javangarda.fantacalcio.user.application.internal.UserRepository;
+import com.javangarda.fantacalcio.user.application.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
@@ -24,7 +26,7 @@ public class EventDrivenUserGateway implements UserGateway {
 	private EmailCommandSender emailCommandSender;
 	@Autowired
 	private UserService userService;
-	
+
 	@Override
 	public void registerUser(RegistrationUserDTO registrationUserDTO) throws DuplicateEmailException {
 		log.debug("Thread = {} @EventDrivenUserGateway::registerUser, registrationUserDto={}", Thread.currentThread().getName(), registrationUserDTO);

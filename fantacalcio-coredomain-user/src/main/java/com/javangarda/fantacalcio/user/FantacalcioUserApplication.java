@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
@@ -41,6 +42,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import com.javangarda.fantacalcio.user.application.internal.impl.QueryDrivenUserDetailsService;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class FantacalcioUserApplication {
 
 	public static void main(String[] args) {

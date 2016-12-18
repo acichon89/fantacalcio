@@ -21,27 +21,40 @@ import lombok.Setter;
 @Table(name="users")
 public class User extends DefaultEntity<String> {
 
-	@Getter @Setter
+	@Getter
 	private String email;
-	@Getter @Setter
+	@Getter
 	private String fullName;
-	@Getter @Setter
+	@Getter
 	private String password;
 	
 	@ElementCollection(targetClass = Role.class)
 	@CollectionTable(name = "users_roles_rel", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "role", nullable = false)
 	@Enumerated(EnumType.STRING)
-	@Getter @Setter
+	@Getter
 	private Set<Role> roles = new HashSet<Role>();
 	
 	@Enumerated(EnumType.STRING)
-	@Getter @Setter
 	private UserStatus status;
+
 	@Column(name="confirm_email_token")
-	@Getter @Setter
+	@Setter
 	private String confirmEmailToken;
-	
+
+	public User() {};
+	public User(String id){
+		super(id);
+	}
+
+	public void register(String email, String fullName, String password) {
+		this.roles.add(Role.ROLE_USER);
+		this.status=UserStatus.NOT_CONFIRMED;
+		this.email=email;
+		this.fullName=fullName;
+		this.password=password;
+	}
+
 	public boolean addRole(Role role) {
 		return this.roles.add(role);
 	}
