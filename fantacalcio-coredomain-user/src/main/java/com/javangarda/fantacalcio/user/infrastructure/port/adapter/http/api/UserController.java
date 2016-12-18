@@ -22,11 +22,6 @@ public class UserController {
 		return ResponseEntity.ok().body("OK");
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public User get(@PathVariable("id") String id){
-		return userGateway.getById(id);
-	}
-	
 	@RequestMapping(value="/foo", method=RequestMethod.GET)
 	public String foo(){
 		return "bar";
