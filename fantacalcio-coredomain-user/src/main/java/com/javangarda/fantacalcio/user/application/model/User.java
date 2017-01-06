@@ -3,29 +3,44 @@ package com.javangarda.fantacalcio.user.application.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-
-import com.javangarda.fantacalcio.extras.DefaultEntity;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name="users")
-public class User extends DefaultEntity<String> {
+@ToString(exclude = "password")
+public class User {
+
+	@Id
+	@Getter
+	private String id;
+
+	@Version
+	private Long version;
+
+	@CreatedDate
+	@Column(name = "created_date_time")
+	private DateTime createdDateTime;
+
+	@LastModifiedDate
+	@Column(name = "updated_date_time")
+	private DateTime updatedDateTime;
 
 	@Getter
 	private String email;
+	@Column(name = "tmp_email")
 	@Getter
+	private String tmpEmail;
+	@Getter
+	@Column(name = "full_name")
 	private String fullName;
-	@Getter
+	@Getter @Setter
 	private String password;
 	
 	@ElementCollection(targetClass = Role.class)
@@ -39,27 +54,81 @@ public class User extends DefaultEntity<String> {
 	private UserStatus status;
 
 	@Column(name="confirm_email_token")
-	@Setter
 	private String confirmEmailToken;
+
+	@Column(name = "reset_password_token")
+	@Setter
+	private String resetPasswordToken;
 
 	public User() {};
 	public User(String id){
-		super(id);
+		this.id=id;
 	}
 
-	public void register(String email, String fullName, String password) {
-		this.roles.add(Role.ROLE_USER);
+	public void register(String fullName, String password) {
+		addRole(Role.ROLE_USER);
 		this.status=UserStatus.NOT_CONFIRMED;
-		this.email=email;
 		this.fullName=fullName;
 		this.password=password;
+	}
+
+	public void confirmEmail() {
+		this.email=this.tmpEmail;
+		this.tmpEmail=null;
+		this.confirmEmailToken=null;
+		if(hasStatus(UserStatus.NOT_CONFIRMED)){
+			this.status=UserStatus.CONFIRMED;
+		}
+	}
+
+	public void assignEmailToBeConfirmed(String email, String token){
+		this.tmpEmail=email;
+		this.confirmEmailToken=token;
+	}
+
+	public boolean hasConfirmationEmailToken(String token){
+		return this.confirmEmailToken == null ? token == null : this.confirmEmailToken.equals(token);
 	}
 
 	public boolean addRole(Role role) {
 		return this.roles.add(role);
 	}
+
+	public boolean hasRole(Role role) {
+		return this.roles.contains(role);
+	}
 	
 	public boolean hasStatus(UserStatus status) {
 		return status==null ? this.status==null : this.status.equals(status);
+	}
+
+	public void ban() {
+		this.status=UserStatus.BANNED;
+	}
+
+	public void changePassword(String newPassword, boolean clearToken){
+		this.password=newPassword;
+		if(clearToken){
+			this.resetPasswordToken=null;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (this.getId() != null ? this.getId().hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object == null || !(object instanceof User) || getClass() != object.getClass()){
+			return false;
+		}
+		User other = (User) object;
+		if (this.getId() == null || !this.id.equals(other.id)) {
+			return false;
+		}
+		return true;
 	}
 }

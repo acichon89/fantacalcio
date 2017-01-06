@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { APP_PROVIDERS } from './app.providers';
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { NavbarModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { TodolistModule } from './todolist/todolist.module';
@@ -17,7 +18,9 @@ import { UserModule } from './user/user.module';
         HomeModule,
         TodolistModule,
         UserModule,
-        routing
+        routing,
+        HttpModule,
+        JsonpModule
     ],
     providers: [ APP_PROVIDERS, appRoutingProviders ],
     bootstrap: [ AppComponent ]

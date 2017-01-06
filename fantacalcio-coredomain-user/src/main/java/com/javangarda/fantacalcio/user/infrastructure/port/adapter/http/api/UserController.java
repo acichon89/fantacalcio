@@ -3,6 +3,7 @@ package com.javangarda.fantacalcio.user.infrastructure.port.adapter.http.api;
 import com.javangarda.fantacalcio.user.application.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
@@ -17,13 +18,9 @@ public class UserController {
 	private UserGateway userGateway;
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public ResponseEntity<String> registerUser(@RequestBody RegistrationUserDTO registrationUserDto) throws DuplicateEmailException {
+	public ResponseEntity<String> registerUser(@RequestBody @Validated RegistrationUserDTO registrationUserDto) throws DuplicateEmailException {
 		userGateway.registerUser(registrationUserDto);
 		return ResponseEntity.ok().body("OK");
 	}
 
-	@RequestMapping(value="/foo", method=RequestMethod.GET)
-	public String foo(){
-		return "bar";
-	}
 }

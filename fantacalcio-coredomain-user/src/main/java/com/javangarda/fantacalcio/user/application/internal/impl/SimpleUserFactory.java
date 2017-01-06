@@ -19,7 +19,7 @@ public class SimpleUserFactory implements UserFactory {
 	@Override
 	public User create(RegistrationUserDTO registrationUserDto) {
 		User user = new User(generateId());
-		user.register(registrationUserDto.getEmail(), registrationUserDto.getFullName(), passwordEncoder.encode(registrationUserDto.getPassword()));
+		user.register(registrationUserDto.getFullName(), passwordEncoder.encode(registrationUserDto.getPassword()));
 		return user;
 	}
 

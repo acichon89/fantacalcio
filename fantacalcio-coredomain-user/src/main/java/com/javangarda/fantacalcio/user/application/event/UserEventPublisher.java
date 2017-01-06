@@ -11,7 +11,9 @@ import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
 public interface UserEventPublisher {
 
 	@Gateway(requestChannel="userRegisteredChannel")
-	void publishUserCreated(@Payload RegistrationUserDTO registerDto);
+	void publishUserCreated(@Payload RegistrationUserDTO registerDto, @Header("userId") String id);
 	@Gateway(requestChannel="activat")
 	void publishActivationTokenAssigned(@Payload String activationToken, @Header("email") String email);
+	@Gateway(requestChannel = "emailConfirmedChannel")
+	void publishEmailConfirmed(String email);
 }

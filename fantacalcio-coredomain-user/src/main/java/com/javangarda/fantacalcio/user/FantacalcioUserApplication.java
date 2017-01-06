@@ -5,6 +5,7 @@ import java.util.concurrent.Executor;
 
 import javax.sql.DataSource;
 
+import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.RepositoryFieldUniqueValidator;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import com.javangarda.fantacalcio.user.application.internal.impl.QueryDrivenUserDetailsService;
+import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -47,6 +49,12 @@ public class FantacalcioUserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FantacalcioUserApplication.class, args);
+	}
+
+	@Primary
+	@Bean
+	public RepositoryFieldUniqueValidator repositoryFieldUniqueValidator(){
+		return new RepositoryFieldUniqueValidator();
 	}
 	
 	@EnableIntegration

@@ -3,6 +3,7 @@ package com.javangarda.fantacalcio.user.application.saga;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
@@ -18,8 +19,8 @@ public class UserEventHandler {
 	private UserCommandSender userCommandSender;
 	
 	@ServiceActivator(inputChannel="userRegisteredChannel")
-	public void handleUserRegisterEvent(@Payload RegistrationUserDTO registrationUserDto) {
-		log.trace("Thread = {} @UserEventHandler::handleUserRegisterEvent, registrationUserDto={}", Thread.currentThread().getName(), registrationUserDto);
-		userCommandSender.createActivationEmailToken(registrationUserDto.getEmail());
+	public void handleUserRegisterEvent(@Payload RegistrationUserDTO registrationUserDto, @Header("userId") String userId) {
+		log.trace("Thread = {} @UserEventHandler::handleUserRegisterEvent, registrationUserDto={}, userId={}", Thread.currentThread().getName(), registrationUserDto, userId);
+		userCommandSender.createActivationEmailToken(registrationUserDto.getEmail(), userId);
 	}
 }
