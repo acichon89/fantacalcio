@@ -67,7 +67,7 @@ public class FantacalcioUserApplication {
 		}
 
 		@Bean
-		public MessageChannel createActivationEmailTokenChannel() {
+		public MessageChannel emailConfirmedChannel() {
 			return new PublishSubscribeChannel(getAsyncExecutor());
 		}
 
@@ -75,7 +75,12 @@ public class FantacalcioUserApplication {
 		public MessageChannel sendingConfirmationEmailChannel() {
 			return new PublishSubscribeChannel(getAsyncExecutor());
 		}
-		
+
+		@Bean
+		public MessageChannel createActivationEmailTokenChannel() {
+			return new PublishSubscribeChannel(getAsyncExecutor());
+		}
+
 		@Override
 		public Executor getAsyncExecutor() {
 			ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();

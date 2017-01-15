@@ -8,8 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
-import com.javangarda.fantacalcio.user.application.event.DuplicateEmailException;
-import com.javangarda.fantacalcio.user.application.event.EmailNotFoundException;
 import com.javangarda.fantacalcio.user.application.internal.AccessTokenGenerator;
 import com.javangarda.fantacalcio.user.application.internal.UserFactory;
 import com.javangarda.fantacalcio.user.application.internal.UserRepository;
@@ -35,11 +33,7 @@ public class TransactionalUserService implements UserService {
 	private PasswordEncoder passwordEncoder;
 	
 	@Override
-	public String registerUser(RegistrationUserDTO registrationUserDto) throws DuplicateEmailException {
-		int noOfUsersWithTheSameEmail = userRepository.countUserWithEmail(registrationUserDto.getEmail());
-		if(noOfUsersWithTheSameEmail > 0) {
-			throw new DuplicateEmailException(registrationUserDto.getEmail());
-		}
+	public String registerUser(RegistrationUserDTO registrationUserDto) {
 		User user = userFactory.create(registrationUserDto);
 		userRepository.save(user);
 		return user.getId();
@@ -54,20 +48,22 @@ public class TransactionalUserService implements UserService {
 	}
 
 	@Override
-	public String confirmEmail(String activationToken) throws EmailNotFoundException {
-		Optional<User> user = userRepository.findByConfirmEmailToken(activationToken);
-		if(user.isPresent()){
-			User u = user.get();
-			u.confirmEmail();
-			return u.getEmail();
-		}
-		throw new EmailNotFoundException(null);
+	public Optional<FantaCalcioUser> confirmEmail(String activationToken) {
+		Optional<User> u = userRepository.findByConfirmEmailToken(activationToken);
+		u.ifPresent(user -> user.confirmEmail());
+		return u.map(FantaCalcioUser::new);
 	}
 
 	@Override
-	public void changePassword(String newPassword, String userId) {
+	public void changePassword(String newPassword, String userEmail) {
 		String encodedPassword = passwordEncoder.encode(newPassword);
-		userRepository.putPassword(encodedPassword, userId);
+		userRepository.findByEmail(userEmail).ifPresent(user -> user.changePassword(encodedPassword, false));
+	}
+
+	@Override
+	public void resetPassword(String newPassword, String userEmail) {
+		String encodedPassword = passwordEncoder.encode(newPassword);
+		userRepository.findByEmail(userEmail).ifPresent(user -> user.changePassword(encodedPassword, true));
 	}
 
 	@Override

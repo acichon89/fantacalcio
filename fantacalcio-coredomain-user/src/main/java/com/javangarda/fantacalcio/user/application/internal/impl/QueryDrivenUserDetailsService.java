@@ -24,10 +24,6 @@ public class QueryDrivenUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User foundInRepoUser = userRepository.findByEmail(username);	//TODO Java 8
-		if(foundInRepoUser==null) {
-			throw new UsernameNotFoundException("No user found with username: " + username);
-		}
-		return new FantaCalcioUser(foundInRepoUser);
+		return userRepository.findByEmail(username).map(FantaCalcioUser::new).orElseThrow(() -> new UsernameNotFoundException("No user found with username: " + username));
 	}
 }
