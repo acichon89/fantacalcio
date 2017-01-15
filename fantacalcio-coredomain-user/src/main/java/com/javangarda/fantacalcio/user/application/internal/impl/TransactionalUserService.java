@@ -68,8 +68,6 @@ public class TransactionalUserService implements UserService {
 
 	@Override
 	public Optional<FantaCalcioUser> getById(String id) {
-		Optional<User> user = userRepository.findOne(id);
-		FantaCalcioUser fcUser = user.isPresent() ? null : new FantaCalcioUser(user.get());
-		return Optional.ofNullable(fcUser);
+		return userRepository.findOne(id).map(FantaCalcioUser::new);
 	}
 }
