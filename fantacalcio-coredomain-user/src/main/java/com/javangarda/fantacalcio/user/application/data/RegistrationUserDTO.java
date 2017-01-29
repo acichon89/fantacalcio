@@ -6,19 +6,25 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 @Data
 public class RegistrationUserDTO {
 
 	@NotBlank
 	@Email
-	//@Range(min = 3, max = 60)
+	@Size(min = 3, max = 50)
 	@RepositoryFieldUnique(query = "SELECT COUNT(*) FROM users WHERE email = ?", message = "aaa bbb ccc")
 	private String email;
 	@NotBlank
-	//@Range(min = 3, max = 100)
+	@Size(min = 3, max = 50)
 	private String fullName;
 	@NotBlank
-	//@Range(min = 8, max = 100)
+	@Size(min = 3, max = 50)
 	private String password;
+	@NotBlank
+	@Size(min = 3, max = 50)
 	private String confirmedPassword;
 }

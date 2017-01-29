@@ -18,6 +18,6 @@ export class UserRegistrationComponent {
     }
 
     register() {
-        alert('submit!');
+        this.userService.register(this.userRegistrationDTO).subscribe(message => alert(message), error => alert("chuj"));
     }
 }

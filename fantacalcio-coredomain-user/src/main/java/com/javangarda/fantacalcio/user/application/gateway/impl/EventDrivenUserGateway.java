@@ -29,8 +29,6 @@ public class EventDrivenUserGateway implements UserGateway {
 	private EmailCommandSender emailCommandSender;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public void registerUser(RegistrationUserDTO registrationUserDTO) {

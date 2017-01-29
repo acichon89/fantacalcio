@@ -3,11 +3,13 @@ package com.javangarda.fantacalcio.user.application.data;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.javangarda.fantacalcio.user.application.model.User;
 import com.javangarda.fantacalcio.user.application.model.UserStatus;
 
+@JsonIgnoreProperties(value = {"password"})
 public class FantaCalcioUser extends org.springframework.security.core.userdetails.User {
 
 	private String id;

@@ -23,18 +23,7 @@ public class SimpleUserFactory implements UserFactory {
 		return user;
 	}
 
-	/*@Override
-	public User create(SignUpSocialConnection connection) {
-		User newUser = new User();
-		newUser.setId(generateId());
-		newUser.setEmail(connection.getEmail());
-		newUser.setFullName(connection.getFullName());
-		newUser.addRole(Role.ROLE_USER);
-		newUser.setStatus(UserStatus.CONFIRMED);
-		return newUser;
-	}*/
-	
-	private String generateId() {
+	protected String generateId() {
 		return UUID.randomUUID().toString();
 	}
 }
