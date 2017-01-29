@@ -1,4 +1,4 @@
-include 'fantacalcio-config-server', 'fantacalcio-supportdomain-mail', 'fantacalcio-coredomain-user', 'fantacalcio-client-webapp', 'fantacalcio-auth-server', 'fantacalcio-auth-server'
+include 'fantacalcio-config-server', 'fantacalcio-supportdomain-mail', 'fantacalcio-coredomain-user', 'fantacalcio-auth-server'
 include 'fantacalcio-registry'
 include 'fantacalcio-gateway'
 
