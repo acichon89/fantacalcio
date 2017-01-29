@@ -4,10 +4,12 @@ zuul:
       path: /user/**
       serviceId: fantacalcio-coredomain-user
       stripPrefix: false
+      sensitiveHeaders:
     auth:
       path: /uaa/**
       serviceId: fantacalcio-auth-server
       stripPrefix: false
+      sensitiveHeaders:
   prefix: /api
 eureka:
   client:

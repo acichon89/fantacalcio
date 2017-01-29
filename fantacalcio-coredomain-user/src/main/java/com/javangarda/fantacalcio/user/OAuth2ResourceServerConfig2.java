@@ -37,7 +37,7 @@ public class OAuth2ResourceServerConfig2 extends ResourceServerConfigurerAdapter
     @Bean
     public RemoteTokenServices tokenService() {
         RemoteTokenServices tokenService = new RemoteTokenServices();
-        tokenService.setCheckTokenEndpointUrl("http://localhost:7777/oauth/check_token");
+        tokenService.setCheckTokenEndpointUrl("http://localhost:7777/uaa/oauth/check_token");
         tokenService.setClientId("fantacalcio-coredomain-user");
         tokenService.setClientSecret("user123");
         return tokenService;
