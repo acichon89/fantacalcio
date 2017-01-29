@@ -1,0 +1,1566 @@
+{
+
+  "event": {
+    "sport": {
+      "name": "Football",
+      "slug": "football",
+      "id": 1
+    },
+    "category": {
+      "name": "Spain",
+      "slug": "spain",
+      "priority": 9,
+      "id": 32,
+      "flag": "spain"
+    },
+    "tournament": {
+      "name": "Primera Division",
+      "slug": "primera-division",
+      "id": 36,
+      "uniqueId": 8,
+      "uniqueName": "Primera Division",
+      "hasEventPlayerStatistics": true,
+      "hasEventPlayerHeatMap": true
+    },
+    "season": {
+      "name": "Primera Division 16/17",
+      "slug": "primera-division-1617",
+      "year": "16/17",
+      "id": 11906
+    },
+    "customId": "chbsCGc",
+    "status": {
+      "code": 7,
+      "description": "2nd half",
+      "type": "inprogress"
+    },
+    "winnerCode": 0,
+    "venue": {
+      "country": {
+        "name": "Spain",
+        "flag": "spain"
+      },
+      "city": {
+        "name": "Las Palmas de Gran Canaria"
+      },
+      "stadium": {
+        "name": "Gran Canaria",
+        "capacity": 32665
+      },
+      "id": 974
+    },
+    "referee": {
+      "name": "Munuera Montero, Jose Luis",
+      "country": {
+        "id": 199,
+        "name": "Spain",
+        "flag": "spain"
+      },
+      "id": 129521,
+      "yellowCardsPerGame": "4.83",
+      "redCardsPerGame": "0.54"
+    },
+    "homeTeam": {
+      "name": "UD Las Palmas",
+      "slug": "las-palmas-ud",
+      "gender": "M",
+      "id": 6577,
+      "shortName": "Las Palmas",
+      "subTeams": [ ]
+    },
+    "awayTeam": {
+      "name": "Sporting Gijon",
+      "slug": "sporting-gijon",
+      "gender": "M",
+      "id": 2852,
+      "shortName": "Sporting",
+      "subTeams": [ ]
+    },
+    "homeScore": {
+      "current": 1,
+      "period1": 0
+    },
+    "awayScore": {
+      "current": 0,
+      "period1": 0
+    },
+    "time": {
+      "currentFormated": "",
+      "extra1Formated": "",
+      "extra2Formated": "",
+      "normaltimeFormated": "",
+      "overtimeFormated": "",
+      "penaltiesFormated": "",
+      "period1Formated": "",
+      "period2Formated": "",
+      "period3Formated": "",
+      "period4Formated": "",
+      "period5Formated": ""
+    },
+    "changes": {
+      "changeDate": "2017-01-07T18:47:11+00:00",
+      "changes": [
+        "cardsCode"
+      ],
+      "changeTimestamp": 1483814831,
+      "hasExpired": true,
+      "hasHomeChanges": false,
+      "hasAwayChanges": false
+    },
+    "hasLineups": true,
+    "hasHighlights": true,
+    "hasHighlightsStream": false,
+    "hasEventPlayerStatistics": true,
+    "id": 7127566,
+    "homeRedCards": 0,
+    "awayRedCards": 0,
+    "statusDescription": "81",
+    "statusTime": {
+      "prefix": "",
+      "initial": 2700,
+      "max": 5400,
+      "timestamp": 1483813930,
+      "extra": 240
+    },
+    "hasStatistics": true,
+    "hasLiveForm": true,
+    "hasHalfTimeScore": true,
+    "name": "UD Las Palmas - Sporting Gijon",
+    "startTime": "17:30",
+    "formatedStartDate": "07.01.2017.",
+    "startTimestamp": 1483810200,
+    "slug": "ud-las-palmas-sporting-gijon",
+    "hasLineupsList": true,
+    "hasVenue": true,
+    "hasOdds": true,
+    "hasLiveOdds": true,
+    "hasSubScore": false,
+    "hasAggregatedScore": false,
+    "hasFirstToServe": false,
+    "hasDraw": true,
+    "votingEnabled": false,
+    "hasTime": false,
+    "isSyncable": true,
+    "showEventNote": false,
+    "confirmedLineups": true
+  },
+  "incidents": [
+    {
+      "text": "Second half",
+      "incidentType": "period",
+      "incidentDescription": "Period",
+      "incidentClass": "period",
+      "timeSpecial": ""
+    },
+    {
+      "playerIn": {
+        "name": "Tana",
+        "slug": "tana",
+        "shortName": "Tana",
+        "id": 229640
+      },
+      "playerOut": {
+        "name": "Nabil El Zhar",
+        "slug": "nabil-el-zhar",
+        "shortName": "N. E. Zhar",
+        "id": 19251
+      },
+      "playerTeam": 1,
+      "id": "118510234",
+      "time": 78,
+      "incidentType": "substitution",
+      "isHome": true,
+      "incidentDescription": "Substitution",
+      "incidentClass": "substitutionin",
+      "timeSpecial": 78
+    },
+    {
+      "playerIn": {
+        "name": "Ruben Sanchez Perez Cejuela",
+        "slug": "ruben-sanchez-perez-cejuela",
+        "shortName": "R. S. P. Cejuela",
+        "id": 349062
+      },
+      "playerOut": {
+        "name": "Carlos Carmona",
+        "slug": "carlos-carmona",
+        "shortName": "C. Carmona",
+        "id": 82891
+      },
+      "playerTeam": 2,
+      "id": "118510233",
+      "time": 75,
+      "incidentType": "substitution",
+      "isHome": false,
+      "incidentDescription": "Substitution",
+      "incidentClass": "substitutionin",
+      "timeSpecial": 75
+    },
+    {
+      "type": "Yellow",
+      "playerTeam": 1,
+      "reason": "Foul",
+      "id": "118579132",
+      "time": 74,
+      "player": {
+        "name": "Momo",
+        "slug": "momo",
+        "shortName": "Momo",
+        "id": 17157
+      },
+      "reasonTranslationKey": "incident_card_reason_foul",
+      "incidentType": "card",
+      "isHome": true,
+      "incidentDescription": "Yellow card",
+      "incidentClass": "yellowcard",
+      "timeSpecial": 74
+    },
+    {
+      "playerIn": {
+        "name": "Momo",
+        "slug": "momo",
+        "shortName": "Momo",
+        "id": 17157
+      },
+      "playerOut": {
+        "name": "Mateo Garcia",
+        "slug": "mateo-garcia",
+        "shortName": "M. Garcia",
+        "id": 846773
+      },
+      "playerTeam": 1,
+      "id": "118510231",
+      "time": 69,
+      "incidentType": "substitution",
+      "isHome": true,
+      "incidentDescription": "Substitution",
+      "incidentClass": "substitutionin",
+      "timeSpecial": 69
+    },
+    {
+      "playerIn": {
+        "name": "Akram Hassan Afif",
+        "slug": "akram-hassan-afif",
+        "shortName": "A. H. Afif",
+        "id": 794541
+      },
+      "playerOut": {
+        "name": "Jean Sylvain Babin",
+        "slug": "jean-sylvain-babin",
+        "shortName": "J. S. Babin",
+        "id": 128654
+      },
+      "playerTeam": 2,
+      "id": "118510229",
+      "time": 65,
+      "incidentType": "substitution",
+      "isHome": false,
+      "incidentDescription": "Substitution",
+      "incidentClass": "substitutionin",
+      "timeSpecial": 65
+    },
+    {
+      "playerIn": {
+        "name": "Borja Viguera",
+        "slug": "borja-viguera",
+        "shortName": "B. Viguera",
+        "id": 82714
+      },
+      "playerOut": {
+        "name": "Duje Cop",
+        "slug": "duje-cop",
+        "shortName": "D. Cop",
+        "id": 44679
+      },
+      "playerTeam": 2,
+      "id": "118510225",
+      "time": 60,
+      "incidentType": "substitution",
+      "isHome": false,
+      "incidentDescription": "Substitution",
+      "incidentClass": "substitutionin",
+      "timeSpecial": 60
+    },
+    {
+      "type": "Yellow",
+      "playerTeam": 2,
+      "reason": "Foul",
+      "id": "118579125",
+      "time": 60,
+      "player": {
+        "name": "Xavi Torres",
+        "slug": "xavi-torres",
+        "shortName": "X. Torres",
+        "id": 45075
+      },
+      "reasonTranslationKey": "incident_card_reason_foul",
+      "incidentType": "card",
+      "isHome": false,
+      "incidentDescription": "Yellow card",
+      "incidentClass": "yellowcard",
+      "timeSpecial": 60
+    },
+    {
+      "homeScore": 1,
+      "awayScore": 0,
+      "scoringTeam": 1,
+      "id": "120696695",
+      "time": 55,
+      "player": {
+        "name": "Nabil El Zhar",
+        "slug": "nabil-el-zhar",
+        "shortName": "N. E. Zhar",
+        "id": 19251
+      },
+      "playerTeam": 1,
+      "incidentType": "goal",
+      "isHome": true,
+      "incidentDescription": "Goal",
+      "incidentClass": "regulargoal",
+      "timeSpecial": 55
+    },
+    {
+      "text": "HT 0 - 0",
+      "incidentType": "period",
+      "incidentDescription": "Period",
+      "incidentClass": "period",
+      "timeSpecial": ""
+    },
+    {
+      "length": 2,
+      "time": 45,
+      "text": "Injury time 2'",
+      "incidentType": "injuryTime",
+      "isHome": true,
+      "incidentDescription": "Injury time",
+      "incidentClass": "injuryTime",
+      "timeSpecial": 45
+    }
+  ],
+  "groupedIncidents": [ ],
+  "innings": null,
+  "vote": {
+    "vote1": 7589,
+    "vote2": 1384,
+    "voteX": 2541,
+    "vote1Percentage": "65.91",
+    "voteXPercentage": "22.07",
+    "vote2Percentage": "12.02",
+    "vote1ScaledPercentage": 100,
+    "voteXScaledPercentage": 33.48,
+    "vote2ScaledPercentage": 18.24
+  },
+  "odds": [
+    {
+      "type": 1,
+      "regular": [
+        {
+          "odds": [
+            {
+              "decimalValue": "1.53",
+              "fractionalValue": "53/100",
+              "americanValue": "-189",
+              "betSlipLink": "http://link.sofascore.com/live-odds/",
+              "change": -1,
+              "sourceId": "1176696389",
+              "choice": "1"
+            },
+            {
+              "decimalValue": "4.20",
+              "fractionalValue": "16/5",
+              "americanValue": "320",
+              "betSlipLink": "http://link.sofascore.com/live-odds/",
+              "change": 1,
+              "sourceId": "1176696390",
+              "choice": "X"
+            },
+            {
+              "decimalValue": "6.25",
+              "fractionalValue": "21/4",
+              "americanValue": "525",
+              "betSlipLink": "http://link.sofascore.com/live-odds/",
+              "change": 1,
+              "sourceId": "1176696391",
+              "choice": "2"
+            }
+          ]
+        }
+      ],
+      "sourceId": "60684195",
+      "live": [
+        {
+          "odds": [
+            {
+              "decimalValue": "1.11",
+              "fractionalValue": "11/100",
+              "americanValue": "-909",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551675&odds=11/100",
+              "sourceId": "1190551675",
+              "choice": "1"
+            },
+            {
+              "decimalValue": "7.00",
+              "fractionalValue": "6/1",
+              "americanValue": "600",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551676&odds=6/1",
+              "sourceId": "1190551676",
+              "choice": "X"
+            },
+            {
+              "decimalValue": "81.00",
+              "fractionalValue": "80/1",
+              "americanValue": "8000",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551677&odds=80/1",
+              "sourceId": "1190551677",
+              "choice": "2"
+            }
+          ]
+        }
+      ],
+      "name": "Full time"
+    },
+    {
+      "sourceId": "60684195",
+      "type": 1,
+      "live": [
+        {
+          "odds": [
+            {
+              "decimalValue": "1.00",
+              "fractionalValue": "0/1",
+              "americanValue": "0",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551684&odds=0/1",
+              "sourceId": "1190551684",
+              "choice": "1X"
+            },
+            {
+              "decimalValue": "6.50",
+              "fractionalValue": "11/2",
+              "americanValue": "550",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551685&odds=11/2",
+              "sourceId": "1190551685",
+              "choice": "X2"
+            },
+            {
+              "decimalValue": "1.10",
+              "fractionalValue": "1/10",
+              "americanValue": "-1000",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551686&odds=1/10",
+              "sourceId": "1190551686",
+              "choice": "12"
+            }
+          ]
+        }
+      ],
+      "name": "Double chance"
+    },
+    {
+      "sourceId": "60684195",
+      "type": 1,
+      "live": [
+        {
+          "odds": [
+            {
+              "decimalValue": "1.00",
+              "fractionalValue": "0/1",
+              "americanValue": "0",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551735&odds=0/1",
+              "sourceId": "1190551735",
+              "choice": "1"
+            },
+            {
+              "decimalValue": "41.00",
+              "fractionalValue": "40/1",
+              "americanValue": "4000",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551736&odds=40/1",
+              "sourceId": "1190551736",
+              "choice": "2"
+            }
+          ]
+        }
+      ],
+      "name": "Draw no bet"
+    },
+    {
+      "sourceId": "60684195",
+      "type": 1,
+      "live": [
+        {
+          "odds": [
+            {
+              "decimalValue": "5.00",
+              "fractionalValue": "4/1",
+              "americanValue": "400",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551740&odds=4/1",
+              "sourceId": "1190551740",
+              "choice": "Yes"
+            },
+            {
+              "decimalValue": "1.17",
+              "fractionalValue": "17/100",
+              "americanValue": "-588",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551741&odds=17/100",
+              "sourceId": "1190551741",
+              "choice": "No"
+            }
+          ]
+        }
+      ],
+      "name": "Both teams to score"
+    },
+    {
+      "sourceId": "60684195",
+      "type": 1,
+      "live": [
+        {
+          "odds": [
+            {
+              "decimalValue": "3.25",
+              "fractionalValue": "9/4",
+              "americanValue": "225",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1191203257&odds=9/4",
+              "sourceId": "1191203257",
+              "choice": "UD Las Palmas"
+            },
+            {
+              "decimalValue": "1.62",
+              "fractionalValue": "31/50",
+              "americanValue": "-161",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1191203258&odds=31/50",
+              "sourceId": "1191203258",
+              "choice": "No goal"
+            },
+            {
+              "decimalValue": "5.50",
+              "fractionalValue": "9/2",
+              "americanValue": "450",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1191203259&odds=9/2",
+              "sourceId": "1191203259",
+              "choice": "Sporting Gijon"
+            }
+          ]
+        }
+      ],
+      "name": "Next goal"
+    },
+    {
+      "sourceId": "60684195",
+      "type": 2,
+      "live": [
+        {
+          "handicap": "1.5",
+          "odds": [
+            {
+              "decimalValue": "2.20",
+              "fractionalValue": "6/5",
+              "americanValue": "120",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551687&odds=6/5",
+              "sourceId": "1190551687",
+              "choice": "Over"
+            },
+            {
+              "decimalValue": "1.62",
+              "fractionalValue": "31/50",
+              "americanValue": "-161",
+              "betSlipLink": "http://www.bet365.com/instantbet/default.asp?affiliatecode=365_323980&Instantbet=1&participantid=1190551688&odds=31/50",
+              "sourceId": "1190551688",
+              "choice": "Under"
+            }
+          ]
+        }
+      ],
+      "name": "Match goals"
+    }
+  ],
+  "highlights": [
+    {
+      "title": "UD Las Palmas 1-0 Sporting Gijon",
+      "subtitle": "55' Nabil El Zhar",
+      "url": "http://www.eudownloads.com/video.php?dailymotion=x57qcqz",
+      "thumbnailUrl": "http://s2.dmcdn.net/gCHpG/160x120-5Z1.jpg",
+      "isMobileStream": false,
+      "mediaType": 1,
+      "id": 214711,
+      "createdAtTimestamp": 1483814677,
+      "sourceUrl": "http://www.dailymotion.com/video/x57qcqz"
+    }
+  ],
+  "statistics": {
+    "provider": 3,
+    "homeDuelLost": 46,
+    "period1": {
+      "homeDuelLost": 26,
+      "homeAccurateCross": 3,
+      "homeAccuratePasses": 255,
+      "homeAccurateThroughBall": 3,
+      "homeGoalkeeperSaves": 0,
+      "homeShotsOnGoal": 6,
+      "homeThrowIns": 18,
+      "homeAttOutsideBoxTarget": 3,
+      "homeAttOutBoxPost": 0,
+      "homeYellowCards": 0,
+      "homeAttInsideBoxTarget": 3,
+      "homeGoalKicks": 7,
+      "homeAerialWon": 9,
+      "homePasses": 313,
+      "homeAttInBoxGoal": 0,
+      "homeDuelWon": 41,
+      "homeFreeKicks": 9,
+      "homeOffsides": 3,
+      "homeAttInsideBoxMiss": 3,
+      "homeShotsOffGoal": 4,
+      "homeAerialLost": 7,
+      "homeBallPossession": 68,
+      "homeHitWoodwork": 0,
+      "homeAttOutsideBoxMiss": 1,
+      "homeCornerKicks": 4,
+      "awayDuelLost": 41,
+      "awayBlockedScoringAttempt": 1,
+      "awayAccurateCross": 0,
+      "awayAccuratePasses": 89,
+      "awayGoalkeeperSaves": 6,
+      "awayShotsOnGoal": 0,
+      "awayAttInBoxPost": 0,
+      "awayThrowIns": 10,
+      "awayYellowCards": 0,
+      "awayAttInsideBoxTarget": 0,
+      "awayGoalKicks": 8,
+      "awayAerialWon": 7,
+      "awayPasses": 141,
+      "awayDuelWon": 26,
+      "awayKeeperSweeper": 0,
+      "awayFreeKicks": 1,
+      "awayOffsides": 0,
+      "awayAttOutBoxBlocked": 0,
+      "awayAttInsideBoxMiss": 1,
+      "awayShotsOffGoal": 3,
+      "awayAttInBoxBlocked": 1,
+      "awayAerialLost": 9,
+      "awayBallPossession": 32,
+      "awayHitWoodwork": 0,
+      "awayAttOutsideBoxMiss": 2,
+      "awayCornerKicks": 2,
+      "awayAccurateThroughBall": 0,
+      "homeBlockedScoringAttempt": 0,
+      "homeKeeperSweeper": 0,
+      "homeAttInBoxBlocked": 0,
+      "awayAttInBoxGoal": 0,
+      "homeAttInBoxPost": 0,
+      "awayAttOutsideBoxTarget": 0,
+      "homeAttOutBoxBlocked": 0,
+      "awayAttOutBoxPost": 0,
+      "homeTotalShotsOnGoal": 10,
+      "awayTotalShotsOnGoal": 4,
+      "homeTotalShotsInsideBox": 6,
+      "awayTotalShotsInsideBox": 2,
+      "homeTotalShotsOutsideBox": 4,
+      "awayTotalShotsOutsideBox": 2,
+      "homeAccuratePassesPercent": 81,
+      "awayAccuratePassesPercent": 63,
+      "homeDuelWonPercent": 61,
+      "awayDuelWonPercent": 39,
+      "homeAerialWonPercent": 56,
+      "awayAerialWonPercent": 44
+    },
+    "period2": {
+      "homeDuelLost": 20,
+      "homeAccurateCross": 0,
+      "homeAccuratePasses": 215,
+      "homeAccurateThroughBall": 0,
+      "homeGoalkeeperSaves": 1,
+      "homeShotsOnGoal": 3,
+      "homeThrowIns": 6,
+      "homeAttOutsideBoxTarget": 0,
+      "homeAttOutBoxPost": 1,
+      "homeYellowCards": 1,
+      "homeAttInsideBoxTarget": 2,
+      "homeGoalKicks": 2,
+      "homeAerialWon": 6,
+      "homePasses": 247,
+      "homeAttInBoxGoal": 1,
+      "homeDuelWon": 23,
+      "homeFreeKicks": 5,
+      "homeOffsides": 0,
+      "homeAttInsideBoxMiss": 1,
+      "homeShotsOffGoal": 2,
+      "homeAerialLost": 5,
+      "homeBallPossession": 63,
+      "homeHitWoodwork": 1,
+      "homeAttOutsideBoxMiss": 0,
+      "homeCornerKicks": 2,
+      "awayDuelLost": 23,
+      "awayBlockedScoringAttempt": 2,
+      "awayAccurateCross": 4,
+      "awayAccuratePasses": 106,
+      "awayGoalkeeperSaves": 3,
+      "awayShotsOnGoal": 1,
+      "awayAttInBoxPost": 1,
+      "awayThrowIns": 6,
+      "awayYellowCards": 1,
+      "awayAttInsideBoxTarget": 1,
+      "awayGoalKicks": 2,
+      "awayAerialWon": 5,
+      "awayPasses": 137,
+      "awayDuelWon": 20,
+      "awayKeeperSweeper": 1,
+      "awayFreeKicks": 3,
+      "awayOffsides": 2,
+      "awayAttOutBoxBlocked": 1,
+      "awayAttInsideBoxMiss": 1,
+      "awayShotsOffGoal": 2,
+      "awayAttInBoxBlocked": 1,
+      "awayAerialLost": 6,
+      "awayBallPossession": 37,
+      "awayHitWoodwork": 1,
+      "awayAttOutsideBoxMiss": 0,
+      "awayCornerKicks": 0,
+      "awayAccurateThroughBall": 0,
+      "homeBlockedScoringAttempt": 0,
+      "homeKeeperSweeper": 0,
+      "homeAttInBoxBlocked": 0,
+      "awayAttInBoxGoal": 0,
+      "homeAttInBoxPost": 0,
+      "awayAttOutsideBoxTarget": 0,
+      "homeAttOutBoxBlocked": 0,
+      "awayAttOutBoxPost": 0,
+      "homeTotalShotsOnGoal": 5,
+      "awayTotalShotsOnGoal": 5,
+      "homeTotalShotsInsideBox": 4,
+      "awayTotalShotsInsideBox": 4,
+      "homeTotalShotsOutsideBox": 1,
+      "awayTotalShotsOutsideBox": 1,
+      "homeAccuratePassesPercent": 87,
+      "awayAccuratePassesPercent": 77,
+      "homeDuelWonPercent": 53,
+      "awayDuelWonPercent": 47,
+      "homeAerialWonPercent": 55,
+      "awayAerialWonPercent": 45
+    },
+    "homeAccurateCross": 3,
+    "homeAccuratePasses": 470,
+    "homeAccurateThroughBall": 3,
+    "homeGoalkeeperSaves": 1,
+    "homeShotsOnGoal": 9,
+    "homeThrowIns": 24,
+    "homeAttOutsideBoxTarget": 3,
+    "homeAttOutBoxPost": 1,
+    "homeYellowCards": 1,
+    "homeAttInsideBoxTarget": 5,
+    "homeGoalKicks": 9,
+    "homeAerialWon": 15,
+    "homePasses": 560,
+    "homeAttInBoxGoal": 1,
+    "homeDuelWon": 64,
+    "homeFreeKicks": 14,
+    "homeOffsides": 3,
+    "homeAttInsideBoxMiss": 4,
+    "homeShotsOffGoal": 6,
+    "homeAerialLost": 12,
+    "homeBallPossession": 66,
+    "homeHitWoodwork": 1,
+    "homeAttOutsideBoxMiss": 1,
+    "homeCornerKicks": 6,
+    "awayDuelLost": 64,
+    "awayBlockedScoringAttempt": 3,
+    "awayAccurateCross": 4,
+    "awayAccuratePasses": 195,
+    "awayGoalkeeperSaves": 9,
+    "awayShotsOnGoal": 1,
+    "awayAttInBoxPost": 1,
+    "awayThrowIns": 16,
+    "awayYellowCards": 1,
+    "awayAttInsideBoxTarget": 1,
+    "awayGoalKicks": 10,
+    "awayAerialWon": 12,
+    "awayPasses": 278,
+    "awayDuelWon": 46,
+    "awayKeeperSweeper": 1,
+    "awayFreeKicks": 4,
+    "awayOffsides": 2,
+    "awayAttOutBoxBlocked": 1,
+    "awayAttInsideBoxMiss": 2,
+    "awayShotsOffGoal": 5,
+    "awayAttInBoxBlocked": 2,
+    "awayAerialLost": 15,
+    "awayBallPossession": 34,
+    "awayHitWoodwork": 1,
+    "awayAttOutsideBoxMiss": 2,
+    "awayCornerKicks": 2,
+    "awayAccurateThroughBall": 0,
+    "homeBlockedScoringAttempt": 0,
+    "homeKeeperSweeper": 0,
+    "homeAttInBoxBlocked": 0,
+    "awayAttInBoxGoal": 0,
+    "homeAttInBoxPost": 0,
+    "awayAttOutsideBoxTarget": 0,
+    "homeAttOutBoxBlocked": 0,
+    "awayAttOutBoxPost": 0,
+    "homeTotalShotsOnGoal": 15,
+    "awayTotalShotsOnGoal": 9,
+    "homeTotalShotsInsideBox": 10,
+    "awayTotalShotsInsideBox": 6,
+    "homeTotalShotsOutsideBox": 5,
+    "awayTotalShotsOutsideBox": 3,
+    "homeAccuratePassesPercent": 84,
+    "awayAccuratePassesPercent": 70,
+    "homeDuelWonPercent": 58,
+    "awayDuelWonPercent": 42,
+    "homeAerialWonPercent": 56,
+    "awayAerialWonPercent": 44,
+    "homeFouls": 5,
+    "awayFouls": 14,
+    "statisticsItems": {
+      "BallPossession": "Ball possession",
+      "TotalShotsOnGoal": "Total shots",
+      "ShotsOnGoal": "Shots on target",
+      "ShotsOffGoal": "Shots off target",
+      "BlockedScoringAttempt": "Blocked shots",
+      "TotalShotsInsideBox": "Shots inside box",
+      "TotalShotsOutsideBox": "Shots outside box",
+      "HitWoodwork": "Hit woodwork",
+      "GoalkeeperSaves": "Goalkeeper saves",
+      "CornerKicks": "Corner kicks",
+      "AccuratePasses": "Passes",
+      "Offsides": "Offsides",
+      "Fouls": "Fouls",
+      "YellowCards": "Yellow cards",
+      "DuelWon": "Duels won",
+      "AerialWon": "Aerials won"
+    },
+    "periods": [
+      {
+        "period": "ALL",
+        "groups": [
+          {
+            "groupName": "Possession",
+            "statisticsItems": [
+              {
+                "name": "Ball possession",
+                "home": "66%",
+                "away": "34%",
+                "compareCode": 1
+              }
+            ]
+          },
+          {
+            "groupName": "Shots",
+            "statisticsItems": [
+              {
+                "name": "Total shots",
+                "home": "15",
+                "away": "9",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots on target",
+                "home": "9",
+                "away": "1",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots off target",
+                "home": "6",
+                "away": "5",
+                "compareCode": 1
+              },
+              {
+                "name": "Blocked shots",
+                "home": "0",
+                "away": "3",
+                "compareCode": 2
+              }
+            ]
+          },
+          {
+            "groupName": "Shots extra",
+            "statisticsItems": [
+              {
+                "name": "Shots inside box",
+                "home": "10",
+                "away": "6",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots outside box",
+                "home": "5",
+                "away": "3",
+                "compareCode": 1
+              },
+              {
+                "name": "Hit woodwork",
+                "home": "1",
+                "away": "1",
+                "compareCode": 3
+              },
+              {
+                "name": "Goalkeeper saves",
+                "home": "1",
+                "away": "9",
+                "compareCode": 2
+              }
+            ]
+          },
+          {
+            "groupName": "Passes",
+            "statisticsItems": [
+              {
+                "name": "Corner kicks",
+                "home": "6",
+                "away": "2",
+                "compareCode": 1
+              },
+              {
+                "name": "Passes",
+                "home": "470",
+                "away": "195",
+                "compareCode": 1
+              },
+              {
+                "name": "Accurate passes",
+                "home": "84%",
+                "away": "70%",
+                "compareCode": 1
+              }
+            ]
+          },
+          {
+            "groupName": "Negative",
+            "statisticsItems": [
+              {
+                "name": "Offsides",
+                "home": "3",
+                "away": "2",
+                "compareCode": 1
+              },
+              {
+                "name": "Fouls",
+                "home": "5",
+                "away": "14",
+                "compareCode": 2
+              },
+              {
+                "name": "Yellow cards",
+                "home": "1",
+                "away": "1",
+                "compareCode": 3
+              }
+            ]
+          },
+          {
+            "groupName": "Duels",
+            "statisticsItems": [
+              {
+                "name": "Duels won",
+                "home": "64",
+                "away": "46",
+                "compareCode": 1
+              },
+              {
+                "name": "Aerials won",
+                "home": "15",
+                "away": "12",
+                "compareCode": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "period": "1ST",
+        "groups": [
+          {
+            "groupName": "Possession",
+            "statisticsItems": [
+              {
+                "name": "Ball possession",
+                "home": "68%",
+                "away": "32%",
+                "compareCode": 1
+              }
+            ]
+          },
+          {
+            "groupName": "Shots",
+            "statisticsItems": [
+              {
+                "name": "Total shots",
+                "home": "10",
+                "away": "4",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots on target",
+                "home": "6",
+                "away": "0",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots off target",
+                "home": "4",
+                "away": "3",
+                "compareCode": 1
+              },
+              {
+                "name": "Blocked shots",
+                "home": "0",
+                "away": "1",
+                "compareCode": 2
+              }
+            ]
+          },
+          {
+            "groupName": "Shots extra",
+            "statisticsItems": [
+              {
+                "name": "Shots inside box",
+                "home": "6",
+                "away": "2",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots outside box",
+                "home": "4",
+                "away": "2",
+                "compareCode": 1
+              },
+              {
+                "name": "Hit woodwork",
+                "home": "0",
+                "away": "0",
+                "compareCode": 3
+              },
+              {
+                "name": "Goalkeeper saves",
+                "home": "0",
+                "away": "6",
+                "compareCode": 2
+              }
+            ]
+          },
+          {
+            "groupName": "Passes",
+            "statisticsItems": [
+              {
+                "name": "Corner kicks",
+                "home": "4",
+                "away": "2",
+                "compareCode": 1
+              },
+              {
+                "name": "Passes",
+                "home": "255",
+                "away": "89",
+                "compareCode": 1
+              },
+              {
+                "name": "Accurate passes",
+                "home": "81%",
+                "away": "63%",
+                "compareCode": 1
+              }
+            ]
+          },
+          {
+            "groupName": "Negative",
+            "statisticsItems": [
+              {
+                "name": "Offsides",
+                "home": "3",
+                "away": "0",
+                "compareCode": 1
+              },
+              {
+                "name": "Yellow cards",
+                "home": "0",
+                "away": "0",
+                "compareCode": 3
+              }
+            ]
+          },
+          {
+            "groupName": "Duels",
+            "statisticsItems": [
+              {
+                "name": "Duels won",
+                "home": "41",
+                "away": "26",
+                "compareCode": 1
+              },
+              {
+                "name": "Aerials won",
+                "home": "9",
+                "away": "7",
+                "compareCode": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "period": "2ND",
+        "groups": [
+          {
+            "groupName": "Possession",
+            "statisticsItems": [
+              {
+                "name": "Ball possession",
+                "home": "63%",
+                "away": "37%",
+                "compareCode": 1
+              }
+            ]
+          },
+          {
+            "groupName": "Shots",
+            "statisticsItems": [
+              {
+                "name": "Total shots",
+                "home": "5",
+                "away": "5",
+                "compareCode": 3
+              },
+              {
+                "name": "Shots on target",
+                "home": "3",
+                "away": "1",
+                "compareCode": 1
+              },
+              {
+                "name": "Shots off target",
+                "home": "2",
+                "away": "2",
+                "compareCode": 3
+              },
+              {
+                "name": "Blocked shots",
+                "home": "0",
+                "away": "2",
+                "compareCode": 2
+              }
+            ]
+          },
+          {
+            "groupName": "Shots extra",
+            "statisticsItems": [
+              {
+                "name": "Shots inside box",
+                "home": "4",
+                "away": "4",
+                "compareCode": 3
+              },
+              {
+                "name": "Shots outside box",
+                "home": "1",
+                "away": "1",
+                "compareCode": 3
+              },
+              {
+                "name": "Hit woodwork",
+                "home": "1",
+                "away": "1",
+                "compareCode": 3
+              },
+              {
+                "name": "Goalkeeper saves",
+                "home": "1",
+                "away": "3",
+                "compareCode": 2
+              }
+            ]
+          },
+          {
+            "groupName": "Passes",
+            "statisticsItems": [
+              {
+                "name": "Corner kicks",
+                "home": "2",
+                "away": "0",
+                "compareCode": 1
+              },
+              {
+                "name": "Passes",
+                "home": "215",
+                "away": "106",
+                "compareCode": 1
+              },
+              {
+                "name": "Accurate passes",
+                "home": "87%",
+                "away": "77%",
+                "compareCode": 1
+              }
+            ]
+          },
+          {
+            "groupName": "Negative",
+            "statisticsItems": [
+              {
+                "name": "Offsides",
+                "home": "0",
+                "away": "2",
+                "compareCode": 2
+              },
+              {
+                "name": "Yellow cards",
+                "home": "1",
+                "away": "1",
+                "compareCode": 3
+              }
+            ]
+          },
+          {
+            "groupName": "Duels",
+            "statisticsItems": [
+              {
+                "name": "Duels won",
+                "home": "23",
+                "away": "20",
+                "compareCode": 1
+              },
+              {
+                "name": "Aerials won",
+                "home": "6",
+                "away": "5",
+                "compareCode": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "liveForm": [
+    {
+      "minute": 1,
+      "value": -10
+    },
+    {
+      "minute": 2,
+      "value": -0.15
+    },
+    {
+      "minute": 3,
+      "value": 4.31
+    },
+    {
+      "minute": 4,
+      "value": 8.06
+    },
+    {
+      "minute": 5,
+      "value": 15.29
+    },
+    {
+      "minute": 6,
+      "value": 73.84
+    },
+    {
+      "minute": 7,
+      "value": 42.47
+    },
+    {
+      "minute": 8,
+      "value": 29.72
+    },
+    {
+      "minute": 9,
+      "value": 82.06
+    },
+    {
+      "minute": 10,
+      "value": 55.41
+    },
+    {
+      "minute": 11,
+      "value": 54.79
+    },
+    {
+      "minute": 12,
+      "value": 34.25
+    },
+    {
+      "minute": 13,
+      "value": 61.61
+    },
+    {
+      "minute": 14,
+      "value": 38.41
+    },
+    {
+      "minute": 15,
+      "value": -6.78
+    },
+    {
+      "minute": 16,
+      "value": 24.92
+    },
+    {
+      "minute": 17,
+      "value": 25.63
+    },
+    {
+      "minute": 18,
+      "value": 19.05
+    },
+    {
+      "minute": 19,
+      "value": 52.73
+    },
+    {
+      "minute": 20,
+      "value": 95.71
+    },
+    {
+      "minute": 21,
+      "value": 51.81
+    },
+    {
+      "minute": 22,
+      "value": 26.19
+    },
+    {
+      "minute": 23,
+      "value": 11.26
+    },
+    {
+      "minute": 24,
+      "value": 4.78
+    },
+    {
+      "minute": 25,
+      "value": 3.02
+    },
+    {
+      "minute": 26,
+      "value": 6.8
+    },
+    {
+      "minute": 27,
+      "value": 14.13
+    },
+    {
+      "minute": 28,
+      "value": 13.48
+    },
+    {
+      "minute": 29,
+      "value": 7
+    },
+    {
+      "minute": 30,
+      "value": -2.13
+    },
+    {
+      "minute": 31,
+      "value": -22.55
+    },
+    {
+      "minute": 32,
+      "value": -14.64
+    },
+    {
+      "minute": 33,
+      "value": -34.56
+    },
+    {
+      "minute": 34,
+      "value": -15.56
+    },
+    {
+      "minute": 35,
+      "value": -3.89
+    },
+    {
+      "minute": 36,
+      "value": 4.16
+    },
+    {
+      "minute": 37,
+      "value": 7.43
+    },
+    {
+      "minute": 38,
+      "value": 51.23
+    },
+    {
+      "minute": 39,
+      "value": 35.59
+    },
+    {
+      "minute": 40,
+      "value": -3.7
+    },
+    {
+      "minute": 41,
+      "value": 2.93
+    },
+    {
+      "minute": 42,
+      "value": 46.88
+    },
+    {
+      "minute": 43,
+      "value": 23.73
+    },
+    {
+      "minute": 44,
+      "value": -7.1
+    },
+    {
+      "minute": 45,
+      "value": 60.57
+    },
+    {
+      "minute": 45.5,
+      "value": -10
+    },
+    {
+      "minute": 46,
+      "value": 43.57
+    },
+    {
+      "minute": 47,
+      "value": 30.5
+    },
+    {
+      "minute": 48,
+      "value": 26.16
+    },
+    {
+      "minute": 49,
+      "value": 25.07
+    },
+    {
+      "minute": 50,
+      "value": 18.2
+    },
+    {
+      "minute": 51,
+      "value": 23.2
+    },
+    {
+      "minute": 52,
+      "value": 12.1
+    },
+    {
+      "minute": 53,
+      "value": 45.5
+    },
+    {
+      "minute": 54,
+      "value": 49.66
+    },
+    {
+      "minute": 55,
+      "value": 26.73
+    },
+    {
+      "minute": 56,
+      "value": 81.33
+    },
+    {
+      "minute": 57,
+      "value": 44.84
+    },
+    {
+      "minute": 58,
+      "value": 20.17
+    },
+    {
+      "minute": 59,
+      "value": 6.66
+    },
+    {
+      "minute": 60,
+      "value": 0.53
+    },
+    {
+      "minute": 61,
+      "value": -2.71
+    },
+    {
+      "minute": 62,
+      "value": 0.57
+    },
+    {
+      "minute": 63,
+      "value": 2.51
+    },
+    {
+      "minute": 64,
+      "value": 3.67
+    },
+    {
+      "minute": 65,
+      "value": 4.36
+    },
+    {
+      "minute": 66,
+      "value": -35.64
+    },
+    {
+      "minute": 67,
+      "value": -19.42
+    },
+    {
+      "minute": 68,
+      "value": -4.78
+    },
+    {
+      "minute": 69,
+      "value": -1.07
+    },
+    {
+      "minute": 70,
+      "value": 41.13
+    },
+    {
+      "minute": 71,
+      "value": -45.81
+    },
+    {
+      "minute": 72,
+      "value": -22.59
+    },
+    {
+      "minute": 73,
+      "value": -9.17
+    },
+    {
+      "minute": 74,
+      "value": -0.81
+    },
+    {
+      "minute": 75,
+      "value": -3.82
+    },
+    {
+      "minute": 76,
+      "value": -27.06
+    },
+    {
+      "minute": 77,
+      "value": 28.34
+    },
+    {
+      "minute": 78,
+      "value": 21.27
+    },
+    {
+      "minute": 79,
+      "value": 42.07
+    },
+    {
+      "minute": 80,
+      "value": 54.81
+    },
+    {
+      "minute": 81,
+      "value": 34.83
+    }
+  ],
+  "scoreGraph": null,
+  "standingsAvailable": true,
+  "pointByPoint": [ ]
+
+}

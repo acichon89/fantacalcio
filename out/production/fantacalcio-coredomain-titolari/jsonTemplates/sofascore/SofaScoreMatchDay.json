@@ -1,0 +1,1746 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "object",
+      "properties": {
+        "sport": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "slug",
+            "id"
+          ]
+        },
+        "category": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "priority": {
+              "type": "integer"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "flag": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "slug",
+            "priority",
+            "id",
+            "flag"
+          ]
+        },
+        "tournament": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "uniqueId": {
+              "type": "integer"
+            },
+            "uniqueName": {
+              "type": "string"
+            },
+            "hasEventPlayerStatistics": {
+              "type": "boolean"
+            },
+            "hasEventPlayerHeatMap": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "name",
+            "slug",
+            "id",
+            "uniqueId",
+            "uniqueName",
+            "hasEventPlayerStatistics",
+            "hasEventPlayerHeatMap"
+          ]
+        },
+        "season": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "year": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "slug",
+            "year",
+            "id"
+          ]
+        },
+        "customId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "integer"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "description",
+            "type"
+          ]
+        },
+        "winnerCode": {
+          "type": "integer"
+        },
+        "venue": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "flag": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "flag"
+              ]
+            },
+            "city": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            },
+            "stadium": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "capacity": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "capacity"
+              ]
+            },
+            "id": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "country",
+            "city",
+            "stadium",
+            "id"
+          ]
+        },
+        "referee": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "country": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "flag": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "flag"
+              ]
+            },
+            "id": {
+              "type": "integer"
+            },
+            "yellowCardsPerGame": {
+              "type": "string"
+            },
+            "redCardsPerGame": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "country",
+            "id",
+            "yellowCardsPerGame",
+            "redCardsPerGame"
+          ]
+        },
+        "homeTeam": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "shortName": {
+              "type": "string"
+            },
+            "subTeams": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "name",
+            "slug",
+            "gender",
+            "id",
+            "shortName",
+            "subTeams"
+          ]
+        },
+        "awayTeam": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "shortName": {
+              "type": "string"
+            },
+            "subTeams": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "name",
+            "slug",
+            "gender",
+            "id",
+            "shortName",
+            "subTeams"
+          ]
+        },
+        "homeScore": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer"
+            },
+            "period1": {
+              "type": "integer"
+            },
+            "normaltime": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "current",
+            "period1",
+            "normaltime"
+          ]
+        },
+        "awayScore": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer"
+            },
+            "period1": {
+              "type": "integer"
+            },
+            "normaltime": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "current",
+            "period1",
+            "normaltime"
+          ]
+        },
+        "time": {
+          "type": "object",
+          "properties": {
+            "currentFormated": {
+              "type": "string"
+            },
+            "extra1Formated": {
+              "type": "string"
+            },
+            "extra2Formated": {
+              "type": "string"
+            },
+            "normaltimeFormated": {
+              "type": "string"
+            },
+            "overtimeFormated": {
+              "type": "string"
+            },
+            "penaltiesFormated": {
+              "type": "string"
+            },
+            "period1Formated": {
+              "type": "string"
+            },
+            "period2Formated": {
+              "type": "string"
+            },
+            "period3Formated": {
+              "type": "string"
+            },
+            "period4Formated": {
+              "type": "string"
+            },
+            "period5Formated": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "currentFormated",
+            "extra1Formated",
+            "extra2Formated",
+            "normaltimeFormated",
+            "overtimeFormated",
+            "penaltiesFormated",
+            "period1Formated",
+            "period2Formated",
+            "period3Formated",
+            "period4Formated",
+            "period5Formated"
+          ]
+        },
+        "changes": {
+          "type": "object",
+          "properties": {
+            "changeDate": {
+              "type": "string"
+            },
+            "changes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "changeTimestamp": {
+              "type": "integer"
+            },
+            "hasExpired": {
+              "type": "boolean"
+            },
+            "hasHomeChanges": {
+              "type": "boolean"
+            },
+            "hasAwayChanges": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "changeDate",
+            "changes",
+            "changeTimestamp",
+            "hasExpired",
+            "hasHomeChanges",
+            "hasAwayChanges"
+          ]
+        },
+        "hasLineups": {
+          "type": "boolean"
+        },
+        "hasHighlights": {
+          "type": "boolean"
+        },
+        "hasHighlightsStream": {
+          "type": "boolean"
+        },
+        "hasEventPlayerStatistics": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "homeRedCards": {
+          "type": "integer"
+        },
+        "awayRedCards": {
+          "type": "integer"
+        },
+        "statusDescription": {
+          "type": "string"
+        },
+        "hasStatistics": {
+          "type": "boolean"
+        },
+        "hasLiveForm": {
+          "type": "boolean"
+        },
+        "hasHalfTimeScore": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "string"
+        },
+        "formatedStartDate": {
+          "type": "string"
+        },
+        "startTimestamp": {
+          "type": "integer"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "hasLineupsList": {
+          "type": "boolean"
+        },
+        "hasVenue": {
+          "type": "boolean"
+        },
+        "hasOdds": {
+          "type": "boolean"
+        },
+        "hasLiveOdds": {
+          "type": "boolean"
+        },
+        "hasSubScore": {
+          "type": "boolean"
+        },
+        "hasAggregatedScore": {
+          "type": "boolean"
+        },
+        "hasFirstToServe": {
+          "type": "boolean"
+        },
+        "hasDraw": {
+          "type": "boolean"
+        },
+        "votingEnabled": {
+          "type": "boolean"
+        },
+        "hasTime": {
+          "type": "boolean"
+        },
+        "isSyncable": {
+          "type": "boolean"
+        },
+        "showEventNote": {
+          "type": "boolean"
+        },
+        "confirmedLineups": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sport",
+        "category",
+        "tournament",
+        "season",
+        "customId",
+        "status",
+        "winnerCode",
+        "venue",
+        "referee",
+        "homeTeam",
+        "awayTeam",
+        "homeScore",
+        "awayScore",
+        "time",
+        "changes",
+        "hasLineups",
+        "hasHighlights",
+        "hasHighlightsStream",
+        "hasEventPlayerStatistics",
+        "id",
+        "homeRedCards",
+        "awayRedCards",
+        "statusDescription",
+        "hasStatistics",
+        "hasLiveForm",
+        "hasHalfTimeScore",
+        "name",
+        "startTime",
+        "formatedStartDate",
+        "startTimestamp",
+        "slug",
+        "hasLineupsList",
+        "hasVenue",
+        "hasOdds",
+        "hasLiveOdds",
+        "hasSubScore",
+        "hasAggregatedScore",
+        "hasFirstToServe",
+        "hasDraw",
+        "votingEnabled",
+        "hasTime",
+        "isSyncable",
+        "showEventNote",
+        "confirmedLineups"
+      ]
+    },
+    "incidents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "integer"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "text": {
+            "type": "string"
+          },
+          "incidentType": {
+            "type": "string"
+          },
+          "isHome": {
+            "type": "boolean"
+          },
+          "incidentDescription": {
+            "type": "string"
+          },
+          "incidentClass": {
+            "type": "string"
+          },
+          "timeSpecial": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "length",
+          "time",
+          "text",
+          "incidentType",
+          "isHome",
+          "incidentDescription",
+          "incidentClass",
+          "timeSpecial"
+        ]
+      }
+    },
+    "groupedIncidents": {
+      "type": "array",
+      "items": {}
+    },
+    "innings": {
+      "type": "null"
+    },
+    "vote": {
+      "type": "object",
+      "properties": {
+        "vote1": {
+          "type": "integer"
+        },
+        "vote2": {
+          "type": "integer"
+        },
+        "voteX": {
+          "type": "integer"
+        },
+        "vote1Percentage": {
+          "type": "string"
+        },
+        "voteXPercentage": {
+          "type": "string"
+        },
+        "vote2Percentage": {
+          "type": "string"
+        },
+        "vote1ScaledPercentage": {
+          "type": "integer"
+        },
+        "voteXScaledPercentage": {
+          "type": "number"
+        },
+        "vote2ScaledPercentage": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "vote1",
+        "vote2",
+        "voteX",
+        "vote1Percentage",
+        "voteXPercentage",
+        "vote2Percentage",
+        "vote1ScaledPercentage",
+        "voteXScaledPercentage",
+        "vote2ScaledPercentage"
+      ]
+    },
+    "odds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "integer"
+          },
+          "regular": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "odds": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "decimalValue": {
+                        "type": "string"
+                      },
+                      "fractionalValue": {
+                        "type": "string"
+                      },
+                      "americanValue": {
+                        "type": "string"
+                      },
+                      "betSlipLink": {
+                        "type": "string"
+                      },
+                      "change": {
+                        "type": "integer"
+                      },
+                      "sourceId": {
+                        "type": "string"
+                      },
+                      "winning": {
+                        "type": "boolean"
+                      },
+                      "choice": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "decimalValue",
+                      "fractionalValue",
+                      "americanValue",
+                      "betSlipLink",
+                      "change",
+                      "sourceId",
+                      "winning",
+                      "choice"
+                    ]
+                  }
+                },
+                "handicap": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "odds",
+                "handicap"
+              ]
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceId",
+          "type",
+          "regular",
+          "name"
+        ]
+      }
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "type": "string"
+          },
+          "isMobileStream": {
+            "type": "boolean"
+          },
+          "mediaType": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "createdAtTimestamp": {
+            "type": "integer"
+          },
+          "sourceUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "subtitle",
+          "url",
+          "thumbnailUrl",
+          "isMobileStream",
+          "mediaType",
+          "id",
+          "createdAtTimestamp",
+          "sourceUrl"
+        ]
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "integer"
+        },
+        "homeDuelLost": {
+          "type": "integer"
+        },
+        "period1": {
+          "type": "object",
+          "properties": {
+            "homeDuelLost": {
+              "type": "integer"
+            },
+            "homeBlockedScoringAttempt": {
+              "type": "integer"
+            },
+            "homeAccurateCross": {
+              "type": "integer"
+            },
+            "homeAccuratePasses": {
+              "type": "integer"
+            },
+            "homeGoalkeeperSaves": {
+              "type": "integer"
+            },
+            "homeShotsOnGoal": {
+              "type": "integer"
+            },
+            "homeThrowIns": {
+              "type": "integer"
+            },
+            "homeAttOutsideBoxTarget": {
+              "type": "integer"
+            },
+            "homeYellowCards": {
+              "type": "integer"
+            },
+            "homeGoalKicks": {
+              "type": "integer"
+            },
+            "homeAerialWon": {
+              "type": "integer"
+            },
+            "homePasses": {
+              "type": "integer"
+            },
+            "homeAttInBoxGoal": {
+              "type": "integer"
+            },
+            "homeDuelWon": {
+              "type": "integer"
+            },
+            "homeFreeKicks": {
+              "type": "integer"
+            },
+            "homeOffsides": {
+              "type": "integer"
+            },
+            "homeAttOutBoxBlocked": {
+              "type": "integer"
+            },
+            "homeShotsOffGoal": {
+              "type": "integer"
+            },
+            "homeAerialLost": {
+              "type": "integer"
+            },
+            "homeBallPossession": {
+              "type": "integer"
+            },
+            "homeAttOutsideBoxMiss": {
+              "type": "integer"
+            },
+            "homeCornerKicks": {
+              "type": "integer"
+            },
+            "awayDuelLost": {
+              "type": "integer"
+            },
+            "awayBlockedScoringAttempt": {
+              "type": "integer"
+            },
+            "awayAccurateCross": {
+              "type": "integer"
+            },
+            "awaySixYardBlock": {
+              "type": "integer"
+            },
+            "awayAccuratePasses": {
+              "type": "integer"
+            },
+            "awayGoalkeeperSaves": {
+              "type": "integer"
+            },
+            "awayShotsOnGoal": {
+              "type": "integer"
+            },
+            "awayThrowIns": {
+              "type": "integer"
+            },
+            "awayAttOutsideBoxTarget": {
+              "type": "integer"
+            },
+            "awayYellowCards": {
+              "type": "integer"
+            },
+            "awayAttInsideBoxTarget": {
+              "type": "integer"
+            },
+            "awayGoalKicks": {
+              "type": "integer"
+            },
+            "awayAerialWon": {
+              "type": "integer"
+            },
+            "awayPasses": {
+              "type": "integer"
+            },
+            "awayDuelWon": {
+              "type": "integer"
+            },
+            "awayKeeperSweeper": {
+              "type": "integer"
+            },
+            "awayFreeKicks": {
+              "type": "integer"
+            },
+            "awayOffsides": {
+              "type": "integer"
+            },
+            "awayAttOutBoxBlocked": {
+              "type": "integer"
+            },
+            "awayShotsOffGoal": {
+              "type": "integer"
+            },
+            "awayAttInBoxBlocked": {
+              "type": "integer"
+            },
+            "awayAerialLost": {
+              "type": "integer"
+            },
+            "awayBallPossession": {
+              "type": "integer"
+            },
+            "awayAttOutsideBoxMiss": {
+              "type": "integer"
+            },
+            "awayCornerKicks": {
+              "type": "integer"
+            },
+            "homeSixYardBlock": {
+              "type": "integer"
+            },
+            "homeKeeperSweeper": {
+              "type": "integer"
+            },
+            "homeAttInsideBoxTarget": {
+              "type": "integer"
+            },
+            "homeAttInBoxBlocked": {
+              "type": "integer"
+            },
+            "awayAttInBoxGoal": {
+              "type": "integer"
+            },
+            "homeTotalShotsOnGoal": {
+              "type": "integer"
+            },
+            "awayTotalShotsOnGoal": {
+              "type": "integer"
+            },
+            "homeTotalShotsInsideBox": {
+              "type": "integer"
+            },
+            "awayTotalShotsInsideBox": {
+              "type": "integer"
+            },
+            "homeTotalShotsOutsideBox": {
+              "type": "integer"
+            },
+            "awayTotalShotsOutsideBox": {
+              "type": "integer"
+            },
+            "homeAccuratePassesPercent": {
+              "type": "integer"
+            },
+            "awayAccuratePassesPercent": {
+              "type": "integer"
+            },
+            "homeDuelWonPercent": {
+              "type": "integer"
+            },
+            "awayDuelWonPercent": {
+              "type": "integer"
+            },
+            "homeAerialWonPercent": {
+              "type": "integer"
+            },
+            "awayAerialWonPercent": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "homeDuelLost",
+            "homeBlockedScoringAttempt",
+            "homeAccurateCross",
+            "homeAccuratePasses",
+            "homeGoalkeeperSaves",
+            "homeShotsOnGoal",
+            "homeThrowIns",
+            "homeAttOutsideBoxTarget",
+            "homeYellowCards",
+            "homeGoalKicks",
+            "homeAerialWon",
+            "homePasses",
+            "homeAttInBoxGoal",
+            "homeDuelWon",
+            "homeFreeKicks",
+            "homeOffsides",
+            "homeAttOutBoxBlocked",
+            "homeShotsOffGoal",
+            "homeAerialLost",
+            "homeBallPossession",
+            "homeAttOutsideBoxMiss",
+            "homeCornerKicks",
+            "awayDuelLost",
+            "awayBlockedScoringAttempt",
+            "awayAccurateCross",
+            "awaySixYardBlock",
+            "awayAccuratePasses",
+            "awayGoalkeeperSaves",
+            "awayShotsOnGoal",
+            "awayThrowIns",
+            "awayAttOutsideBoxTarget",
+            "awayYellowCards",
+            "awayAttInsideBoxTarget",
+            "awayGoalKicks",
+            "awayAerialWon",
+            "awayPasses",
+            "awayDuelWon",
+            "awayKeeperSweeper",
+            "awayFreeKicks",
+            "awayOffsides",
+            "awayAttOutBoxBlocked",
+            "awayShotsOffGoal",
+            "awayAttInBoxBlocked",
+            "awayAerialLost",
+            "awayBallPossession",
+            "awayAttOutsideBoxMiss",
+            "awayCornerKicks",
+            "homeSixYardBlock",
+            "homeKeeperSweeper",
+            "homeAttInsideBoxTarget",
+            "homeAttInBoxBlocked",
+            "awayAttInBoxGoal",
+            "homeTotalShotsOnGoal",
+            "awayTotalShotsOnGoal",
+            "homeTotalShotsInsideBox",
+            "awayTotalShotsInsideBox",
+            "homeTotalShotsOutsideBox",
+            "awayTotalShotsOutsideBox",
+            "homeAccuratePassesPercent",
+            "awayAccuratePassesPercent",
+            "homeDuelWonPercent",
+            "awayDuelWonPercent",
+            "homeAerialWonPercent",
+            "awayAerialWonPercent"
+          ]
+        },
+        "period2": {
+          "type": "object",
+          "properties": {
+            "homeDuelLost": {
+              "type": "integer"
+            },
+            "homeBlockedScoringAttempt": {
+              "type": "integer"
+            },
+            "homeAccurateCross": {
+              "type": "integer"
+            },
+            "homeAccuratePasses": {
+              "type": "integer"
+            },
+            "homeGoalkeeperSaves": {
+              "type": "integer"
+            },
+            "homeShotsOnGoal": {
+              "type": "integer"
+            },
+            "homeThrowIns": {
+              "type": "integer"
+            },
+            "homeAttOutsideBoxTarget": {
+              "type": "integer"
+            },
+            "homeYellowCards": {
+              "type": "integer"
+            },
+            "homeGoalKicks": {
+              "type": "integer"
+            },
+            "homeAerialWon": {
+              "type": "integer"
+            },
+            "homePasses": {
+              "type": "integer"
+            },
+            "homeAttInBoxGoal": {
+              "type": "integer"
+            },
+            "homeDuelWon": {
+              "type": "integer"
+            },
+            "homeFreeKicks": {
+              "type": "integer"
+            },
+            "homeOffsides": {
+              "type": "integer"
+            },
+            "homeAttOutBoxBlocked": {
+              "type": "integer"
+            },
+            "homeShotsOffGoal": {
+              "type": "integer"
+            },
+            "homeAerialLost": {
+              "type": "integer"
+            },
+            "homeBallPossession": {
+              "type": "integer"
+            },
+            "homeAttOutsideBoxMiss": {
+              "type": "integer"
+            },
+            "homeCornerKicks": {
+              "type": "integer"
+            },
+            "awayDuelLost": {
+              "type": "integer"
+            },
+            "awayBlockedScoringAttempt": {
+              "type": "integer"
+            },
+            "awayAccurateCross": {
+              "type": "integer"
+            },
+            "awaySixYardBlock": {
+              "type": "integer"
+            },
+            "awayAccuratePasses": {
+              "type": "integer"
+            },
+            "awayGoalkeeperSaves": {
+              "type": "integer"
+            },
+            "awayShotsOnGoal": {
+              "type": "integer"
+            },
+            "awayThrowIns": {
+              "type": "integer"
+            },
+            "awayAttOutsideBoxTarget": {
+              "type": "integer"
+            },
+            "awayYellowCards": {
+              "type": "integer"
+            },
+            "awayAttInsideBoxTarget": {
+              "type": "integer"
+            },
+            "awayGoalKicks": {
+              "type": "integer"
+            },
+            "awayAerialWon": {
+              "type": "integer"
+            },
+            "awayPasses": {
+              "type": "integer"
+            },
+            "awayDuelWon": {
+              "type": "integer"
+            },
+            "awayKeeperSweeper": {
+              "type": "integer"
+            },
+            "awayFreeKicks": {
+              "type": "integer"
+            },
+            "awayOffsides": {
+              "type": "integer"
+            },
+            "awayAttOutBoxBlocked": {
+              "type": "integer"
+            },
+            "awayShotsOffGoal": {
+              "type": "integer"
+            },
+            "awayAttInBoxBlocked": {
+              "type": "integer"
+            },
+            "awayAerialLost": {
+              "type": "integer"
+            },
+            "awayBallPossession": {
+              "type": "integer"
+            },
+            "awayAttOutsideBoxMiss": {
+              "type": "integer"
+            },
+            "awayCornerKicks": {
+              "type": "integer"
+            },
+            "homeSixYardBlock": {
+              "type": "integer"
+            },
+            "homeKeeperSweeper": {
+              "type": "integer"
+            },
+            "homeAttInsideBoxTarget": {
+              "type": "integer"
+            },
+            "homeAttInBoxBlocked": {
+              "type": "integer"
+            },
+            "awayAttInBoxGoal": {
+              "type": "integer"
+            },
+            "homeTotalShotsOnGoal": {
+              "type": "integer"
+            },
+            "awayTotalShotsOnGoal": {
+              "type": "integer"
+            },
+            "homeTotalShotsInsideBox": {
+              "type": "integer"
+            },
+            "awayTotalShotsInsideBox": {
+              "type": "integer"
+            },
+            "homeTotalShotsOutsideBox": {
+              "type": "integer"
+            },
+            "awayTotalShotsOutsideBox": {
+              "type": "integer"
+            },
+            "homeAccuratePassesPercent": {
+              "type": "integer"
+            },
+            "awayAccuratePassesPercent": {
+              "type": "integer"
+            },
+            "homeDuelWonPercent": {
+              "type": "integer"
+            },
+            "awayDuelWonPercent": {
+              "type": "integer"
+            },
+            "homeAerialWonPercent": {
+              "type": "integer"
+            },
+            "awayAerialWonPercent": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "homeDuelLost",
+            "homeBlockedScoringAttempt",
+            "homeAccurateCross",
+            "homeAccuratePasses",
+            "homeGoalkeeperSaves",
+            "homeShotsOnGoal",
+            "homeThrowIns",
+            "homeAttOutsideBoxTarget",
+            "homeYellowCards",
+            "homeGoalKicks",
+            "homeAerialWon",
+            "homePasses",
+            "homeAttInBoxGoal",
+            "homeDuelWon",
+            "homeFreeKicks",
+            "homeOffsides",
+            "homeAttOutBoxBlocked",
+            "homeShotsOffGoal",
+            "homeAerialLost",
+            "homeBallPossession",
+            "homeAttOutsideBoxMiss",
+            "homeCornerKicks",
+            "awayDuelLost",
+            "awayBlockedScoringAttempt",
+            "awayAccurateCross",
+            "awaySixYardBlock",
+            "awayAccuratePasses",
+            "awayGoalkeeperSaves",
+            "awayShotsOnGoal",
+            "awayThrowIns",
+            "awayAttOutsideBoxTarget",
+            "awayYellowCards",
+            "awayAttInsideBoxTarget",
+            "awayGoalKicks",
+            "awayAerialWon",
+            "awayPasses",
+            "awayDuelWon",
+            "awayKeeperSweeper",
+            "awayFreeKicks",
+            "awayOffsides",
+            "awayAttOutBoxBlocked",
+            "awayShotsOffGoal",
+            "awayAttInBoxBlocked",
+            "awayAerialLost",
+            "awayBallPossession",
+            "awayAttOutsideBoxMiss",
+            "awayCornerKicks",
+            "homeSixYardBlock",
+            "homeKeeperSweeper",
+            "homeAttInsideBoxTarget",
+            "homeAttInBoxBlocked",
+            "awayAttInBoxGoal",
+            "homeTotalShotsOnGoal",
+            "awayTotalShotsOnGoal",
+            "homeTotalShotsInsideBox",
+            "awayTotalShotsInsideBox",
+            "homeTotalShotsOutsideBox",
+            "awayTotalShotsOutsideBox",
+            "homeAccuratePassesPercent",
+            "awayAccuratePassesPercent",
+            "homeDuelWonPercent",
+            "awayDuelWonPercent",
+            "homeAerialWonPercent",
+            "awayAerialWonPercent"
+          ]
+        },
+        "homeBlockedScoringAttempt": {
+          "type": "integer"
+        },
+        "homeAccurateCross": {
+          "type": "integer"
+        },
+        "homeAccuratePasses": {
+          "type": "integer"
+        },
+        "homeGoalkeeperSaves": {
+          "type": "integer"
+        },
+        "homeShotsOnGoal": {
+          "type": "integer"
+        },
+        "homeThrowIns": {
+          "type": "integer"
+        },
+        "homeAttOutsideBoxTarget": {
+          "type": "integer"
+        },
+        "homeYellowCards": {
+          "type": "integer"
+        },
+        "homeGoalKicks": {
+          "type": "integer"
+        },
+        "homeAerialWon": {
+          "type": "integer"
+        },
+        "homePasses": {
+          "type": "integer"
+        },
+        "homeAttInBoxGoal": {
+          "type": "integer"
+        },
+        "homeDuelWon": {
+          "type": "integer"
+        },
+        "homeFreeKicks": {
+          "type": "integer"
+        },
+        "homeOffsides": {
+          "type": "integer"
+        },
+        "homeAttOutBoxBlocked": {
+          "type": "integer"
+        },
+        "homeShotsOffGoal": {
+          "type": "integer"
+        },
+        "homeAerialLost": {
+          "type": "integer"
+        },
+        "homeBallPossession": {
+          "type": "integer"
+        },
+        "homeAttOutsideBoxMiss": {
+          "type": "integer"
+        },
+        "homeCornerKicks": {
+          "type": "integer"
+        },
+        "awayDuelLost": {
+          "type": "integer"
+        },
+        "awayBlockedScoringAttempt": {
+          "type": "integer"
+        },
+        "awayAccurateCross": {
+          "type": "integer"
+        },
+        "awaySixYardBlock": {
+          "type": "integer"
+        },
+        "awayAccuratePasses": {
+          "type": "integer"
+        },
+        "awayGoalkeeperSaves": {
+          "type": "integer"
+        },
+        "awayShotsOnGoal": {
+          "type": "integer"
+        },
+        "awayThrowIns": {
+          "type": "integer"
+        },
+        "awayAttOutsideBoxTarget": {
+          "type": "integer"
+        },
+        "awayYellowCards": {
+          "type": "integer"
+        },
+        "awayAttInsideBoxTarget": {
+          "type": "integer"
+        },
+        "awayGoalKicks": {
+          "type": "integer"
+        },
+        "awayAerialWon": {
+          "type": "integer"
+        },
+        "awayPasses": {
+          "type": "integer"
+        },
+        "awayDuelWon": {
+          "type": "integer"
+        },
+        "awayKeeperSweeper": {
+          "type": "integer"
+        },
+        "awayFreeKicks": {
+          "type": "integer"
+        },
+        "awayOffsides": {
+          "type": "integer"
+        },
+        "awayAttOutBoxBlocked": {
+          "type": "integer"
+        },
+        "awayShotsOffGoal": {
+          "type": "integer"
+        },
+        "awayAttInBoxBlocked": {
+          "type": "integer"
+        },
+        "awayAerialLost": {
+          "type": "integer"
+        },
+        "awayBallPossession": {
+          "type": "integer"
+        },
+        "awayAttOutsideBoxMiss": {
+          "type": "integer"
+        },
+        "awayCornerKicks": {
+          "type": "integer"
+        },
+        "homeSixYardBlock": {
+          "type": "integer"
+        },
+        "homeKeeperSweeper": {
+          "type": "integer"
+        },
+        "homeAttInsideBoxTarget": {
+          "type": "integer"
+        },
+        "homeAttInBoxBlocked": {
+          "type": "integer"
+        },
+        "awayAttInBoxGoal": {
+          "type": "integer"
+        },
+        "homeTotalShotsOnGoal": {
+          "type": "integer"
+        },
+        "awayTotalShotsOnGoal": {
+          "type": "integer"
+        },
+        "homeTotalShotsInsideBox": {
+          "type": "integer"
+        },
+        "awayTotalShotsInsideBox": {
+          "type": "integer"
+        },
+        "homeTotalShotsOutsideBox": {
+          "type": "integer"
+        },
+        "awayTotalShotsOutsideBox": {
+          "type": "integer"
+        },
+        "homeAccuratePassesPercent": {
+          "type": "integer"
+        },
+        "awayAccuratePassesPercent": {
+          "type": "integer"
+        },
+        "homeDuelWonPercent": {
+          "type": "integer"
+        },
+        "awayDuelWonPercent": {
+          "type": "integer"
+        },
+        "homeAerialWonPercent": {
+          "type": "integer"
+        },
+        "awayAerialWonPercent": {
+          "type": "integer"
+        },
+        "homeFouls": {
+          "type": "integer"
+        },
+        "awayFouls": {
+          "type": "integer"
+        },
+        "statisticsItems": {
+          "type": "object",
+          "properties": {
+            "BallPossession": {
+              "type": "string"
+            },
+            "TotalShotsOnGoal": {
+              "type": "string"
+            },
+            "ShotsOnGoal": {
+              "type": "string"
+            },
+            "ShotsOffGoal": {
+              "type": "string"
+            },
+            "BlockedScoringAttempt": {
+              "type": "string"
+            },
+            "TotalShotsInsideBox": {
+              "type": "string"
+            },
+            "TotalShotsOutsideBox": {
+              "type": "string"
+            },
+            "GoalkeeperSaves": {
+              "type": "string"
+            },
+            "CornerKicks": {
+              "type": "string"
+            },
+            "AccuratePasses": {
+              "type": "string"
+            },
+            "Offsides": {
+              "type": "string"
+            },
+            "Fouls": {
+              "type": "string"
+            },
+            "YellowCards": {
+              "type": "string"
+            },
+            "DuelWon": {
+              "type": "string"
+            },
+            "AerialWon": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "BallPossession",
+            "TotalShotsOnGoal",
+            "ShotsOnGoal",
+            "ShotsOffGoal",
+            "BlockedScoringAttempt",
+            "TotalShotsInsideBox",
+            "TotalShotsOutsideBox",
+            "GoalkeeperSaves",
+            "CornerKicks",
+            "AccuratePasses",
+            "Offsides",
+            "Fouls",
+            "YellowCards",
+            "DuelWon",
+            "AerialWon"
+          ]
+        },
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "period": {
+                "type": "string"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "groupName": {
+                      "type": "string"
+                    },
+                    "statisticsItems": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "home": {
+                            "type": "string"
+                          },
+                          "away": {
+                            "type": "string"
+                          },
+                          "compareCode": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "home",
+                          "away",
+                          "compareCode"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "groupName",
+                    "statisticsItems"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "period",
+              "groups"
+            ]
+          }
+        }
+      },
+      "required": [
+        "provider",
+        "homeDuelLost",
+        "period1",
+        "period2",
+        "homeBlockedScoringAttempt",
+        "homeAccurateCross",
+        "homeAccuratePasses",
+        "homeGoalkeeperSaves",
+        "homeShotsOnGoal",
+        "homeThrowIns",
+        "homeAttOutsideBoxTarget",
+        "homeYellowCards",
+        "homeGoalKicks",
+        "homeAerialWon",
+        "homePasses",
+        "homeAttInBoxGoal",
+        "homeDuelWon",
+        "homeFreeKicks",
+        "homeOffsides",
+        "homeAttOutBoxBlocked",
+        "homeShotsOffGoal",
+        "homeAerialLost",
+        "homeBallPossession",
+        "homeAttOutsideBoxMiss",
+        "homeCornerKicks",
+        "awayDuelLost",
+        "awayBlockedScoringAttempt",
+        "awayAccurateCross",
+        "awaySixYardBlock",
+        "awayAccuratePasses",
+        "awayGoalkeeperSaves",
+        "awayShotsOnGoal",
+        "awayThrowIns",
+        "awayAttOutsideBoxTarget",
+        "awayYellowCards",
+        "awayAttInsideBoxTarget",
+        "awayGoalKicks",
+        "awayAerialWon",
+        "awayPasses",
+        "awayDuelWon",
+        "awayKeeperSweeper",
+        "awayFreeKicks",
+        "awayOffsides",
+        "awayAttOutBoxBlocked",
+        "awayShotsOffGoal",
+        "awayAttInBoxBlocked",
+        "awayAerialLost",
+        "awayBallPossession",
+        "awayAttOutsideBoxMiss",
+        "awayCornerKicks",
+        "homeSixYardBlock",
+        "homeKeeperSweeper",
+        "homeAttInsideBoxTarget",
+        "homeAttInBoxBlocked",
+        "awayAttInBoxGoal",
+        "homeTotalShotsOnGoal",
+        "awayTotalShotsOnGoal",
+        "homeTotalShotsInsideBox",
+        "awayTotalShotsInsideBox",
+        "homeTotalShotsOutsideBox",
+        "awayTotalShotsOutsideBox",
+        "homeAccuratePassesPercent",
+        "awayAccuratePassesPercent",
+        "homeDuelWonPercent",
+        "awayDuelWonPercent",
+        "homeAerialWonPercent",
+        "awayAerialWonPercent",
+        "homeFouls",
+        "awayFouls",
+        "statisticsItems",
+        "periods"
+      ]
+    },
+    "liveForm": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "minute": {
+            "type": "number"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "minute",
+          "value"
+        ]
+      }
+    },
+    "scoreGraph": {
+      "type": "null"
+    },
+    "standingsAvailable": {
+      "type": "boolean"
+    },
+    "pointByPoint": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "event",
+    "incidents",
+    "groupedIncidents",
+    "innings",
+    "vote",
+    "odds",
+    "highlights",
+    "statistics",
+    "liveForm",
+    "scoreGraph",
+    "standingsAvailable",
+    "pointByPoint"
+  ]
+}

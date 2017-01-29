@@ -5,7 +5,7 @@ zuul:
       serviceId: fantacalcio-coredomain-user
       stripPrefix: false
     auth:
-      path: /oauth/**
+      path: /uaa/**
       serviceId: fantacalcio-auth-server
       stripPrefix: false
   prefix: /api
