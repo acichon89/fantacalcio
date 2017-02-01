@@ -15,4 +15,6 @@ public interface UserGateway {
 
 	void changePassword(ChangePasswordDTO changePasswordDTO);
 	void resetPassword(ResetPasswordDTO resetPasswordDTO);
+
+	void ban(String mail);
 }

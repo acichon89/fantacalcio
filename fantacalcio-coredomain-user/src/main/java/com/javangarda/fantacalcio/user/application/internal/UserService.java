@@ -12,6 +12,7 @@ public interface UserService {
 	Optional<FantaCalcioUser> confirmEmail(String activationToken);
 	void changePassword(String newPassword, String userEmail);
 	void resetPassword(String newPassword, String userEmail);
+	void banUser(String email);
 
 	Optional<FantaCalcioUser> getById(String id);
 }

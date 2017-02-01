@@ -1,21 +1,18 @@
 package com.javangarda.fantacalcio.user.application.internal.impl;
 
-import javax.transaction.Transactional;
-
 import com.javangarda.fantacalcio.user.application.data.FantaCalcioUser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
-
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
 import com.javangarda.fantacalcio.user.application.internal.AccessTokenGenerator;
 import com.javangarda.fantacalcio.user.application.internal.UserFactory;
 import com.javangarda.fantacalcio.user.application.internal.UserRepository;
 import com.javangarda.fantacalcio.user.application.internal.UserService;
 import com.javangarda.fantacalcio.user.application.model.User;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Component
@@ -64,6 +61,11 @@ public class TransactionalUserService implements UserService {
 	public void resetPassword(String newPassword, String userEmail) {
 		String encodedPassword = passwordEncoder.encode(newPassword);
 		userRepository.findByEmail(userEmail).ifPresent(user -> user.changePassword(encodedPassword, true));
+	}
+
+	@Override
+	public void banUser(String email) {
+		userRepository.findByEmail(email).ifPresent(user -> user.ban());
 	}
 
 	@Override

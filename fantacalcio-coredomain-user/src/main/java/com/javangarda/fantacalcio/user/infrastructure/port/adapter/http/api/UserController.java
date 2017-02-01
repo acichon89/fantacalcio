@@ -47,4 +47,11 @@ public class UserController {
 		userGateway.resetPassword(resetPasswordDTO);
 		return ResponseEntity.ok().body("OK");
 	}
+
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/ban", method = RequestMethod.POST)
+	public ResponseEntity<String> banUser(@RequestParam(value="email") String email){
+		userGateway.ban(email);
+		return ResponseEntity.ok().body("OK");
+	}
 }

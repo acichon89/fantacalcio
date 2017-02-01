@@ -2,20 +2,18 @@ package com.javangarda.fantacalcio.user.application.gateway.impl;
 
 import com.javangarda.fantacalcio.user.application.data.ChangePasswordDTO;
 import com.javangarda.fantacalcio.user.application.data.FantaCalcioUser;
+import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
 import com.javangarda.fantacalcio.user.application.data.ResetPasswordDTO;
-import com.javangarda.fantacalcio.user.application.event.*;
+import com.javangarda.fantacalcio.user.application.event.EmailCommandSender;
+import com.javangarda.fantacalcio.user.application.event.UserEventPublisher;
+import com.javangarda.fantacalcio.user.application.gateway.UserGateway;
+import com.javangarda.fantacalcio.user.application.internal.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
-import com.javangarda.fantacalcio.user.application.gateway.UserGateway;
-import com.javangarda.fantacalcio.user.application.internal.UserService;
-
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
 
@@ -60,5 +58,11 @@ public class EventDrivenUserGateway implements UserGateway {
 	@Override
 	public void resetPassword(ResetPasswordDTO resetPasswordDTO) {
 		userService.resetPassword(resetPasswordDTO.getNewPassword(), resetPasswordDTO.getEmail());
+	}
+
+	@Override
+	public void ban(String mail) {
+		userService.banUser(mail);
+		userEventPublisher.publishUserBanned(mail);
 	}
 }
