@@ -47,8 +47,7 @@ sonarqube {
     properties {
         property "sonar.projectName", "FantaCalcio"
         property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
-      	//property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
+        property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
       	property "sonar.coverage.exclusions", "**Context.java, **Application.java"
       	property "sonar.exclusions", "**Context.java, **Application.java"
     }
