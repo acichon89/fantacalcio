@@ -11,6 +11,6 @@ jdk:
 - oraclejdk8
 
 after_success:
-- gradle jacocoTestReport jacocoIntegrationTestReport sonarqube --stacktrace
+- gradle jacocoTestReport sonarqube --stacktrace
 - bash <(curl -s https://codecov.io/bash)
 - coveralls
