@@ -26,43 +26,12 @@ subprojects {
 	repositories {
 	    mavenCentral()
 	}
-	/// SOURCE SETS:
-	sourceSets {
-	    integrationTest {
-	        java {
-	            compileClasspath += main.output + test.output
-	            runtimeClasspath += main.output + test.output
-	            srcDir file('src/test-integration/java')
-	        }
-	        resources.srcDir file('src/test-integration/resources')
-	    }
-	}
+
 	// DEPENDENCIES:
 	dependencies {
-		//compile:
-	    
-		//provided:
 	    compile "org.projectlombok:lombok:1.12.6"
-	    //test:
-	    
-	    //integration test:
-	    
-	    //configuration:
-		integrationTestCompile sourceSets.main.output		
-		integrationTestCompile configurations.testCompile
-		integrationTestRuntime configurations.testRuntime	
-		
 	}
-	/// TASKS :
-	task integrationTest(type: Test) {
-		systemProperty "spring.profiles.active", System.getProperty("spring.profiles.active")
-	    testClassesDir = sourceSets.integrationTest.output.classesDir
-	    classpath = sourceSets.integrationTest.runtimeClasspath
-	    outputs.upToDateWhen { false }
-	    reports.junitXml.destination = file("$buildDir/integration-test-results/")
-		reports.html.destination = file("$buildDir/reports/integration-tests/")
-	}
-	
+
 	jacocoTestReport(){
 		group = "Reporting"
 		description = "Generate Jacoco coverage reports after running tests."
@@ -71,33 +40,7 @@ subprojects {
 		        html.enabled = true
 	        }
         }
-	
-	task jacocoIntegrationTestReport(type:JacocoReport){
-		  group = "Reporting"
-	      description = "Generate Jacoco coverage reports after running integration tests."
-	
-	      executionData = fileTree(dir: 'build/jacoco', include: 'integrationTest.exec')
-	
-	      reports {
-	             xml{
-	                 enabled false
-	             }
-	             csv.enabled false
-	             html{
-	                 enabled true
-	                 //Following value is a folder
-	                 destination "${buildDir}/reports/jacoco/integration-test/html"
-	             }
-	      }
-	
-	
-	      sourceDirectories = files(sourceSets.main.allSource.srcDirs)
-	      classDirectories = files(sourceSets.main.output.classesDir)
-	}
-	
-	check.dependsOn integrationTest
-	integrationTest.dependsOn test
-	
+
 }
 	
 sonarqube {
@@ -105,8 +48,8 @@ sonarqube {
         property "sonar.projectName", "FantaCalcio"
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
-      	property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
+      	//property "sonar.jacoco.itReportPath", "build/jacoco/integrationTest.exec"
       	property "sonar.coverage.exclusions", "**Context.java, **Application.java"
-      	property "sonar.exclusions", "**Context.java, **Configurer.java, **Application.java"
+      	property "sonar.exclusions", "**Context.java, **Application.java"
     }
 }
