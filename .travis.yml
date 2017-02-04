@@ -13,4 +13,3 @@ jdk:
 after_success:
 - gradle jacocoTestReport sonarqube --stacktrace
 - bash <(curl -s https://codecov.io/bash)
-- coveralls

@@ -1,16 +1,15 @@
 package com.javangarda.fantacalcio.user.application.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.*;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -60,7 +59,8 @@ public class User {
 	@Setter
 	private String resetPasswordToken;
 
-	public User() {};
+	public User() {};	/*NOSONAR*/
+
 	public User(String id){
 		this.id=id;
 	}

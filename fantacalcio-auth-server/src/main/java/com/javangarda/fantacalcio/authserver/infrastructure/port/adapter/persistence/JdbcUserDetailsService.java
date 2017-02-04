@@ -31,7 +31,7 @@ public class JdbcUserDetailsService extends JdbcDaoImpl {
                 new String[] { username },(rs, rowNum) -> {
                         String login = rs.getString(1);
                         String password = rs.getString(2);
-                        boolean enabled = rs.getString(3).equalsIgnoreCase("CONFIRMED");
+                        boolean enabled = "CONFIRMED".equalsIgnoreCase(rs.getString(3));
                         return new User(login, password, enabled, enabled, enabled, enabled, AuthorityUtils.NO_AUTHORITIES);
                 });
     }
