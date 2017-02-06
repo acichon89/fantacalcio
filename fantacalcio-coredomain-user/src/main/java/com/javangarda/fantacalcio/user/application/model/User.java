@@ -59,7 +59,7 @@ public class User {
 	@Setter
 	private String resetPasswordToken;
 
-	public User() {};	/*NOSONAR*/
+	public User() {};
 
 	public User(String id){
 		this.id=id;
@@ -114,21 +114,19 @@ public class User {
 	}
 
 	@Override
-	public int hashCode() {
-		int hash = 0;
-		hash += (this.getId() != null ? this.getId().hashCode() : 0);
-		return hash;
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		User user = (User) o;
+		return id.equals(user.id);
 	}
 
 	@Override
-	public boolean equals(Object object) {
-		if (object == null || !(object instanceof User) || getClass() != object.getClass()){
-			return false;
-		}
-		User other = (User) object;
-		if (this.getId() == null || !this.id.equals(other.id)) {
-			return false;
-		}
-		return true;
+	public int hashCode() {
+		return id.hashCode();
 	}
 }

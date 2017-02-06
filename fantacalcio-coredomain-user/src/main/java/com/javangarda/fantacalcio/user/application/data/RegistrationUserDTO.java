@@ -4,10 +4,7 @@ import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.Re
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Data

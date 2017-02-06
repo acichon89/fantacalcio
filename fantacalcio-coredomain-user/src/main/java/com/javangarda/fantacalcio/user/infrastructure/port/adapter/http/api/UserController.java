@@ -35,8 +35,6 @@ public class UserController {
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO, Principal principal) {
-		System.out.println(principal);
-		System.out.println(principal.getName());
 		userGateway.changePassword(changePasswordDTO);
 		return ResponseEntity.ok().body("OK");
 	}
