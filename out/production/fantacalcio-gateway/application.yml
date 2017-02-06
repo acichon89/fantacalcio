@@ -1,7 +1,17 @@
-server:
-  port: 8080
 zuul:
   routes:
-    user:
+    users:
       path: /user/**
-      url: http://localhost:8060/
+      serviceId: fantacalcio-coredomain-user
+      stripPrefix: false
+      sensitiveHeaders:
+    auth:
+      path: /uaa/**
+      serviceId: fantacalcio-auth-server
+      stripPrefix: false
+      sensitiveHeaders:
+  prefix: /api
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
