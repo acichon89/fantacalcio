@@ -50,11 +50,23 @@ public class EventDrivenUserGatewayTest {
         //given:
         String email = "abc@abc.pl";
         String id = "321l";
-        Mockito.when(userService.assignActivationToken(email, id)).thenReturn("tokenTokenToken");
+        Mockito.when(userService.assignActivationToken(email, id)).thenReturn(Optional.of("tokenTokenToken"));
         //when:
         eventDrivenUserGateway.startConfirmationEmailProcedure(email, id);
         //then:
         Mockito.verify(emailCommandSender).sendConfirmationEmail(email, "tokenTokenToken");
+    }
+
+    @Test
+    public void shouldNotSendCommandAfterAssignActivationToken()  {
+        //given:
+        String email = "abc@abc.pl";
+        String id = "321l";
+        Mockito.when(userService.assignActivationToken(email, id)).thenReturn(Optional.empty());
+        //when:
+        eventDrivenUserGateway.startConfirmationEmailProcedure(email, id);
+        //then:
+        Mockito.verify(emailCommandSender, Mockito.never()).sendConfirmationEmail(Mockito.anyString(), Mockito.anyString());
     }
 
     @Test
@@ -73,7 +85,6 @@ public class EventDrivenUserGatewayTest {
     @Test
     public void shouldNotReturnUserIfConfirmationTokenIsInvalid(){
         //given:
-        String email = "boo@dog.com";
         String token = "abcdefg";
         Mockito.when(userService.confirmEmail(token)).thenReturn(Optional.empty());
         //when:
@@ -87,10 +98,9 @@ public class EventDrivenUserGatewayTest {
     public void shouldDelegateWhileChangingPassword() {
         //given:
         ChangePasswordDTO dto = new ChangePasswordDTO();
-        dto.setUserEmail("boo@dog.com");
         dto.setNewPassword("wakaWaka");
         //when:
-        eventDrivenUserGateway.changePassword(dto);
+        eventDrivenUserGateway.changePassword(dto, "boo@dog.com");
         //then:
         Mockito.verify(userService).changePassword("wakaWaka", "boo@dog.com");
     }
@@ -99,12 +109,12 @@ public class EventDrivenUserGatewayTest {
     public void shouldDelegateWhileResetingPassword() {
         //given:
         ResetPasswordDTO dto = new ResetPasswordDTO();
-        dto.setEmail("boo@dog.com");
         dto.setNewPassword("wakaWaka");
+        dto.setResetPasswordToken("token123");
         //when:
         eventDrivenUserGateway.resetPassword(dto);
         //then:
-        Mockito.verify(userService).resetPassword("wakaWaka", "boo@dog.com");
+        Mockito.verify(userService).resetPassword("wakaWaka", "token123");
     }
 
     @Test

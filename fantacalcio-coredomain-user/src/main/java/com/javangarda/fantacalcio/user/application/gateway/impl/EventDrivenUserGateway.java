@@ -39,8 +39,12 @@ public class EventDrivenUserGateway implements UserGateway {
 	@ServiceActivator(inputChannel="createActivationEmailTokenChannel")
 	public void startConfirmationEmailProcedure(@Payload String mail,@Header("userId") String userId) {
 		log.debug("Thread = {} @EventDrivenUserGateway::startConfirmationEmailProcedure, mail={}, userId={}", Thread.currentThread().getName(), mail, userId);
-		String token = userService.assignActivationToken(mail, userId);
-		emailCommandSender.sendConfirmationEmail(mail, token);
+		userService.assignActivationToken(mail, userId).ifPresent(token -> emailCommandSender.sendConfirmationEmail(mail, token));
+	}
+
+	@Override
+	public void startResetPasswordProcedure(String mail) {
+		userService.assignResetPasswordToken(mail).ifPresent(token -> userEventPublisher.publishResetPasswordConfirmed(token, mail));
 	}
 
 	@Override
@@ -51,13 +55,13 @@ public class EventDrivenUserGateway implements UserGateway {
 	}
 
 	@Override
-	public void changePassword(ChangePasswordDTO changePasswordDTO) {
-		userService.changePassword(changePasswordDTO.getNewPassword(), changePasswordDTO.getUserEmail());
+	public void changePassword(ChangePasswordDTO changePasswordDTO, String email) {
+		userService.changePassword(changePasswordDTO.getNewPassword(), email);
 	}
 
 	@Override
-	public void resetPassword(ResetPasswordDTO resetPasswordDTO) {
-		userService.resetPassword(resetPasswordDTO.getNewPassword(), resetPasswordDTO.getEmail());
+	public Optional<FantaCalcioUser> resetPassword(ResetPasswordDTO resetPasswordDTO) {
+		return userService.resetPassword(resetPasswordDTO.getNewPassword(), resetPasswordDTO.getResetPasswordToken());
 	}
 
 	@Override

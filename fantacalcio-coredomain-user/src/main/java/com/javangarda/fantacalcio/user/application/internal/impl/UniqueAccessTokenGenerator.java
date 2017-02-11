@@ -21,4 +21,13 @@ public class UniqueAccessTokenGenerator implements AccessTokenGenerator {
 		return token;
 	}
 
+	@Override
+	public String createResetPasswordToken() {
+		String token;
+		do {
+			token = RandomStringUtils.randomAlphanumeric(25);
+		} while (userRepository.countUserWithResetPasswordToken(token) > 0);
+		return token;
+	}
+
 }

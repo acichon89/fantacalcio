@@ -1,7 +1,7 @@
 include 'fantacalcio-config-server'
-include 'fantacalcio-supportdomain-mail'
-include 'fantacalcio-coredomain-user'
-include 'fantacalcio-auth-server'
 include 'fantacalcio-registry'
 include 'fantacalcio-gateway'
+include 'fantacalcio-auth-server'
+include 'fantacalcio-coredomain-user'
+include 'fantacalcio-supportdomain-mail'
 

@@ -37,11 +37,13 @@ public class TransactionalUserService implements UserService {
 	}
 	
 	@Override
-	public String assignActivationToken(String email, String userId) {
-		Optional<User> user = userRepository.findOne(userId);
-		String token = accessTokenGenerator.createConfirmEmailToken();
-		user.ifPresent(u -> u.assignEmailToBeConfirmed(email, token));
-		return token;
+	public Optional<String> assignActivationToken(String email, String userId) {
+		return userRepository.findOne(userId).map(user -> assignActivationTokenEmail(user, email));
+	}
+
+	@Override
+	public Optional<String> assignResetPasswordToken(String email) {
+		return userRepository.findByEmail(email).map(this::assignResetToken);
 	}
 
 	@Override
@@ -58,9 +60,13 @@ public class TransactionalUserService implements UserService {
 	}
 
 	@Override
-	public void resetPassword(String newPassword, String userEmail) {
-		String encodedPassword = passwordEncoder.encode(newPassword);
-		userRepository.findByEmail(userEmail).ifPresent(user -> user.changePassword(encodedPassword, true));
+	public Optional<FantaCalcioUser> resetPassword(String newPassword, String token) {
+		Optional<User> u = userRepository.findByResetPasswordToken(token);
+		u.ifPresent(user -> {
+			String encodedPassword = passwordEncoder.encode(newPassword);
+			user.changePassword(encodedPassword, true);
+		});
+		return u.map(FantaCalcioUser::new);
 	}
 
 	@Override
@@ -68,8 +74,15 @@ public class TransactionalUserService implements UserService {
 		userRepository.findByEmail(email).ifPresent(user -> user.ban());
 	}
 
-	@Override
-	public Optional<FantaCalcioUser> getById(String id) {
-		return userRepository.findOne(id).map(FantaCalcioUser::new);
+	private String assignResetToken(User user){
+		String token = accessTokenGenerator.createResetPasswordToken();
+		user.setResetPasswordToken(token);
+		return token;
+	}
+
+	private String assignActivationTokenEmail(User user, String email) {
+		String token = accessTokenGenerator.createConfirmEmailToken();
+		user.assignEmailToBeConfirmed(email, token);
+		return token;
 	}
 }

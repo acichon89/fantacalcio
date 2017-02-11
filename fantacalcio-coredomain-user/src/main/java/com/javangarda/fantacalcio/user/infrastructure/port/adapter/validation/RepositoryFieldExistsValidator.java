@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @Component
-public class RepositoryFieldUniqueValidator implements ConstraintValidator<RepositoryFieldUnique, String> {
+public class RepositoryFieldExistsValidator implements ConstraintValidator<RepositoryFieldUnique, String> {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -22,6 +22,6 @@ public class RepositoryFieldUniqueValidator implements ConstraintValidator<Repos
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         int count = jdbcTemplate.queryForObject(query, new Object[] {value}, Integer.class);
-        return count == 0;
+        return count == 1;
     }
 }

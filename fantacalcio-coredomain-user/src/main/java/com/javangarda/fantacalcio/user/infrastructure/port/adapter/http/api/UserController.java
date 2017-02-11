@@ -27,7 +27,7 @@ public class UserController {
 		return ResponseEntity.ok().body("OK");
 	}
 
-	@RequestMapping(value = "/confirmEmail", method = RequestMethod.GET)
+	@RequestMapping(value = "/confirmEmail", method = RequestMethod.POST)
 	public ResponseEntity<FantaCalcioUser> confirmEmail(@RequestParam(value = "token") String activationToken) {
 		return userGateway.confirmEmail(activationToken).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
@@ -35,18 +35,22 @@ public class UserController {
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO, Principal principal) {
-		userGateway.changePassword(changePasswordDTO);
+		userGateway.changePassword(changePasswordDTO, principal.getName());
 		return ResponseEntity.ok().body("OK");
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/startResetPasswordProcedure", method = RequestMethod.POST)
+	public ResponseEntity<String> startResetPasswordConfirmation(Principal principal) {
+		userGateway.startResetPasswordProcedure(principal.getName());
+		return ResponseEntity.ok().body("OK");
+	}
+
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-	public ResponseEntity<String> resetPassword(@RequestBody @Validated ResetPasswordDTO resetPasswordDTO) {
-		userGateway.resetPassword(resetPasswordDTO);
-		return ResponseEntity.ok().body("OK");
+	public ResponseEntity<FantaCalcioUser> resetPassword(@RequestBody @Validated ResetPasswordDTO resetPasswordDTO) {
+		return userGateway.resetPassword(resetPasswordDTO).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/ban", method = RequestMethod.POST)
 	public ResponseEntity<String> banUser(@RequestParam(value="email") String email){
 		userGateway.ban(email);

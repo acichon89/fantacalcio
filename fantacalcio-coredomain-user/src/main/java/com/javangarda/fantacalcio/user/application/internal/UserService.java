@@ -8,11 +8,10 @@ import java.util.Optional;
 public interface UserService {
 
 	String registerUser(RegistrationUserDTO registrationUserDto);
-	String assignActivationToken(String email, String userId);
+	Optional<String> assignActivationToken(String email, String userId);
+	Optional<String> assignResetPasswordToken(String email);
 	Optional<FantaCalcioUser> confirmEmail(String activationToken);
 	void changePassword(String newPassword, String userEmail);
-	void resetPassword(String newPassword, String userEmail);
+	Optional<FantaCalcioUser> resetPassword(String newPassword, String token);
 	void banUser(String email);
-
-	Optional<FantaCalcioUser> getById(String id);
 }

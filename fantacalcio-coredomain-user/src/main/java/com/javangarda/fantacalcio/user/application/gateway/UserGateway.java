@@ -11,10 +11,11 @@ public interface UserGateway {
 
 	void registerUser(RegistrationUserDTO registrationUserDTO);
 	void startConfirmationEmailProcedure(String mail, String userId);
+	void startResetPasswordProcedure(String mail);
 	Optional<FantaCalcioUser> confirmEmail(String activationToken);
 
-	void changePassword(ChangePasswordDTO changePasswordDTO);
-	void resetPassword(ResetPasswordDTO resetPasswordDTO);
+	void changePassword(ChangePasswordDTO changePasswordDTO, String email);
+	Optional<FantaCalcioUser> resetPassword(ResetPasswordDTO resetPasswordDTO);
 
 	void ban(String mail);
 }
