@@ -1,10 +1,13 @@
 package com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation;
 
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.lang.reflect.Field;
 
+@Slf4j
 public class EqualFieldsValidator implements ConstraintValidator<EqualFields, Object> {
 
     private String baseField;
@@ -23,7 +26,7 @@ public class EqualFieldsValidator implements ConstraintValidator<EqualFields, Ob
             Object matchFieldValue = getFieldValue(object, matchField);
             return baseFieldValue != null && baseFieldValue.equals(matchFieldValue);
         } catch (Exception e) {
-            // log error
+            log.debug(baseField+" and" +matchField + "are not the same");
             return false;
         }
     }

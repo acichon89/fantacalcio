@@ -1,5 +1,7 @@
 package com.javangarda.fantacalcio.user;
 
+import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.PasswordCheckValidator;
+import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.RepositoryFieldExistsValidator;
 import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.RepositoryFieldUniqueValidator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,4 +32,15 @@ public class FantacalcioUserApplication {
 		return new RepositoryFieldUniqueValidator();
 	}
 
+	@Primary
+	@Bean
+	public RepositoryFieldExistsValidator repositoryFieldExistsValidator() {
+		return new RepositoryFieldExistsValidator();
+	}
+
+	@Primary
+	@Bean
+	public PasswordCheckValidator passwordCheckValidator() {
+		return new PasswordCheckValidator();
+	}
 }

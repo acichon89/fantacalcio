@@ -10,13 +10,13 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
-@EqualFields(baseField = "password", matchField = "confirmedPassword", message = "xxx yyy zzz")
+@EqualFields(baseField = "password", matchField = "confirmedPassword", message = "validation.passwordsnotequal")
 public class RegistrationUserDTO {
 
 	@NotBlank
 	@Email
 	@Size(min = 3, max = 50)
-	@RepositoryFieldUnique(query = "SELECT COUNT(*) FROM users WHERE email = ?", message = "aaa bbb ccc")
+	@RepositoryFieldUnique(query = "SELECT COUNT(*) FROM users WHERE email = ?", message = "validation.email.alreadyregistered")
 	private String email;
 	@NotBlank
 	@Size(min = 3, max = 50)

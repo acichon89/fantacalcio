@@ -37,10 +37,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-integration')
 	compile group: 'joda-time', name: 'joda-time', version: '2.9.5'
 	compile('mysql:mysql-connector-java')
-	compile 'org.springframework.cloud:spring-cloud-stream'
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-redis', version: '1.0.0.RELEASE'
+	//compile 'org.springframework.cloud:spring-cloud-stream'
+	//compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-redis', version: '1.0.0.RELEASE'
 	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.11.RELEASE'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.5.RELEASE'
 	compile ('net.sf.dozer:dozer:5.4.0') {
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'

@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = StrongPasswordValidator.class)
 @Documented
 public @interface StrongPassword {
-    String message() default "not_strong_password";
+    String message() default "validation.password.notstrong";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
 }

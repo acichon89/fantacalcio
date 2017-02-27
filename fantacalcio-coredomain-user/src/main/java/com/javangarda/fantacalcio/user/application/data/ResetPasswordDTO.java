@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-@EqualFields(baseField = "newPassword", matchField = "confirmNewPassword", message = "xxx yyy zzz")
+@EqualFields(baseField = "newPassword", matchField = "confirmNewPassword", message = "validation.passwordsnotequal")
 public class ResetPasswordDTO {
 
     @NotBlank
@@ -21,6 +21,6 @@ public class ResetPasswordDTO {
     @Size(min = 8, max = 50)
     private String confirmNewPassword;
     @NotNull
-    @RepositoryFieldExists(query = "SELECT COUNT(*) FROM users WHERE reset_password_token = ?", message = "dummy_code")
+    @RepositoryFieldExists(query = "SELECT COUNT(*) FROM users WHERE reset_password_token = ?", message = "validation.resetPasswordToken.notexists")
     private String resetPasswordToken;
 }

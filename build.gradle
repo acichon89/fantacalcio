@@ -49,6 +49,6 @@ sonarqube {
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
       	property "sonar.coverage.exclusions", "**Context.java, **Application.java, **Config.java"
-      	property "sonar.exclusions", "**Context.java, **Application.java, **Config.java"
+      	property "sonar.exclusions", "**Context.java, **Application.java, **Config.java, *.sql"
     }
 }

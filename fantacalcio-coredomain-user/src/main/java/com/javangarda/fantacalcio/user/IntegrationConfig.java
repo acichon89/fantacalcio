@@ -2,8 +2,6 @@ package com.javangarda.fantacalcio.user;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.IntegrationComponentScan;
@@ -18,7 +16,7 @@ import java.util.concurrent.Executor;
 @EnableIntegration
 @IntegrationComponentScan(basePackages={"com.javangarda.fantacalcio.user"})
 @Configuration
-@EnableBinding(Source.class)
+//@EnableBinding(Source.class)
 public class IntegrationConfig implements AsyncConfigurer {
 
     @Bean
@@ -43,6 +41,11 @@ public class IntegrationConfig implements AsyncConfigurer {
 
     @Bean
     public MessageChannel createActivationEmailTokenChannel() {
+        return new PublishSubscribeChannel(getAsyncExecutor());
+    }
+
+    @Bean
+    public MessageChannel passwordResetChannel() {
         return new PublishSubscribeChannel(getAsyncExecutor());
     }
 

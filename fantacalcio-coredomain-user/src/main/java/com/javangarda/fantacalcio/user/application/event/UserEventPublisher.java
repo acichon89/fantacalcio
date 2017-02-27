@@ -18,5 +18,6 @@ public interface UserEventPublisher {
 	@Gateway(requestChannel = "userBannedChannel")
 	void publishUserBanned(String email);
 
-	void publishResetPasswordConfirmed(String token, String email);
+	@Gateway(requestChannel = "passwordResetChannel")
+	void publishResetPasswordConfirmed(@Payload String token,@Header("email") String email);
 }

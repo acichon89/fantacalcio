@@ -2,12 +2,10 @@ package com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-@Component
 public class RepositoryFieldUniqueValidator implements ConstraintValidator<RepositoryFieldUnique, String> {
 
     @Autowired

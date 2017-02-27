@@ -2,7 +2,6 @@ package com.javangarda.fantacalcio.user.application.saga;
 
 import com.javangarda.fantacalcio.user.application.data.RegistrationUserDTO;
 import com.javangarda.fantacalcio.user.application.event.UserCommandSender;
-import com.javangarda.fantacalcio.user.application.internal.ExternalMessageSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.MessageEndpoint;
@@ -16,9 +15,7 @@ public class UserEventHandler {
 
 	@Autowired
 	private UserCommandSender userCommandSender;
-	@Autowired
-	private ExternalMessageSender externalMessageSender;
-	
+
 	@ServiceActivator(inputChannel="userRegisteredChannel")
 	public void handleUserRegisterEvent(@Payload RegistrationUserDTO registrationUserDto, @Header("userId") String userId) {
 		log.trace("Thread = {} @UserEventHandler::handleUserRegisterEvent, registrationUserDto={}, userId={}", Thread.currentThread().getName(), registrationUserDto, userId);
@@ -27,6 +24,6 @@ public class UserEventHandler {
 
 	@ServiceActivator(inputChannel = "userBannedChannel")
 	public void handleUserBannedEvent(@Payload String email) {
-		externalMessageSender.removeUserTokens(email);
+
 	}
 }

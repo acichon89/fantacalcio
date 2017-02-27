@@ -18,7 +18,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     public void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers("/user/register", "/user/confirmEmail").permitAll()
+                .antMatchers("/user/register", "/user/confirmEmail", "/donkey/get-safe").permitAll()
                 .anyRequest().authenticated();
         // @formatter:on
     }

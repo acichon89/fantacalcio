@@ -2,20 +2,18 @@ package com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-@Component
-public class RepositoryFieldExistsValidator implements ConstraintValidator<RepositoryFieldUnique, String> {
+public class RepositoryFieldExistsValidator implements ConstraintValidator<RepositoryFieldExists, String> {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private String query;
 
     @Override
-    public void initialize(RepositoryFieldUnique constraintAnnotation) {
+    public void initialize(RepositoryFieldExists constraintAnnotation) {
         this.query=constraintAnnotation.query();
     }
 
