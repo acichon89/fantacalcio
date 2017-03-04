@@ -1,5 +1,7 @@
 package com.javangarda.fantacalcio.user.infrastructure.port.adapter.http.api;
 
+import com.javangarda.fantacalcio.commons.http.BadRequestResponseDTO;
+import com.javangarda.fantacalcio.commons.http.ResponseDTO;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,7 +19,7 @@ public class MethodArgumentNotValidExceptionHandler {
     @ResponseStatus(BAD_REQUEST)
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public BadRequestResponseDTO methodArgumentNotValidException(MethodArgumentNotValidException ex) {
+    public ResponseDTO methodArgumentNotValidException(MethodArgumentNotValidException ex) {
         return new BadRequestResponseDTO(ex.getBindingResult());
     }
 }

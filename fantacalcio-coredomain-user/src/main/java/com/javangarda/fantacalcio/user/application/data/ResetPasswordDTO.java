@@ -1,8 +1,8 @@
 package com.javangarda.fantacalcio.user.application.data;
 
-import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.EqualFields;
-import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.RepositoryFieldExists;
-import com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation.StrongPassword;
+import com.javangarda.fantacalcio.commons.validation.EqualFields;
+import com.javangarda.fantacalcio.commons.validation.RepositoryFieldExists;
+import com.javangarda.fantacalcio.commons.validation.StrongPassword;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 

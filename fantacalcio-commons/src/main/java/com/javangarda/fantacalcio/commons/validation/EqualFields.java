@@ -1,4 +1,4 @@
-package com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation;
+package com.javangarda.fantacalcio.commons.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

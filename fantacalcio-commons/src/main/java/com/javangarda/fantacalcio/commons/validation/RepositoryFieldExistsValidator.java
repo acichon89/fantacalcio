@@ -1,25 +1,27 @@
-package com.javangarda.fantacalcio.user.infrastructure.port.adapter.validation;
+package com.javangarda.fantacalcio.commons.validation;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class RepositoryFieldUniqueValidator implements ConstraintValidator<RepositoryFieldUnique, String> {
+public class RepositoryFieldExistsValidator implements ConstraintValidator<RepositoryFieldExists, String> {
 
-    @Autowired
     private JdbcTemplate jdbcTemplate;
     private String query;
 
+    public RepositoryFieldExistsValidator(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     @Override
-    public void initialize(RepositoryFieldUnique constraintAnnotation) {
+    public void initialize(RepositoryFieldExists constraintAnnotation) {
         this.query=constraintAnnotation.query();
     }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         int count = jdbcTemplate.queryForObject(query, new Object[] {value}, Integer.class);
-        return count == 0;
+        return count == 1;
     }
 }

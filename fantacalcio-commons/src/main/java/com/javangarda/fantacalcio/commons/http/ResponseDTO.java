@@ -1,4 +1,4 @@
-package com.javangarda.fantacalcio.user.infrastructure.port.adapter.http.api;
+package com.javangarda.fantacalcio.commons.http;
 
 
 import lombok.AllArgsConstructor;

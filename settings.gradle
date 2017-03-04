@@ -4,4 +4,5 @@ include 'fantacalcio-gateway'
 include 'fantacalcio-auth-server'
 include 'fantacalcio-coredomain-user'
 include 'fantacalcio-supportdomain-mail'
+include 'fantacalcio-commons'
 

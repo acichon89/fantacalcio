@@ -1,8 +1,6 @@
-package com.javangarda.fantacalcio.user.infrastructure.port.adapter.http.api;
+package com.javangarda.fantacalcio.commons.http;
 
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -38,24 +36,4 @@ public class BadRequestResponseDTO extends ResponseDTO {
         this.globalErrors = _objectErrors.stream().map(oe -> new GlobalError(oe.getCode(), oe.getDefaultMessage())).collect(Collectors.toSet());
     }
 
-}
-@AllArgsConstructor
-@EqualsAndHashCode
-class FieldError {
-
-    @Getter
-    private String path;
-    @Getter
-    private String code;
-    @Getter
-    private String message;
-
-}
-@AllArgsConstructor
-@EqualsAndHashCode
-class GlobalError {
-    @Getter
-    private String code;
-    @Getter
-    private String message;
 }
