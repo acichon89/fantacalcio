@@ -1,7 +1,9 @@
 package com.javangarda.fantacalcio.user;
 
+import com.javangarda.fantacalcio.user.infrastructure.port.adapter.messaging.Events;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.IntegrationComponentScan;
@@ -16,7 +18,7 @@ import java.util.concurrent.Executor;
 @EnableIntegration
 @IntegrationComponentScan(basePackages={"com.javangarda.fantacalcio.user"})
 @Configuration
-//@EnableBinding(Source.class)
+@EnableBinding(Events.class)
 public class IntegrationConfig implements AsyncConfigurer {
 
     @Bean
@@ -26,11 +28,6 @@ public class IntegrationConfig implements AsyncConfigurer {
 
     @Bean
     public MessageChannel emailConfirmedChannel() {
-        return new PublishSubscribeChannel(getAsyncExecutor());
-    }
-
-    @Bean
-    public MessageChannel sendingConfirmationEmailChannel() {
         return new PublishSubscribeChannel(getAsyncExecutor());
     }
 

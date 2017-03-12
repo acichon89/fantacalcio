@@ -56,4 +56,9 @@ public class UserController {
 		userGateway.ban(email);
 		return ResponseEntity.ok().body("OK");
 	}
+
+	@RequestMapping(value = "/current", method = RequestMethod.GET)
+	public ResponseEntity<Principal> currentPrincipal(Principal principal){
+		return ResponseEntity.ok(principal);
+	}
 }

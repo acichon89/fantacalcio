@@ -6,3 +6,12 @@ spring:
     username: fantacalcio_user
     password: fanta123
     driverClassName: com.mysql.jdbc.Driver
+  cloud:
+    stream:
+      bindings:
+        removeTokenChannel:
+          destination: remove-oauth-token-queue
+          contentType: text/plain
+        activationMailChannel:
+          destination: confirmation-mail-queue
+          contentType: text/plain
