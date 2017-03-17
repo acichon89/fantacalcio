@@ -25,6 +25,6 @@ public class MethodArgumentNotValidExceptionHandlerTest {
         ResponseDTO responseDTO = handler.methodArgumentNotValidException(exception);
         //then:
         assertNotNull(responseDTO);
-        Mockito.verify(exception.getBindingResult());
+        Mockito.verify(exception).getBindingResult();
     }
 }
