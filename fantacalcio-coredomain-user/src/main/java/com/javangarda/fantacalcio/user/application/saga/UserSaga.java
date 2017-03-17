@@ -12,7 +12,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 
 @MessageEndpoint
 @Slf4j
-public class UserEventHandler {
+public class UserSaga {
 
 	@Autowired
 	private UserCommandSender userCommandSender;

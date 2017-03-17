@@ -19,7 +19,7 @@ public class UniqueAccessTokenGeneratorTest {
     private UniqueAccessTokenGenerator uniqueAccessTokenGenerator = Mockito.spy(new UniqueAccessTokenGenerator());
 
     @Test
-    public void shouldGenerateRandomTokenAsLongAsIsNotUnique() {
+    public void shouldGenerateRandomConfirmEmailTokenAsLongAsIsNotUnique() {
         //given:
         Mockito.when(userRepository.countUserWithConfirmEmailToken(Mockito.anyString())).thenReturn(1).thenReturn(1).thenReturn(0);
         //when:
@@ -28,4 +28,13 @@ public class UniqueAccessTokenGeneratorTest {
         Mockito.verify(userRepository, Mockito.times(3)).countUserWithConfirmEmailToken(Mockito.anyString());
     }
 
+    @Test
+    public void shouldGenerateRandomResetPasswordTokenAsLongAsIsNotUnique() {
+        //given:
+        Mockito.when(userRepository.countUserWithResetPasswordToken(Mockito.anyString())).thenReturn(1).thenReturn(1).thenReturn(0);
+        //when:
+        String token = uniqueAccessTokenGenerator.createResetPasswordToken();
+        Assert.assertNotNull("ccc", token);
+        Mockito.verify(userRepository, Mockito.times(3)).countUserWithResetPasswordToken(Mockito.anyString());
+    }
 }
