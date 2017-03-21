@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserRepository extends Repository<User, String> {
 
-	@Query("SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.email =:email")
+	@Query("SELECT u FROM User u WHERE u.email =:email")
 	Optional<User> findByEmail(@Param("email") String email);
 
 	@Query("SELECT u FROM User u WHERE u.confirmEmailToken =:token")

@@ -27,6 +27,13 @@ repositories {
 
 
 dependencies {
+    compile (project(':fantacalcio-commons')){
+        exclude group : 'org.springframework'
+        exclude group : 'org.springframework.security'
+        exclude group : 'org.springframework.data'
+        exclude group : 'javax.validation'
+        exclude group : 'javax.persistence'
+    }
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-security')

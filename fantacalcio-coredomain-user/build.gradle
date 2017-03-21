@@ -29,7 +29,9 @@ dependencies {
 	compile (project(':fantacalcio-commons')){
 		exclude group : 'org.springframework'
 		exclude group : 'org.springframework.security'
+		exclude group : 'org.springframework.data'
 		exclude group : 'javax.validation'
+		exclude group : 'javax.persistence'
 	}
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-devtools')
@@ -45,6 +47,7 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
 	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.11.RELEASE'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile group: 'com.h2database', name: 'h2', version: '1.4.194'
 	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.5.RELEASE'
 	compile "org.flywaydb:flyway-core:4.0.3"
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'

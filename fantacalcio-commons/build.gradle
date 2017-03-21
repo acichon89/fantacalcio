@@ -10,8 +10,11 @@ description = 'Common classes for fantacalcio modules'
 
 dependencies {
     compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.5.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.5.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.1.4.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-commons', version: '1.13.1.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.1.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

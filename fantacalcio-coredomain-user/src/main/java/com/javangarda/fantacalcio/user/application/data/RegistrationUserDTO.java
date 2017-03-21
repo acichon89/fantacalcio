@@ -4,6 +4,7 @@ import com.javangarda.fantacalcio.commons.validation.EqualFields;
 import com.javangarda.fantacalcio.commons.validation.RepositoryFieldUnique;
 import com.javangarda.fantacalcio.commons.validation.StrongPassword;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @EqualFields(baseField = "password", matchField = "confirmedPassword", message = "validation.passwordsnotequal")
+@EqualsAndHashCode
 public class RegistrationUserDTO {
 
 	@NotBlank

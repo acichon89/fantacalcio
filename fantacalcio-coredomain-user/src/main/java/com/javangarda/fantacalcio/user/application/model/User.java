@@ -1,11 +1,9 @@
 package com.javangarda.fantacalcio.user.application.model;
 
+import com.javangarda.fantacalcio.commons.entities.VersionedDefaultEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.joda.time.DateTime;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,22 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name="users")
 @ToString(exclude = "password")
-public class User {
-
-	@Id
-	@Getter
-	private String id;
-
-	@Version
-	private Long version;
-
-	@CreatedDate
-	@Column(name = "created_date_time")
-	private DateTime createdDateTime;
-
-	@LastModifiedDate
-	@Column(name = "updated_date_time")
-	private DateTime updatedDateTime;
+public class User extends VersionedDefaultEntity<String> {
 
 	@Getter
 	private String email;
@@ -59,10 +42,10 @@ public class User {
 	@Setter
 	private String resetPasswordToken;
 
-	public User() {};
+	public User() {super();};
 
 	public User(String id){
-		this.id=id;
+		super(id);
 	}
 
 	public void register(String fullName, String password) {
@@ -111,22 +94,5 @@ public class User {
 		if(clearToken){
 			this.resetPasswordToken=null;
 		}
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		User user = (User) o;
-		return id.equals(user.id);
-	}
-
-	@Override
-	public int hashCode() {
-		return id.hashCode();
 	}
 }
