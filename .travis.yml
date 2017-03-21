@@ -1,11 +1,6 @@
 language: java
 
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-
-script: gradle build -Dspring.profiles.active=localdev-test 
+script: gradle build --stacktrace
 
 jdk:
 - oraclejdk8
