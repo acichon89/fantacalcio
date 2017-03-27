@@ -1,6 +1,6 @@
 language: java
 
-script: gradle build --info
+script: gradle build --info -Dspring.profiles.active=remotetest
 
 jdk:
 - oraclejdk8
