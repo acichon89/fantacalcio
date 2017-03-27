@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/fantacalciodb_user
+    username: fantacalcio_user
+    password: fanta123
+    driverClassName: com.mysql.jdbc.Driver

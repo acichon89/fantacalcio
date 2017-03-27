@@ -1,6 +1,7 @@
 package com.javangarda.fantacalcio.authserver.application.model;
 
 import com.javangarda.fantacalcio.commons.entities.DefaultEntity;
+import lombok.AccessLevel;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Account extends DefaultEntity<String> {
     @Getter
     private String password;
     @Enumerated(EnumType.STRING)
+    @Getter(AccessLevel.PROTECTED)
     private UserStatus status;
 
     @ElementCollection
@@ -29,6 +31,6 @@ public class Account extends DefaultEntity<String> {
     }
 
     public boolean isAllowed(){
-        return this.status.isAllowed();
+        return this.getStatus().isAllowed();
     }
 }
